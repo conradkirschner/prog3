@@ -1,0 +1,54 @@
+package warehouse.entity;
+
+import warehouse.Warehouse;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+
+public class StoragePlace {
+    private int storageID;
+    private Warehouse warehouse;
+    private ArrayList<Item> items;
+    private BigDecimal maxSize;
+
+    public StoragePlace(Warehouse warehouse, int storageID, BigDecimal maxSize) {
+        this.warehouse = warehouse;
+        this.maxSize = maxSize;
+        this.storageID = storageID;
+        this.items = new ArrayList<Item>();
+    }
+
+    public ArrayList<Item> getItems() {
+        return this.items;
+    }
+
+    public void setItem(Item item) {
+        this.items.add(item);
+    }
+
+    public int getStorageID() {
+        return this.storageID;
+    }
+
+    public Warehouse getWarehouse() {
+        return warehouse;
+    }
+
+    public BigDecimal getMaxSize() {
+        return maxSize;
+    }
+
+    public BigDecimal getUsedSize() {
+        BigDecimal totalSize = new BigDecimal(0);
+        for (Item item : this.items) {
+            totalSize = totalSize.add(item.getValue());
+        }
+        return totalSize;
+    }
+
+    public BigDecimal getLeftSpace() {
+        return this.maxSize.subtract(this.getUsedSize());
+    }
+
+
+}
