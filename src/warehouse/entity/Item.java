@@ -58,6 +58,10 @@ public class Item implements Cargo, JSONConvertable, Event {
         return this.inspectDate;
     }
 
+    /**
+     * @todo use real json parser but it is not allowed here https://mvnrepository.com/artifact/org.json/json
+     * @return
+     */
     @Override
     public String getJson() {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
@@ -89,7 +93,10 @@ public class Item implements Cargo, JSONConvertable, Event {
         json.append("}");
         return json.toString();
     }
-
+    /**
+     * @todo use real json parser but it is not allowed here https://mvnrepository.com/artifact/org.json/json
+     * @return
+     */
     public void restoreFromJson(String json) throws ParseException {
         String[] jsonMapping = json.split(",");
         for (String entry : jsonMapping){

@@ -1,7 +1,6 @@
 package cli;
 
 import app.App;
-import user.model.UserManager;
 import cli.events.ModuleEvent;
 
 public class Module implements app.events.Module {
@@ -14,9 +13,13 @@ public class Module implements app.events.Module {
         user.Module userModule = (user.Module) app.getModule("user");
         app.Module appModule = (app.Module) app.getModule("event-stream");
 
+
         ModuleEvent moduleEvent2 = new ModuleEvent("Log", "verbose");
         appModule.eventStream.dataConnector(moduleEvent2);
-        this.cli = new Cli(warehouseModule.warehouse, userModule.userManager, appModule.eventStream);
+        this.cli = new Cli(
+                userModule.userManager,
+                appModule.eventStream
+        );
     }
 
     @Override

@@ -4,16 +4,19 @@ import app.events.Event;
 import app.events.Module;
 import app.events.ModuleEvent;
 import app.events.RegisterModuleEvent;
+import cli.validators.Validator;
 
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
 
 public class App {
     private List<RegisterModuleEvent> listeners = new ArrayList<RegisterModuleEvent>();
     private List<Module> modules = new ArrayList<Module>();
-
     public Module getModule(String name) {
         for (Module module : modules) {
             if (module.getName().equals(name)) {

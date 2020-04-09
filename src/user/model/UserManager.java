@@ -6,7 +6,9 @@ import user.entity.Customer;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
+import java.util.Set;
 
 public class UserManager {
     private ArrayList<Customer> user;
@@ -26,9 +28,16 @@ public class UserManager {
         customer.setName(name);
         return customer;
     }
-    public ArrayList<Customer> getCustomer() {
-        return this.user;
+
+    public Customer getCustomer(String name) {
+        for(Customer customer: user) {
+            if (customer.getName().equals(name)) {
+                return customer;
+            }
+        }
+        return null;
     }
+
     public Customer getCustomer(int id) {
         return this.user.get(id);
     }
@@ -37,4 +46,6 @@ public class UserManager {
         this.user.remove(this.user.get(parseInt));
         return null;
     }
+
+
 }
