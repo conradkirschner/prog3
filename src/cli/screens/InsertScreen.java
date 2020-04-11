@@ -1,38 +1,42 @@
 package cli.screens;
 
+import java.io.PrintStream;
+
 public class InsertScreen implements Screen {
+    public Boolean status = false;
+    public String message = "";
+
+    private PrintStream output;
+
+    public InsertScreen(PrintStream output) {
+        this.output = output;
+    }
 
     public void setStatus(Boolean status) {
         this.status = status;
     }
 
-    public void setError(String error) {
-        this.error = error;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
-    public Boolean status = false;
-    public String error = "";
 
     @Override
     public void getContent() {
-        if (status) {
-            System.out.println("> Erfolgreich gespeichert");
-            return;
-        }
-        System.out.println("> Es gab ein Fehler beim hinzufügen");
-        System.out.println(error);
+        this.output.println(message);
+        this.message = "";
     }
 
     @Override
     public void getUsage() {
-        System.out.println("--------------------------------------------");
-        System.out.println("[Kundenname] fügt einen Kunden ein");
-        System.out.println("");
-        System.out.println("[Frachttyp] [Kundenname] [Wert] [Einlagerungsdauer\n" +
+        this.output.println("--------------------------------------------");
+        this.output.println("[Kundenname] fügt einen Kunden ein");
+        this.output.println("");
+        this.output.println("[Frachttyp] [Kundenname] [Wert] [Einlagerungsdauer\n" +
                 "in Sekunden] [kommaseparierte Gefahrenstoffe,\n" +
                 "einzelnes Komma für keine] [[zerbrechlich (y/n)]\n" +
                 "[unter Druck (y/n)] [fest (y/n)]]");
-        System.out.println("--------------------------------------------");
+        this.output.println("--------------------------------------------");
     }
 
 }

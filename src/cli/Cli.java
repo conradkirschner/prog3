@@ -3,6 +3,7 @@ package cli;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintStream;
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;
 import java.util.*;
@@ -10,6 +11,7 @@ import java.util.function.Function;
 
 import app.EventStream;
 import app.events.Event;
+import cli.events.CloseCliEvent;
 import cli.screens.InsertScreen;
 import cli.screens.MainScreen;
 import cli.screens.OverviewScreen;
@@ -24,8 +26,13 @@ import warehouse.Warehouse;
 import warehouse.events.GetCargoData;
 
 public class Cli {
-    private Warehouse warehouse;
-    private UserManager userManager;
+    // running
+    Boolean running;
+    // Input
+    BufferedReader input;
+    // Output
+    PrintStream output;
+    // Event Stream
     private EventStream eventStream;
 
     // Screens
@@ -47,14 +54,17 @@ public class Cli {
      */
     private Map<String, Runnable> views = new HashMap<>();
 
-    public Cli(UserManager userManager, EventStream eventStream) {
-        this.userManager = userManager;
+    public Cli(EventStream eventStream, BufferedReader input, PrintStream output) {
+        // input
+        this.input = input;
+        // output 
+        this.output = output;
+        // event stream
         this.eventStream = eventStream;
-
         // screens
-        this.insertScreen = new InsertScreen();
-        this.mainScreen = new MainScreen();
-        this.overviewScreen = new OverviewScreen();
+        this.insertScreen = new InsertScreen(output);
+        this.mainScreen = new MainScreen(output);
+        this.overviewScreen = new OverviewScreen(output);
 
         // validators
         this.deleteInput = new DeleteInput();
@@ -67,12 +77,7 @@ public class Cli {
         this.views.put("main:content", () -> this.mainScreen.getContent());
         this.views.put("main:usage", () -> this.mainScreen.getUsage());
 
-        this.views.put("input:content:success", () ->{
-            this.insertScreen.setStatus(true);
-            this.insertScreen.getContent();
-        });
-        this.views.put("input:content:error", () ->{
-            this.insertScreen.setStatus(false);
+        this.views.put("input:content", () ->{
             this.insertScreen.getContent();
         });
         this.views.put("input:usage", () -> this.insertScreen.getUsage());
@@ -95,17 +100,15 @@ public class Cli {
     }
 
 
-    public void start() {
-        while (true) {
+    public Event start() {
+        this.running = true;
+        while (this.running) {
             this.views.get("main:content").run();
-            System.out.print("Komando> ");
+            this.output.print("Komando> ");
             String input = this.getInput();
-
-            for (int i = 0; i < 50; ++i) System.out.println();
-
             parseInput(input);
-
         }
+        return new CloseCliEvent(0);
     }
 
 
@@ -118,12 +121,19 @@ public class Cli {
                 case 'r':
                         overviewMode();
                     break;
+                case 'x':
+                    this.running = false;
+                    break;
                 default:
-                    System.out.println("Command not found!");
+                    this.output.println("Command not found!");
             }
         }
     }
 
+    public void showResponse(String message) {
+        this.insertScreen.setMessage(message);
+        this.views.get("input:content").run();
+    }
     private void overviewMode() {
         this.views.get("overview:usage").run();
         String[] input = this.getInput().split(" ");
@@ -184,21 +194,20 @@ public class Cli {
             Event event = this.eventStream.pushData("warehouse:store-item", this.newCargoInput.getData());
             if (event instanceof Error) {
                 // @todo add handling (invalid username or warehouse full - message display)
-                this.views.get("input:content:success").run();
+                this.insertScreen.setMessage(((Error) event).getMessage());
+                this.views.get("input:content").run();
                 return;
             }
             /*
              * push success message then return to mainPage
              */
-            this.views.get("input:content:success").run();
             return;
         }
-        this.views.get("input:content:error").run();
         this.insertMode();
     }
 
     private String getInput() {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader br = this.input;
         try {
             return br.readLine();
         } catch (IOException e) {

@@ -3,8 +3,6 @@ package cli.validators;
 import java.math.BigInteger;
 import java.text.SimpleDateFormat;
 import java.time.ZonedDateTime;
-import java.util.ArrayList;
-import java.util.stream.Collectors;
 
 public class NewCargoInput extends Object implements Validator {
     public String error;
@@ -20,7 +18,15 @@ public class NewCargoInput extends Object implements Validator {
     public Boolean isValid(String[] input) {
         try {
             // type
-            if (input[0].equals("LiquidBulkCargo") || input[0].equals("LiquidBulkCargoUnitiesed") || input[0].equals("Item") || input[0].equals("Mixed")) return  false;
+            switch (input[0]) {
+                case "LiquidBulkCargo":
+                case "Item":
+                case "MixedCargoLiquidBulkAndUnitised":
+                case "UnitisedCargo":
+                    break;
+                default:
+                    return false;
+            }
             // customer name
             if (input[1].equals("")) return  false;
             // weight

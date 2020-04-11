@@ -63,9 +63,10 @@ public class ModuleEvent implements app.events.ModuleEvent {
             case "warehouse:store-item":
                 String itemId = String.valueOf(warehouseModule.warehouse.store(data));
                 if (itemId.equals("-1")) {
-                    appModule.eventStream.pushData("warehouse:store-item=success",itemId );
-                } else {
                     appModule.eventStream.pushData("warehouse:store-item=full_storage", "Storage is full");
+                } else {
+                    appModule.eventStream.pushData("warehouse:store-item=success",itemId );
+
                 }
                 break;
             case "warehouse:get-item":

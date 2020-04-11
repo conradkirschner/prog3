@@ -1,6 +1,7 @@
 package cli.helper;
 
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -10,6 +11,7 @@ import java.util.List;
  * @Auhor https://www.logicbig.com/how-to/code-snippets/jcode-java-cmd-command-line-table.html
  */
 public class ShowTable {
+    private PrintStream output;
     private static final String HORIZONTAL_SEP = "-";
     private String verticalSep;
     private String joinSep;
@@ -17,8 +19,9 @@ public class ShowTable {
     private List<String[]> rows = new ArrayList<>();
     private boolean rightAlign;
 
-    public ShowTable() {
+    public ShowTable(PrintStream output) {
         setShowVerticalLines(false);
+        this.output = output;
     }
 
     public void setRightAlign(boolean rightAlign) {
@@ -71,9 +74,9 @@ public class ShowTable {
         for (int i = 0; i < columnWidths.length; i++) {
             String line = String.join("", Collections.nCopies(columnWidths[i] +
                     verticalSep.length() + 1, HORIZONTAL_SEP));
-            System.out.print(joinSep + line + (i == columnWidths.length - 1 ? joinSep : ""));
+            this.output.print(joinSep + line + (i == columnWidths.length - 1 ? joinSep : ""));
         }
-        System.out.println();
+        this.output.println();
     }
 
     private void printRow(String[] cells, int[] maxWidths) {
@@ -81,11 +84,11 @@ public class ShowTable {
             String s = cells[i];
             String verStrTemp = i == cells.length - 1 ? verticalSep : "";
             if (rightAlign) {
-                System.out.printf("%s %" + maxWidths[i] + "s %s", verticalSep, s, verStrTemp);
+                this.output.printf("%s %" + maxWidths[i] + "s %s", verticalSep, s, verStrTemp);
             } else {
-                System.out.printf("%s %-" + maxWidths[i] + "s %s", verticalSep, s, verStrTemp);
+                this.output.printf("%s %-" + maxWidths[i] + "s %s", verticalSep, s, verStrTemp);
             }
         }
-        System.out.println();
+        this.output.println();
     }
 }

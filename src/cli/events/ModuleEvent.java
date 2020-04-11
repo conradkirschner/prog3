@@ -49,8 +49,13 @@ public class ModuleEvent implements app.events.ModuleEvent {
         System.out.println("[verbose] ["+ command + "]["+ data + "]");
         switch (command) {
             case "cli:start":
-                cliModule.cli.start();
-                break;
+                return cliModule.cli.start();
+            case "warehouse:store-item=success":
+                cliModule.cli.showResponse("Neues Item gespeichert");
+                return null;
+            case "warehouse:store-item=full_storage":
+                cliModule.cli.showResponse("Das Lager ist voll!");
+                return null;
         }
         return null;
     }
