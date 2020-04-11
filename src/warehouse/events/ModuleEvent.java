@@ -3,8 +3,11 @@ package warehouse.events;
 import app.App;
 import app.events.Event;
 import warehouse.entity.Item;
+import warehouse.input.NewItemInput;
 
+import java.io.IOException;
 import java.text.ParseException;
+import java.util.ArrayList;
 
 public class ModuleEvent implements app.events.ModuleEvent {
     public Boolean shouldRun;
@@ -44,18 +47,23 @@ public class ModuleEvent implements app.events.ModuleEvent {
     }
 
     @Override
-    public Event runModuleEvent(String command, String data, App app) throws ParseException {
+    public Event runModuleEvent(String command, String data, App app, Event event) throws IOException, ParseException {
         warehouse.Module warehouseModule = (warehouse.Module) app.getModule("warehouse");
         app.Module appModule = (app.Module) app.getModule("event-stream");
 
         switch (command) {
             // @todo allow multiple warehouses set a uuid here!
             case "warehouse:build":
-                warehouseModule.warehouse.setUp(  Integer.parseInt(data));
+                String[] sizeAndCount = data.split(":");
+                warehouseModule.warehouse.setUp(
+                        Integer.parseInt(sizeAndCount[0]),
+                        Integer.parseInt(sizeAndCount[1])
+                );
                 break;
             case "warehouse:store-item":
-                if (warehouseModule.warehouse.store(data) != -1) {
-                    appModule.eventStream.pushData("warehouse:store-item=success", String.valueOf(warehouseModule.warehouse.store(data)));
+                String itemId = String.valueOf(warehouseModule.warehouse.store(data));
+                if (itemId.equals("-1")) {
+                    appModule.eventStream.pushData("warehouse:store-item=success",itemId );
                 } else {
                     appModule.eventStream.pushData("warehouse:store-item=full_storage", "Storage is full");
                 }
@@ -63,12 +71,27 @@ public class ModuleEvent implements app.events.ModuleEvent {
             case "warehouse:get-item":
                 this.returnHere();
                 return warehouseModule.warehouse.getItem(data);
+
+                // data is the filter setting
+            case "warehouse:get-all-items":
+                this.returnHere();
+                GetCargoData returnData = new GetCargoData(new ArrayList<Item>());
+                returnData.addItems(warehouseModule.warehouse.getItems(data));
+
+
+                if (event instanceof  GetCargoData) {
+                    ((GetCargoData) event).addItems(returnData.getItems());
+                    returnData = (GetCargoData) event;
+                }
+                return ((Event) returnData);
+
             case "warehouse:update-item":
                 this.returnHere();
                 String[] splittedData = data.split("@");
-                Item updateItem =  warehouseModule.warehouse.getItem(splittedData[0]);
-                updateItem.restoreFromJson(splittedData[1]);
-                return updateItem;
+                NewItemInput newItemInput = new NewItemInput();
+                Item item = newItemInput.getItem(splittedData[1]);
+                warehouseModule.warehouse.updateItem(splittedData[0], item);
+                return null;
             case "warehouse:delete-item":
                 Item deleteItem =  warehouseModule.warehouse.getItem(data);
                 warehouseModule.warehouse.deleteItem(deleteItem);

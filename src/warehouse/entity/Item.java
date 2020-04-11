@@ -5,6 +5,7 @@ import storageContract.administration.Customer;
 import storageContract.cargo.Cargo;
 import storageContract.cargo.Hazard;
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.ZonedDateTime;
@@ -23,7 +24,12 @@ public class Item implements Cargo, JSONConvertable, Event {
     protected Date inspectDate;
     protected String id;
 
-    public Item(BigDecimal weight, Customer owner, Collection<Hazard> hazards, ZonedDateTime expireDate) {
+    public Item(
+            BigDecimal weight,
+            Customer owner,
+            Collection<Hazard> hazards,
+            ZonedDateTime expireDate
+    ) {
         this.weight = weight;
         this.owner = owner;
         this.hazards = hazards;
@@ -51,6 +57,30 @@ public class Item implements Cargo, JSONConvertable, Event {
     @Override
     public Collection<Hazard> getHazards() {
         return this.hazards;
+    }
+
+    public void setWeight(BigDecimal weight) {
+        this.weight = weight;
+    }
+
+    public void setOwner(Customer owner) {
+        this.owner = owner;
+    }
+
+    public void setHazards(Collection<Hazard> hazards) {
+        this.hazards = hazards;
+    }
+
+    public void setExpireDate(ZonedDateTime expireDate) {
+        this.expireDate = expireDate;
+    }
+
+    public void setStorageDate(ZonedDateTime storageDate) {
+        this.storageDate = storageDate;
+    }
+
+    public void setInspectDate(Date inspectDate) {
+        this.inspectDate = inspectDate;
     }
 
     @Override

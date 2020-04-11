@@ -8,6 +8,7 @@ import warehouse.entity.Item;
 import user.model.UserManager;
 import warehouse.entity.LiquidBulkCargo;
 import warehouse.entity.StoragePlace;
+import warehouse.input.NewItemInput;
 
 import java.math.BigDecimal;
 import java.text.ParseException;
@@ -25,22 +26,17 @@ public class Warehouse {
         this.eventStream = eventStream;
     }
 
-    public void setUp(int size) {
+    public void setUp(int size,int maxValue) {
         this.storagePlaces = new ArrayList<StoragePlace>();
         for (int storagePlaceCounter = 0; storagePlaceCounter < size; storagePlaceCounter ++ ) {
-            this.storagePlaces.add(new StoragePlace( this,storagePlaceCounter, new BigDecimal(5)));
-
+            this.storagePlaces.add(new StoragePlace( this,storagePlaceCounter, new BigDecimal(maxValue)));
         }
     }
     public int store(String jsonItem) throws ParseException {
-        LiquidBulkCargo liquidBulkCargo = new LiquidBulkCargo(
-                new BigDecimal(1000000),
-                (storageContract.administration.Customer) this.eventStream.pushData("user:get", "0"),
-                Collections.singleton(Hazard.radioactive),
-                ZonedDateTime.now()
-        );
-        liquidBulkCargo.restoreFromJson(jsonItem);
-        return this.store(liquidBulkCargo);
+        // get item type here
+        NewItemInput newItemInput = new NewItemInput();
+        Item item = newItemInput.getItem(jsonItem);
+        return this.store(item);
     }
     public int store(Item item) {
         for (StoragePlace storagePlace : this.storagePlaces) {
@@ -61,12 +57,44 @@ public class Warehouse {
         }
         return null;
     }
+    public ArrayList<Item> getItems(String filter) {
+        ArrayList<Item> filtered = getItems();
+
+    switch (filter) {
+        case "hazard:y":
+            filtered.removeIf(item -> ((item.getHazards() != null)&& item.getHazards().size() != 0));
+            break;
+        case "hazard:n":
+            filtered.removeIf(item -> (item.getHazards() == null));
+            break;
+        }
+
+        return filtered;
+    }
+
+    public ArrayList<Item> getItems() {
+        ArrayList<Item> items = new ArrayList<>();
+        for(StoragePlace storagePlace:this.storagePlaces)
+        {
+            items.addAll(storagePlace.getItems());
+        }
+        return items;
+    }
 
     public ArrayList<Item> readIteam(StoragePlace storagePlace) {
         return storagePlace.getItems();
     }
-    public boolean updateItem(Item item) {
-        return true;
+    public void updateItem(String itemId, Item newItem) {
+        for (StoragePlace storagePlace : this.storagePlaces) {
+            for (Item item : storagePlace.getItems()) {
+                if (item.getId().equals(itemId)) {
+                    if (item instanceof LiquidBulkCargo && newItem instanceof  LiquidBulkCargo) {
+                        ((LiquidBulkCargo) item).setPressurized(((LiquidBulkCargo) newItem).isPressurized());
+                    }
+                    item = newItem;
+                }
+            }
+        }
     }
 
     public boolean deleteItem(Item item) {

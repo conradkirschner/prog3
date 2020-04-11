@@ -11,6 +11,6 @@ public interface ModuleEvent {
     public void returnHere();
     public void returnStop();
     public Boolean shouldReturn();
-    public Event runModuleEvent(String command, String data, App app) throws IOException, ParseException;
+    public Event runModuleEvent(String command, String data, App app, Event event) throws IOException, ParseException;
 
 }

@@ -30,18 +30,8 @@ public class Main {
         app.registerModule();  // register payed modules
 
         app.Module eventStreamModule = (app.Module) app.getModule("event-stream");
-        eventStreamModule.eventStream.pushData("warehouse:build","4");
+        eventStreamModule.eventStream.pushData("warehouse:build","1:10");
         eventStreamModule.eventStream.pushData("user:new","test-kunde");
-        LiquidBulkCargo liquidBulkCargo = new LiquidBulkCargo(
-                new BigDecimal(4),
-                (storageContract.administration.Customer) eventStreamModule.eventStream.pushData("user:get","0"),
-                Collections.singleton(Hazard.explosive),
-                ZonedDateTime.now()
-        );
-        System.out.println(liquidBulkCargo.getJson());
-        eventStreamModule.eventStream.pushData("warehouse:store-item",liquidBulkCargo.getJson());
-        Event item =  eventStreamModule.eventStream.pushData("warehouse:get-item","4");
-        eventStreamModule.eventStream.pushData("user:new","wann");
         eventStreamModule.eventStream.pushData("cli:start","4");
 
         System.exit(1);

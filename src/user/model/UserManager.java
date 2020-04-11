@@ -41,6 +41,9 @@ public class UserManager {
     public Customer getCustomer(int id) {
         return this.user.get(id);
     }
+    public ArrayList<Customer> getCustomers() {
+        return this.user;
+    }
 
     public Event deleteCustomer(int parseInt) {
         this.user.remove(this.user.get(parseInt));

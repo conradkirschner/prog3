@@ -4,6 +4,7 @@ import app.App;
 import app.events.Event;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.UUID;
 
 public class ModuleEvent implements app.events.ModuleEvent {
@@ -42,7 +43,7 @@ public class ModuleEvent implements app.events.ModuleEvent {
     }
 
     @Override
-    public Event runModuleEvent(String command, String data, App app) throws IOException {
+    public Event runModuleEvent(String command, String data, App app, Event event) throws IOException, ParseException {
         cli.Module cliModule = (cli.Module) app.getModule("cli");
 
         System.out.println("[verbose] ["+ command + "]["+ data + "]");

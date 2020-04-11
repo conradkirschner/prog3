@@ -3,6 +3,7 @@ package user.events;
 import app.App;
 import app.events.Event;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.UUID;
 
@@ -43,12 +44,15 @@ public class ModuleEvent implements app.events.ModuleEvent {
         return false;
     }
 
-    public Event runModuleEvent(String command, String data, App app) {
+    public Event runModuleEvent(String command, String data, App app, Event event) throws IOException, ParseException {
         user.Module userModule = (user.Module) app.getModule("user");
         switch (command) {
             case "user:get":
                 this.returnHere();
                 return userModule.userManager.getCustomer(Integer.parseInt(data));
+            case "user:getAll":
+                this.returnHere();
+                return new UserListData(userModule.userManager.getCustomers());
             case "user:new":
                 this.returnHere();
                 return userModule.userManager.newCustomer(data);

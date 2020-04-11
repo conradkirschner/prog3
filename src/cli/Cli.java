@@ -5,34 +5,33 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 import java.util.function.Function;
 
 import app.EventStream;
 import app.events.Event;
 import cli.screens.InsertScreen;
 import cli.screens.MainScreen;
+import cli.screens.OverviewScreen;
 import cli.validators.*;
+import user.entity.Customer;
+import user.events.UserListData;
+import warehouse.entity.Item;
 import warehouse.entity.LiquidBulkCargo;
 import storageContract.cargo.Hazard;
 import user.model.UserManager;
 import warehouse.Warehouse;
+import warehouse.events.GetCargoData;
 
 public class Cli {
     private Warehouse warehouse;
     private UserManager userManager;
     private EventStream eventStream;
-    private String currentScreen;
-
-    // input
-    private Scanner scanner;
 
     // Screens
     private InsertScreen insertScreen;
     private MainScreen mainScreen;
+    private OverviewScreen overviewScreen;
 
     // Validators
     private DeleteInput deleteInput;
@@ -52,12 +51,10 @@ public class Cli {
         this.userManager = userManager;
         this.eventStream = eventStream;
 
-        // input reader
-        this.scanner = new Scanner(System.in);
-
         // screens
         this.insertScreen = new InsertScreen();
         this.mainScreen = new MainScreen();
+        this.overviewScreen = new OverviewScreen();
 
         // validators
         this.deleteInput = new DeleteInput();
@@ -67,12 +64,9 @@ public class Cli {
         this.saveInput = new SaveInput();
         this.searchInput = new SearchInput();
 
-
-        // set start view
-        this.currentScreen = "main:content";
-
         this.views.put("main:content", () -> this.mainScreen.getContent());
         this.views.put("main:usage", () -> this.mainScreen.getUsage());
+
         this.views.put("input:content:success", () ->{
             this.insertScreen.setStatus(true);
             this.insertScreen.getContent();
@@ -83,14 +77,29 @@ public class Cli {
         });
         this.views.put("input:usage", () -> this.insertScreen.getUsage());
 
+        this.views.put("overview:usage", () ->{
+            this.overviewScreen.getUsage();
+        });
+        this.views.put("overview:customer", () -> {
+            this.overviewScreen.setMode("customer");
+            this.overviewScreen.getContent();
+        });
+        this.views.put("overview:cargo", () ->{
+            this.overviewScreen.setMode("cargo");
+            this.overviewScreen.getContent();
+        });
+        this.views.put("overview:hazard", () ->{
+            this.overviewScreen.setMode("hazard");
+            this.overviewScreen.getContent();
+        });
     }
 
 
     public void start() {
         while (true) {
-            this.views.get(this.currentScreen).run();
+            this.views.get("main:content").run();
             System.out.print("Komando> ");
-            String input = this.scanner.next();
+            String input = this.getInput();
 
             for (int i = 0; i < 50; ++i) System.out.println();
 
@@ -106,17 +115,63 @@ public class Cli {
                 case 'c':
                         insertMode();
                     break;
+                case 'r':
+                        overviewMode();
+                    break;
                 default:
                     System.out.println("Command not found!");
             }
         }
     }
 
-    private void insertMode() {
-        this.currentScreen = "input:usage"; // define next screen
+    private void overviewMode() {
+        this.views.get("overview:usage").run();
+        String[] input = this.getInput().split(" ");
+        if (this.searchInput.isValid(input)) {
+            this.overviewScreen.rows = null;
+            switch(this.searchInput.getType()) {
+                case "customer":
+                    Event userList = this.eventStream.pushData("user:getAll","");
+                    if (userList instanceof  UserListData) {
+                            this.overviewScreen.rows = new ArrayList<String>();
+                            ArrayList<Customer> customer = ((UserListData) userList).getUsers();
+                            for(int i = 0; i < customer.size(); i++) {
+                                this.overviewScreen.rows.add(customer.get(i).getName());
+                            }
+                        }
+                 break;
+                case "cargo":
+                    Event filteredCargo = this.eventStream.pushData("warehouse:get-all-items","hazard:y");
+                    insertHazardList(filteredCargo);
+                    break;
+                case "hazard:y":
+                    Event hazardListY = this.eventStream.pushData("warehouse:get-all-items","hazard:y");
+                    insertHazardList(hazardListY);
+                    break;
+                case "hazard:n":
+                    Event hazardListN = this.eventStream.pushData("warehouse:get-all-items","hazard:n");
+                    insertHazardList(hazardListN);
+                    break;
+                }
 
-        this.views.get(this.currentScreen).run();
-        this.currentScreen = "main:content";
+            this.views.get("overview:" + this.searchInput.getType().split(":")[0]).run();
+
+            return;
+        }
+        this.overviewMode();
+    }
+
+    private void insertHazardList(Event hazardList){
+        if (hazardList instanceof GetCargoData) {
+            this.overviewScreen.rows = new ArrayList<String>();
+            ArrayList<Item> items = ((GetCargoData) hazardList).getItems();
+            for(int i = 0; i < items.size(); i++) {
+                this.overviewScreen.rows.add(items.get(i).getId());
+            }
+        }
+    }
+    private void insertMode() {
+        this.views.get("input:usage").run();
 
         String[] input = this.getInput().split(" ");
 
@@ -129,20 +184,16 @@ public class Cli {
             Event event = this.eventStream.pushData("warehouse:store-item", this.newCargoInput.getData());
             if (event instanceof Error) {
                 // @todo add handling (invalid username or warehouse full - message display)
-                this.currentScreen = "input:content:success";
-                this.views.get(this.currentScreen).run();
+                this.views.get("input:content:success").run();
                 return;
             }
             /*
              * push success message then return to mainPage
              */
-            this.currentScreen = "input:content:success";
-            this.views.get(this.currentScreen).run();
-            this.currentScreen = "main:content";
+            this.views.get("input:content:success").run();
             return;
         }
-        this.currentScreen = "input:content:error";
-        this.views.get(this.currentScreen).run();
+        this.views.get("input:content:error").run();
         this.insertMode();
     }
 

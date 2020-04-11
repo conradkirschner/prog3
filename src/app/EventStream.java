@@ -31,9 +31,11 @@ public class EventStream  {
         for (ModuleEvent moduleEvent : moduleEventListeners) {
             if(moduleEvent.shouldRun()) {
                 try {
-                    Event event = moduleEvent.runModuleEvent(command, data, app);
-                    if(moduleEvent.shouldReturn()) {
+                    Event event = moduleEvent.runModuleEvent(command, data, app, returnValue);
+                    if (event != null) {
                         returnValue = event;
+                    }
+                    if(moduleEvent.shouldReturn()) {
                         moduleEvent.returnStop();
                     }
                 } catch (IOException e) {

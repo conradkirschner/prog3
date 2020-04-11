@@ -1,12 +1,12 @@
-package app;
+package unit.app;
 
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ModuleTest {
+class MainTest {
 
     @Test
-    void getName() {
+    void main() {
     }
 }

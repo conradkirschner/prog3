@@ -1,16 +1,16 @@
-package app.events;
+package unit.app;
 
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class RegisterEventStreamEventTest {
+class EventStreamTest {
 
     @Test
-    void registerModule() {
+    void dataConnector() {
     }
 
     @Test
-    void connectToStream() {
+    void pushData() {
     }
 }
