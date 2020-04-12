@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class OverviewScreen implements Screen {
     private String mode;
-    public ArrayList<String> rows = null;
+    public String[][] rows = new String[10][];
     private PrintStream output;
 
     public OverviewScreen(PrintStream output) {
@@ -44,8 +44,8 @@ public class OverviewScreen implements Screen {
         //st.setRightAlign(true);//if true then cell text is right aligned
         st.setShowVerticalLines(true);//if false (default) then no vertical lines are shown
         st.setHeaders("Frachtnummer");//optional - if not used then there will be no header and horizontal lines
-        for (String customer: rows) {
-            st.addRow(customer);
+        for (String[] customer: rows) {
+            st.addRow(customer[0]);
         }
         st.print();
     }
@@ -58,9 +58,9 @@ public class OverviewScreen implements Screen {
         ShowTable st = new ShowTable(this.output);
         //st.setRightAlign(true);//if true then cell text is right aligned
         st.setShowVerticalLines(true);//if false (default) then no vertical lines are shown
-        st.setHeaders("Fracht");//optional - if not used then there will be no header and horizontal lines
-        for (String fracht: rows) {
-            st.addRow(fracht);
+        st.setHeaders("Fracht Nummer", "Gefahrenstoffe", "Gewicht", "Einlagerung bis", "Besitzer", "letzte Inspektion", "Typ");
+        for (String[] fracht: rows) {
+            st.addRow(fracht[0], fracht[1], fracht[2], fracht[3], fracht[4], fracht[5], fracht[6]);
         }
         st.print();
     }
@@ -74,8 +74,9 @@ public class OverviewScreen implements Screen {
         //st.setRightAlign(true);//if true then cell text is right aligned
         st.setShowVerticalLines(true);//if false (default) then no vertical lines are shown
         st.setHeaders("Customer");//optional - if not used then there will be no header and horizontal lines
-        for (String customer: rows) {
-            st.addRow(customer);
+        st.setHeaders("Customer");//optional - if not used then there will be no header and horizontal lines
+        for (String[] customer: rows) {
+            st.addRow(customer[0]);
         }
         st.print();
     }

@@ -95,7 +95,7 @@ public class NewCargoInput extends Object implements Validator {
         }, {
                 "weight", this.weight
         }, {
-                "expireDate", this.timeToStay
+                "expireAt", this.timeToStay
         }, {
                 "hazards", this.hazards
         }, {
@@ -110,7 +110,7 @@ public class NewCargoInput extends Object implements Validator {
         StringBuilder json = new StringBuilder("{");
         for (int i = 0; i < keys.length; i++) {
             if ((i + 1) < keys.length) {
-                json.append("\"").append(keys[i][0]).append("\":\"").append(keys[i][1]).append("\"").append(",");
+                json.append("\"").append(keys[i][0]).append("\":\"").append(keys[i][1]).append("\"").append(" , ");
             } else {
                 json.append("\"").append(keys[i][0]).append("\":\"").append(keys[i][1]).append("\"");
             }

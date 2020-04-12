@@ -22,23 +22,20 @@ class BootstrapTest {
         Mockito.when(bufferedReader.readLine()).thenReturn(
                 ":c",
                 "test-kunde",
-
                 ":c",
                 "Item test-kunde 3 3 , y y y",
-                ":r",
-                "customer",
                 ":c",
-                "LiquidBulkCargo test-kunde 3 3 , y y y",
-                ":r",
-                "customer",
+                "LiquidBulkCargo test-kunde 3 3 explosive y y y",
                 ":c",
-                "UnitisedCargo test-kunde 3 3 , y y y",
+                "UnitisedCargo test-kunde 3 3 explosive,radioactive,flammable y y y",
                 ":c",
                 "MixedCargoLiquidBulkAndUnitised test-kunde 3 3 , y y y",
                 ":r",
                 "hazard y",
                 ":r",
                 "hazard n",
+                ":r",
+                "cargo MixedCargoLiquidBulkAndUnitised ",
                 ":x"
         );
         ByteArrayOutputStream bo = new ByteArrayOutputStream();

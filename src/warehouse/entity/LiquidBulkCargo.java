@@ -10,7 +10,6 @@ import java.util.Collection;
 import java.util.Date;
 
 public class LiquidBulkCargo extends Item implements storageContract.cargo.LiquidBulkCargo {
-
     private Boolean pressurized;
 
     public LiquidBulkCargo(
@@ -21,6 +20,8 @@ public class LiquidBulkCargo extends Item implements storageContract.cargo.Liqui
             Boolean pressurized
     ) {
         super(weight, owner, hazards, expireDate);
+
+        this.type = "LiquidBulkCargo";
         this.pressurized = pressurized;
     }
 

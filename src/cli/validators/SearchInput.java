@@ -15,7 +15,7 @@ public class SearchInput implements Validator {
             this.type = "customer";
             return true;
         }
-        if (input[0].equals("cargo") && !input[1].equals("")) {
+        if (input[0].equals("cargo") && input.length  == 2 ) {
             this.type = "cargo";
             return true;
         }

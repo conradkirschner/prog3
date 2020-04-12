@@ -10,6 +10,7 @@ import java.util.Collection;
 import java.util.Date;
 
 public class UnitisedCargo extends Item implements storageContract.cargo.UnitisedCargo {
+
     private Boolean fragile;
 
     public UnitisedCargo(
@@ -21,6 +22,7 @@ public class UnitisedCargo extends Item implements storageContract.cargo.Unitise
     ) {
         super( weight, owner, hazards, expireDate);
         this.fragile = fragile;
+        this.type = "UnitisedCargo";
     }
 
     @Override

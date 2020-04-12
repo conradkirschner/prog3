@@ -17,9 +17,4 @@ public class RegisterEventCliInput implements RegisterModuleEvent {
     public Module registerModule(App app) {
         return new CliInput(input);
     }
-
-    @Override
-    public void connectToStream(EventStream eventStream) {
-
-    }
 }

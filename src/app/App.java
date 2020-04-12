@@ -1,9 +1,7 @@
 package app;
 
-import app.events.Event;
+import app.events.*;
 import app.events.Module;
-import app.events.ModuleEvent;
-import app.events.RegisterModuleEvent;
 import cli.validators.Validator;
 
 import java.io.IOException;
@@ -46,7 +44,10 @@ public class App {
                     modules.add(newModule);
                     return;
                 }
-                registerModuleEvent.connectToStream(appModule.eventStream);
+                // load autostart events and connect to main event stream
+                if (registerModuleEvent instanceof Connectable) {
+                    ((Connectable) registerModuleEvent).connectToStream(appModule.eventStream);
+                }
                 modules.add(newModule);
 
             }

@@ -54,7 +54,10 @@ public class ModuleEvent implements app.events.ModuleEvent {
                 cliModule.cli.showResponse("Neues Item gespeichert");
                 return null;
             case "warehouse:store-item=full_storage":
-                cliModule.cli.showResponse("Das Lager ist voll!");
+                cliModule.cli.showResponse("Fehler: Das Lager ist voll!");
+                return null;
+            case "warehouse:store-item=unkownHazard":
+                cliModule.cli.showResponse("Fehler: Die Gefahrenklasse ist ungültig.");
                 return null;
         }
         return null;

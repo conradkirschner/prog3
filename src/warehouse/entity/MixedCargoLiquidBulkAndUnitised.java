@@ -22,6 +22,7 @@ public class MixedCargoLiquidBulkAndUnitised extends Item implements storageCont
             Boolean fragile
     ) {
         super( weight, owner, hazards, expireDate);
+        this.type =  "MixedCargoLiquidBulkAndUnitised";
         this.pressurized = pressurized;
         this.fragile = fragile;
     }

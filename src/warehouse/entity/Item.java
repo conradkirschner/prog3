@@ -16,6 +16,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Item implements Cargo, JSONConvertable, Event {
+    public String type = "item";
+
     protected BigDecimal weight;
     protected Customer owner;
     protected Collection<Hazard> hazards;
@@ -30,13 +32,16 @@ public class Item implements Cargo, JSONConvertable, Event {
             Collection<Hazard> hazards,
             ZonedDateTime expireDate
     ) {
+        UUID uuid = UUID.randomUUID();
+
+
         this.weight = weight;
         this.owner = owner;
         this.hazards = hazards;
         this.expireDate = expireDate;
         this.storageDate = ZonedDateTime.now();
         this.inspectDate = new Date();
-        this.id = "4";
+        this.id = uuid.toString();
     }
 
     @Override
@@ -98,11 +103,14 @@ public class Item implements Cargo, JSONConvertable, Event {
 
         String[][] keys = {
                 {
+                    "id", this.id
+                },
+                {
                     "weight",this.weight.toString()
                 },{
                     "owner",this.owner.getName()
                 },{
-                    "hazards", this.hazards.stream().map(Enum::toString).collect(Collectors.joining(","))
+                    "hazards", (this.hazards == null)?"":this.hazards.stream().map(Enum::toString).collect(Collectors.joining(","))
                 },{
                     "expireDate",this.expireDate.toString()
                 },{
@@ -138,6 +146,9 @@ public class Item implements Cargo, JSONConvertable, Event {
             switch (entryMapping[0]) {
                 case "weight":
                     this.weight = new BigDecimal(entryMapping[1]);
+                break;
+                case "id":
+                    this.id = entryMapping[1];
                 break;
                 case "owner":
                     this.owner = new user.entity.Customer(entryMapping[1]);

@@ -2,10 +2,11 @@ package warehouse.events;
 
 import app.App;
 import app.EventStream;
+import app.events.Connectable;
 import app.events.RegisterModuleEvent;
 import warehouse.Module;
 
-public class RegisterEvent implements RegisterModuleEvent {
+public class RegisterEvent implements RegisterModuleEvent, Connectable {
 
     @Override
     public Module registerModule(App app) {

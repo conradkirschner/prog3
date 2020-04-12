@@ -143,15 +143,19 @@ public class Cli {
                 case "customer":
                     Event userList = this.eventStream.pushData("user:getAll","");
                     if (userList instanceof  UserListData) {
-                            this.overviewScreen.rows = new ArrayList<String>();
-                            ArrayList<Customer> customer = ((UserListData) userList).getUsers();
+                        ArrayList<Customer> customer = ((UserListData) userList).getUsers();
+
+                        this.overviewScreen.rows = new String[customer.size()][];
                             for(int i = 0; i < customer.size(); i++) {
-                                this.overviewScreen.rows.add(customer.get(i).getName());
+                                this.overviewScreen.rows[i] = new String[3];
+                                this.overviewScreen.rows[i][0] = customer.get(i).getName();
+                                this.overviewScreen.rows[i][1] = String.valueOf(customer.get(i).getMaxDurationOfStorage());
+                                this.overviewScreen.rows[i][2] = String.valueOf(customer.get(i).getMaxValue());
                             }
                         }
                  break;
                 case "cargo":
-                    Event filteredCargo = this.eventStream.pushData("warehouse:get-all-items","hazard:y");
+                    Event filteredCargo = this.eventStream.pushData("warehouse:get-all-items", "type:" + input[1]);
                     insertHazardList(filteredCargo);
                     break;
                 case "hazard:y":
@@ -173,10 +177,18 @@ public class Cli {
 
     private void insertHazardList(Event hazardList){
         if (hazardList instanceof GetCargoData) {
-            this.overviewScreen.rows = new ArrayList<String>();
             ArrayList<Item> items = ((GetCargoData) hazardList).getItems();
+            this.overviewScreen.rows = new String[items.size()][];
+
             for(int i = 0; i < items.size(); i++) {
-                this.overviewScreen.rows.add(items.get(i).getId());
+                this.overviewScreen.rows[i] = new String[7];
+                this.overviewScreen.rows[i][0] = String.valueOf(items.get(i).getId());
+                this.overviewScreen.rows[i][1] = String.valueOf((items.get(i).getHazards() == null)?"":items.get(i).getHazards().toString());
+                this.overviewScreen.rows[i][2] = String.valueOf(items.get(i).getValue());
+                this.overviewScreen.rows[i][3] = items.get(i).getDurationOfStorage().toMillis() / 1000 + " s";
+                this.overviewScreen.rows[i][4] = String.valueOf(items.get(i).getOwner().getName());
+                this.overviewScreen.rows[i][5] = String.valueOf(items.get(i).getLastInspectionDate());
+                this.overviewScreen.rows[i][6] = String.valueOf(items.get(i).type);
             }
         }
     }

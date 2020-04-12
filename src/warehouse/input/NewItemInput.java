@@ -7,26 +7,26 @@ import warehouse.entity.Item;
 import warehouse.entity.LiquidBulkCargo;
 import warehouse.entity.MixedCargoLiquidBulkAndUnitised;
 import warehouse.entity.UnitisedCargo;
+import warehouse.errors.UnkownHazardError;
 
 import java.math.BigDecimal;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 
 public class NewItemInput {
     protected String type;
     protected Customer owner;
     protected BigDecimal weight;
     protected ZonedDateTime expireAt;
-    protected Collection<Hazard> hazards;
+    protected ArrayList<Hazard> hazards;
     protected Boolean fragile;
     protected Boolean pressure;
     protected Boolean block;
 
     public Item getItem(String json) throws ParseException {
-        String[] jsonMapping = json.split(",");
+        String[] jsonMapping = json.split(" , ");
         for (String entry : jsonMapping){
             String[] entryMapping = entry
                     .replace("\"", "")
@@ -47,6 +47,27 @@ public class NewItemInput {
                     this.expireAt = ZonedDateTime.parse(entryMapping[1]);
                     break;
                 case "hazards":
+                        String[] hazardList = entryMapping[1].split(",");
+                        if (hazardList.length == 0) break;
+                        this.hazards = new ArrayList<Hazard>();
+                        for (String addHazard: hazardList) {
+                            switch (addHazard) {
+                                case "explosive":
+                                    this.hazards.add(Hazard.explosive);
+                                    break;
+                                case "radioactive":
+                                    this.hazards.add(Hazard.radioactive);
+                                    break;
+                                case "flammable":
+                                    this.hazards.add(Hazard.flammable);
+                                    break;
+                                case "":
+                                    this.hazards = null;
+                                    break;
+                                default:
+                                    throw new UnkownHazardError();
+                            }
+                        }
                     break;
                 case "fragile":
                     this.fragile = entryMapping[1].equals("true");

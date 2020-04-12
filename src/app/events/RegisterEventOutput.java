@@ -17,9 +17,4 @@ public class RegisterEventOutput implements RegisterModuleEvent {
     public Module registerModule(App app) {
         return new CliOutput(output);
     }
-
-    @Override
-    public void connectToStream(EventStream eventStream) {
-
-    }
 }

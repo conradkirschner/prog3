@@ -8,6 +8,7 @@ import warehouse.entity.Item;
 import user.model.UserManager;
 import warehouse.entity.LiquidBulkCargo;
 import warehouse.entity.StoragePlace;
+import warehouse.errors.UnkownHazardError;
 import warehouse.input.NewItemInput;
 
 import java.math.BigDecimal;
@@ -34,8 +35,13 @@ public class Warehouse {
     }
     public int store(String jsonItem) throws ParseException {
         // get item type here
+        Item item = null;
         NewItemInput newItemInput = new NewItemInput();
-        Item item = newItemInput.getItem(jsonItem);
+        try {
+            item = newItemInput.getItem(jsonItem);
+        } catch (UnkownHazardError unkownHazardError) {
+            return -2;
+        }
         return this.store(item);
     }
     public int store(Item item) {
@@ -57,17 +63,26 @@ public class Warehouse {
         }
         return null;
     }
-    public ArrayList<Item> getItems(String filter) {
+    public ArrayList<Item> getItems(String filterList) {
         ArrayList<Item> filtered = getItems();
-
-    switch (filter) {
-        case "hazard:y":
-            filtered.removeIf(item -> ((item.getHazards() != null)&& item.getHazards().size() != 0));
-            break;
-        case "hazard:n":
-            filtered.removeIf(item -> (item.getHazards() == null));
-            break;
+    String[] filters = filterList.split(",");
+    for(String filterEntry: filters) {
+        String[] filterSplit = filterEntry.split(":");
+        String filterName = filterSplit[0];
+        String filterValue = (filterSplit.length != 2)?"":filterSplit[1];
+        switch (filterName) {
+            case "hazard":
+                if (filterValue == "y") {
+                    filtered.removeIf(item -> (item.getHazards() == null));
+                    break;
+                }
+                filtered.removeIf(item -> ((item.getHazards() != null)&& item.getHazards().size() != 0));
+                break;
+            case "type":
+                filtered.removeIf(item -> !item.type.equals(filterValue));
+                break;
         }
+    }
 
         return filtered;
     }

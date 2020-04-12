@@ -32,10 +32,13 @@ public class InsertScreen implements Screen {
         this.output.println("--------------------------------------------");
         this.output.println("[Kundenname] fügt einen Kunden ein");
         this.output.println("");
-        this.output.println("[Frachttyp] [Kundenname] [Wert] [Einlagerungsdauer\n" +
-                "in Sekunden] [kommaseparierte Gefahrenstoffe,\n" +
-                "einzelnes Komma für keine] [[zerbrechlich (y/n)]\n" +
+        this.output.println("[Frachttyp] [Kundenname] [Wert] [Einlagerungsdauer" +
+                "in Sekunden] [kommaseparierte Gefahrenstoffe," +
+                "einzelnes Komma für keine - radioactive,flammable,explosive] [[zerbrechlich (y/n)]" +
                 "[unter Druck (y/n)] [fest (y/n)]]");
+        this.output.println("");
+        this.output.println("Beispiele: o UnitisedCargo Beispielkunde 2000 86400 , n");
+        this.output.println("o MixedCargoLiquidBulkAndUnitised Beispielkunde 4000.50 86400 radioactive n y");
         this.output.println("--------------------------------------------");
     }
 

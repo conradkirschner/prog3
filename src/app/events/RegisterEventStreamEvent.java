@@ -12,9 +12,4 @@ public class RegisterEventStreamEvent implements RegisterModuleEvent {
         return new app.Module(app);
 
     }
-
-    @Override
-    public void connectToStream(EventStream eventStream) {
-
-    }
 }

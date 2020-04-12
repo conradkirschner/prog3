@@ -15,8 +15,6 @@ public class Module implements app.events.Module {
         CliInput cliInput = (CliInput) app.getModule("cli-input");
         CliOutput cliOutput = (CliOutput) app.getModule("cli-output");
 
-        ModuleEvent moduleEvent2 = new ModuleEvent("Log", "verbose");
-        appModule.eventStream.dataConnector(moduleEvent2);
         this.cli = new Cli(
                 appModule.eventStream,
                 cliInput.input,
