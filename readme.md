@@ -5,7 +5,9 @@ Erreichter Stand: 2 Punkte
 - [User](./src/user/readme.md)
 - [Warehouse](./src/warehouse/readme.md)
 - [CLI](./src/cli/readme.md)
-- 
+
+### Alle Module sollten möglichst unabhänging von einander agieren können über eine JSON API
+ - openApi Specs werden ergänzt
 ## 1 Punkt:
 - [x] zip Archiv
 - [x] IntelliJ-Projekt (kein Gradle, Maven o.ä.)
@@ -26,6 +28,6 @@ Erreichter Stand: 2 Punkte
 - [x] mindestens je ein Test für CRUD
 ## 2,5 Punkte:
 - [ ] Einfügen der Frachtstücke vollständig getestet (mindestens 8 Testfälle)
-- [ ] keine Code-Duplikate
+- [x] keine Code-Duplikate
 ## Contributes to:
 https://www.flaticon.com/free-icon/back-button_93634 - For Back Buton

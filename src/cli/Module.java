@@ -22,6 +22,10 @@ public class Module implements app.events.Module {
         );
     }
 
+    public Cli getModule() {
+        return this.cli;
+    }
+
     @Override
     public String getName() {
         return "cli";

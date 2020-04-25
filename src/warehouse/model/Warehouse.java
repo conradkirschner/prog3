@@ -1,4 +1,4 @@
-package warehouse;
+package warehouse.model;
 
 import app.EventStream;
 import storageContract.cargo.Cargo;
@@ -16,6 +16,7 @@ import java.text.ParseException;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 
 public class Warehouse {
     private String id;
@@ -25,6 +26,8 @@ public class Warehouse {
     public Warehouse(String id, EventStream eventStream) {
         this.id = id;
         this.eventStream = eventStream;
+        this.storagePlaces = new ArrayList<StoragePlace>();
+
     }
 
     public void setUp(int size,int maxValue) {
@@ -36,7 +39,7 @@ public class Warehouse {
     public int store(String jsonItem) throws ParseException {
         // get item type here
         Item item = null;
-        NewItemInput newItemInput = new NewItemInput();
+        NewItemInput newItemInput = new NewItemInput(this.eventStream);
         try {
             item = newItemInput.getItem(jsonItem);
         } catch (UnkownHazardError unkownHazardError) {
@@ -48,7 +51,7 @@ public class Warehouse {
         for (StoragePlace storagePlace : this.storagePlaces) {
             if (item.getValue().compareTo(storagePlace.getLeftSpace()) < 0) {
                 storagePlace.setItem(item);
-                return storagePlace.getStorageID();
+                return 1;
             }
         }
         return -1;
@@ -72,7 +75,7 @@ public class Warehouse {
         String filterValue = (filterSplit.length != 2)?"":filterSplit[1];
         switch (filterName) {
             case "hazard":
-                if (filterValue == "y") {
+                if (filterValue.equals("y")) {
                     filtered.removeIf(item -> (item.getHazards() == null));
                     break;
                 }
@@ -96,23 +99,21 @@ public class Warehouse {
         return items;
     }
 
-    public ArrayList<Item> readIteam(StoragePlace storagePlace) {
-        return storagePlace.getItems();
-    }
-    public void updateItem(String itemId, Item newItem) {
+    public void updateItem(String itemId) {
         for (StoragePlace storagePlace : this.storagePlaces) {
             for (Item item : storagePlace.getItems()) {
                 if (item.getId().equals(itemId)) {
-                    if (item instanceof LiquidBulkCargo && newItem instanceof  LiquidBulkCargo) {
-                        ((LiquidBulkCargo) item).setPressurized(((LiquidBulkCargo) newItem).isPressurized());
-                    }
-                    item = newItem;
+                   item.setInspectDate(new Date());
                 }
             }
         }
     }
 
-    public boolean deleteItem(Item item) {
-        return true;
+    public boolean deleteItem(String itemId) {
+        Boolean success = false;
+        for (StoragePlace storagePlace : this.storagePlaces) {
+            success = (success) || storagePlace.removeItem(itemId);
+        }
+        return success;
     }
 }

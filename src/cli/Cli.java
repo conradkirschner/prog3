@@ -2,27 +2,17 @@ package cli;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.PrintStream;
-import java.math.BigDecimal;
-import java.time.ZonedDateTime;
 import java.util.*;
-import java.util.function.Function;
 
 import app.EventStream;
 import app.events.Event;
 import cli.events.CloseCliEvent;
-import cli.screens.InsertScreen;
-import cli.screens.MainScreen;
-import cli.screens.OverviewScreen;
+import cli.screens.*;
 import cli.validators.*;
 import user.entity.Customer;
 import user.events.UserListData;
 import warehouse.entity.Item;
-import warehouse.entity.LiquidBulkCargo;
-import storageContract.cargo.Hazard;
-import user.model.UserManager;
-import warehouse.Warehouse;
 import warehouse.events.GetCargoData;
 
 public class Cli {
@@ -39,6 +29,8 @@ public class Cli {
     private InsertScreen insertScreen;
     private MainScreen mainScreen;
     private OverviewScreen overviewScreen;
+    private DeleteScreen deleteScreen;
+    private UpdateScreen updateScreen;
 
     // Validators
     private DeleteInput deleteInput;
@@ -65,6 +57,8 @@ public class Cli {
         this.insertScreen = new InsertScreen(output);
         this.mainScreen = new MainScreen(output);
         this.overviewScreen = new OverviewScreen(output);
+        this.deleteScreen = new DeleteScreen(output);
+        this.updateScreen = new UpdateScreen(output);
 
         // validators
         this.deleteInput = new DeleteInput();
@@ -76,6 +70,12 @@ public class Cli {
 
         this.views.put("main:content", () -> this.mainScreen.getContent());
         this.views.put("main:usage", () -> this.mainScreen.getUsage());
+
+        this.views.put("delete:content", () -> this.deleteScreen.getContent());
+        this.views.put("delete:usage", () -> this.deleteScreen.getUsage());
+
+        this.views.put("update:content", () -> this.updateScreen.getContent());
+        this.views.put("update:usage", () -> this.updateScreen.getUsage());
 
         this.views.put("input:content", () ->{
             this.insertScreen.getContent();
@@ -113,13 +113,22 @@ public class Cli {
 
 
     public void parseInput(String input) {
-        if (input.charAt(0) == ':') {
+        if (input.length() > 0 && input.charAt(0) == ':') {
             switch (input.charAt(1)) {
                 case 'c':
                         insertMode();
                     break;
+                case 'd':
+                        deleteMode();
+                    break;
                 case 'r':
                         overviewMode();
+                    break;
+                case 'u':
+                        updateMode();
+                    break;
+                case 'p':
+                        persistMode();
                     break;
                 case 'x':
                     this.running = false;
@@ -128,6 +137,19 @@ public class Cli {
                     this.output.println("Command not found!");
             }
         }
+    }
+
+    private void persistMode() {
+    }
+
+    private void updateMode() {
+        this.views.get("update:usage").run();
+        String[] input = this.getInput().split(" ");
+        if(input[0].charAt(0) != '#') {
+            this.updateMode();
+        }
+        this.eventStream.pushData("warehouse:update-item", input[0]);
+
     }
 
     public void showResponse(String message) {
@@ -192,6 +214,16 @@ public class Cli {
             }
         }
     }
+    private void deleteMode() {
+        this.views.get("delete:usage").run();
+        String[] input = this.getInput().split(" ");
+        if (input[0].charAt(0) == '#') {
+            this.eventStream.pushData("warehouse:delete-item", input[0]);
+            return;
+        }
+        this.eventStream.pushData("user:delete", input[0]);
+    }
+
     private void insertMode() {
         this.views.get("input:usage").run();
 

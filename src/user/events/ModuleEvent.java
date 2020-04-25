@@ -49,7 +49,7 @@ public class ModuleEvent implements app.events.ModuleEvent {
         switch (command) {
             case "user:get":
                 this.returnHere();
-                return userModule.userManager.getCustomer(Integer.parseInt(data));
+                return userModule.userManager.getCustomer(data);
             case "user:getAll":
                 this.returnHere();
                 return new UserListData(userModule.userManager.getCustomers());
@@ -61,7 +61,7 @@ public class ModuleEvent implements app.events.ModuleEvent {
                 String[] split = data.split(":");
                 return userModule.userManager.updateCustomer(Integer.parseInt(split[0]), split[1]);
             case "user:delete":
-                userModule.userManager.deleteCustomer(Integer.parseInt(data));
+                userModule.userManager.deleteCustomer(data);
                 break;
         }
 

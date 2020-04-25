@@ -1,10 +1,23 @@
 package app;
 
+import app.events.Connectable;
 import app.events.Module;
+import app.events.ModuleEvent;
 import app.events.RegisterModuleEvent;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
+import java.io.BufferedReader;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.mockito.Mockito.*;
+
+/**
+ * We do not need to test every method in this Class
+ * - if every module is working
+ */
 class AppTest {
 
     private App appUnderTest;
@@ -15,33 +28,24 @@ class AppTest {
     }
 
     @Test
-    void testGetModule() {
-        // Setup
-
-        // Run the test
-        final Module result = appUnderTest.getModule("name");
-
-        // Verify the results
+    void testGetUnkownModule() {
+        final Module result = appUnderTest.getModule("unkown");
+        assertNull(result);
     }
 
     @Test
-    void testAddModule() {
-        // Setup
-        final RegisterModuleEvent toAdd = null;
+    void testGetKownModule() {
+        Module module = Mockito.mock(Module.class);
+        Mockito.when(module.getName()).thenReturn("module");
 
-        // Run the test
-        appUnderTest.addModule(toAdd);
+        RegisterModuleEvent RegisterModuleEvent = Mockito.mock(RegisterModuleEvent.class);
+        Mockito.when(RegisterModuleEvent.registerModule(appUnderTest)).thenReturn(module);
 
-        // Verify the results
-    }
-
-    @Test
-    void testRegisterModule() {
-        // Setup
-
-        // Run the test
+        appUnderTest.addModule(RegisterModuleEvent);
         appUnderTest.registerModule();
 
-        // Verify the results
+        final Module result = appUnderTest.getModule("module");
+
+        assertEquals(module, result);
     }
 }

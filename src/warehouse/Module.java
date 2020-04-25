@@ -1,7 +1,7 @@
 package warehouse;
 
 import app.App;
-import user.model.UserManager;
+import warehouse.model.Warehouse;
 
 public class Module implements app.events.Module {
     public Warehouse warehouse;
@@ -18,5 +18,9 @@ public class Module implements app.events.Module {
     @Override
     public String getName() {
         return "warehouse";
+    }
+
+    public Warehouse getModule() {
+        return this.warehouse;
     }
 }

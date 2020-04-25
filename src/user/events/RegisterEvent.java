@@ -7,7 +7,7 @@ import app.events.RegisterModuleEvent;
 import user.Module;
 import user.events.ModuleEvent;
 
-public class RegisterEvent implements RegisterModuleEvent, Connectable {
+public class RegisterEvent implements Connectable {
 
     @Override
     public Module registerModule(App app) {

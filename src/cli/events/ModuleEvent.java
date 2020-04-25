@@ -49,15 +49,15 @@ public class ModuleEvent implements app.events.ModuleEvent {
         System.out.println("[verbose] ["+ command + "]["+ data + "]");
         switch (command) {
             case "cli:start":
-                return cliModule.cli.start();
+                return cliModule.getModule().start();
             case "warehouse:store-item=success":
-                cliModule.cli.showResponse("Neues Item gespeichert");
+                cliModule.getModule().showResponse("Neues Item gespeichert");
                 return null;
             case "warehouse:store-item=full_storage":
-                cliModule.cli.showResponse("Fehler: Das Lager ist voll!");
+                cliModule.getModule().showResponse("Fehler: Das Lager ist voll!");
                 return null;
             case "warehouse:store-item=unkownHazard":
-                cliModule.cli.showResponse("Fehler: Die Gefahrenklasse ist ungültig.");
+                cliModule.getModule().showResponse("Fehler: Die Gefahrenklasse ist ungültig.");
                 return null;
         }
         return null;

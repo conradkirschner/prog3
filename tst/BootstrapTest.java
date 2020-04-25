@@ -1,5 +1,5 @@
-package app;
-
+import app.App;
+import app.Bootstrap;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
@@ -22,6 +22,10 @@ class BootstrapTest {
         Mockito.when(bufferedReader.readLine()).thenReturn(
                 ":c",
                 "test-kunde",
+                ":d",
+                "test-kunde",
+                ":c",
+                "test-kunde",
                 ":c",
                 "Item test-kunde 3 3 , y y y",
                 ":c",
@@ -30,6 +34,8 @@ class BootstrapTest {
                 "UnitisedCargo test-kunde 3 3 explosive,radioactive,flammable y y y",
                 ":c",
                 "MixedCargoLiquidBulkAndUnitised test-kunde 3 3 , y y y",
+                ":r",
+                "customer",
                 ":r",
                 "hazard y",
                 ":r",

@@ -14,6 +14,10 @@ public class EventStream  {
     private App app;
     private UUID uuid;
 
+    public List<ModuleEvent> getModuleEventListeners() {
+        return this.moduleEventListeners;
+    }
+
     public EventStream() {
         this.uuid = UUID.randomUUID() ;
     }
@@ -23,7 +27,7 @@ public class EventStream  {
     }
 
     public void dataConnector(ModuleEvent moduleEvent) {
-        moduleEventListeners.add(moduleEvent);
+        getModuleEventListeners().add(moduleEvent);
     }
 
     public Event pushData(String command, String data) {

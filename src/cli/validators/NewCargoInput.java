@@ -1,5 +1,6 @@
 package cli.validators;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.text.SimpleDateFormat;
 import java.time.ZonedDateTime;
@@ -30,9 +31,11 @@ public class NewCargoInput extends Object implements Validator {
             // customer name
             if (input[1].equals("")) return  false;
             // weight
+            BigDecimal bigInteger;
+
             if (input[2].equals("") ) return  false;
             try {
-                BigInteger bigInteger = new BigInteger(input[2]);
+                bigInteger = new BigDecimal(input[2]);
             } catch (Exception exception) {
                 this.error = "Gewicht als Zahl eingeben!";
                 return false;
@@ -65,7 +68,7 @@ public class NewCargoInput extends Object implements Validator {
             }
             this.type = input[0];
             this.owner = input[1];
-            this.weight = input[2];
+            this.weight = bigInteger.toString();
             this.timeToStay = input[3];
             this.hazards = input[4];
             this.fragile = input[5];

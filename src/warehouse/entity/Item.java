@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Item implements Cargo, JSONConvertable, Event {
-    public String type = "item";
+    public String type = "Item";
 
     protected BigDecimal weight;
     protected Customer owner;
@@ -32,6 +32,7 @@ public class Item implements Cargo, JSONConvertable, Event {
             Collection<Hazard> hazards,
             ZonedDateTime expireDate
     ) {
+        if (owner == null ) throw new IllegalArgumentException("Owner darf nicht null sein");
         UUID uuid = UUID.randomUUID();
 
 
@@ -52,6 +53,10 @@ public class Item implements Cargo, JSONConvertable, Event {
     @Override
     public BigDecimal getValue() {
         return this.weight;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     @Override
@@ -117,13 +122,15 @@ public class Item implements Cargo, JSONConvertable, Event {
                     "storageDate",this.storageDate.toString()
                 },{
                     "inspectDate",formatter.format(this.inspectDate)
+                },{
+                    "type", this.type
                 }
         };
 
         StringBuilder json = new StringBuilder("{");
         for (int i = 0; i < keys.length; i++) {
             if ( (i+1) < keys.length) {
-                json.append("\"").append(keys[i][0]).append("\":\"").append(keys[i][1]).append("\"").append(",");
+                json.append("\"").append(keys[i][0]).append("\":\"").append(keys[i][1]).append("\"").append(" , ");
             } else {
                 json.append("\"").append(keys[i][0]).append("\":\"").append(keys[i][1]).append("\"");
             }

@@ -45,8 +45,16 @@ public class UserManager {
         return this.user;
     }
 
-    public Event deleteCustomer(int parseInt) {
-        this.user.remove(this.user.get(parseInt));
+    public Event deleteCustomer(String name) {
+        int index = -1;
+        for(int i =0; i < this.user.size(); i++) {
+            if(this.user.get(i).getName().equals(name)) {
+                index = i;
+            }
+        }
+        if (index != -1) {
+            this.user.remove(index);
+        }
         return null;
     }
 

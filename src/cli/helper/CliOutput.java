@@ -12,6 +12,10 @@ public class CliOutput implements Module {
         this.output = output;
     }
 
+    public PrintStream getModule() {
+        return this.output;
+    }
+
     @Override
     public String getName() {
         return "cli-output";

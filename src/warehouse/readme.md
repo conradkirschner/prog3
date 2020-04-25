@@ -4,8 +4,8 @@
 ## Api 
 - [x] warehouse:build
 - [x] warehouse:store-item
-- [ ] warehouse:update-item
-- [ ] warehouse:delete-item
+- [x] warehouse:update-item
+- [x] warehouse:delete-item
 
 |   Command	|  Data 	|  Action 	|  Information 	|
 |---	|---	|---	|---	|	

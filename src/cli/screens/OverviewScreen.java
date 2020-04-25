@@ -44,8 +44,8 @@ public class OverviewScreen implements Screen {
         //st.setRightAlign(true);//if true then cell text is right aligned
         st.setShowVerticalLines(true);//if false (default) then no vertical lines are shown
         st.setHeaders("Frachtnummer");//optional - if not used then there will be no header and horizontal lines
-        for (String[] customer: rows) {
-            st.addRow(customer[0]);
+        for (String[] cargo: rows) {
+            st.addRow(cargo[0]);
         }
         st.print();
     }

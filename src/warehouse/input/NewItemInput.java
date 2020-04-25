@@ -1,6 +1,7 @@
 package warehouse.input;
 
 
+import app.EventStream;
 import storageContract.administration.Customer;
 import storageContract.cargo.Hazard;
 import warehouse.entity.Item;
@@ -16,6 +17,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class NewItemInput {
+    private EventStream eventStream;
+
+    public NewItemInput(EventStream eventStream) {
+        this.eventStream = eventStream;
+    }
+
     protected String type;
     protected Customer owner;
     protected BigDecimal weight;
@@ -41,7 +48,7 @@ public class NewItemInput {
                     this.type = entryMapping[1];
                     break;
                 case "owner":
-                    this.owner = new user.entity.Customer(entryMapping[1]);
+                    this.owner = (Customer) this.eventStream.pushData("user:get", entryMapping[1]);
                     break;
                 case "expireAt":
                     this.expireAt = ZonedDateTime.parse(entryMapping[1]);

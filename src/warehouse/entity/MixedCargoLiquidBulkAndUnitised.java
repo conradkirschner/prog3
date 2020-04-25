@@ -9,8 +9,7 @@ import java.time.ZonedDateTime;
 import java.util.Collection;
 import java.util.Date;
 
-public class MixedCargoLiquidBulkAndUnitised extends Item implements storageContract.cargo.MixedCargoLiquidBulkAndUnitised {
-    private Boolean pressurized;
+public class MixedCargoLiquidBulkAndUnitised extends LiquidBulkCargo implements storageContract.cargo.MixedCargoLiquidBulkAndUnitised {
     private Boolean fragile;
 
     public MixedCargoLiquidBulkAndUnitised(
@@ -21,15 +20,8 @@ public class MixedCargoLiquidBulkAndUnitised extends Item implements storageCont
             Boolean pressurized,
             Boolean fragile
     ) {
-        super( weight, owner, hazards, expireDate);
+        super( weight, owner, hazards, expireDate, pressurized);
         this.type =  "MixedCargoLiquidBulkAndUnitised";
-        this.pressurized = pressurized;
-        this.fragile = fragile;
-    }
-
-    @Override
-    public boolean isPressurized() {
-        return this.pressurized;
     }
 
     @Override

@@ -1,6 +1,7 @@
 package user;
 
 import app.App;
+import network.model.NetworkManager;
 import user.model.UserManager;
 
 public class Module implements app.events.Module {
