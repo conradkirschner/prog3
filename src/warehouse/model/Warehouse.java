@@ -1,21 +1,15 @@
 package warehouse.model;
 
 import app.EventStream;
-import storageContract.cargo.Cargo;
-import storageContract.cargo.Hazard;
-import user.entity.Customer;
+
 import warehouse.entity.Item;
-import user.model.UserManager;
-import warehouse.entity.LiquidBulkCargo;
 import warehouse.entity.StoragePlace;
 import warehouse.errors.UnkownHazardError;
-import warehouse.input.NewItemInput;
+import cli.validators.NewItemInput;
 
 import java.math.BigDecimal;
 import java.text.ParseException;
-import java.time.ZonedDateTime;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 
 public class Warehouse {
@@ -42,6 +36,9 @@ public class Warehouse {
         NewItemInput newItemInput = new NewItemInput(this.eventStream);
         try {
             item = newItemInput.getItem(jsonItem);
+            if (item == null) {
+                return -3;
+            }
         } catch (UnkownHazardError unkownHazardError) {
             return -2;
         }

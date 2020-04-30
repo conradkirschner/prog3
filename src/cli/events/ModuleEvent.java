@@ -59,6 +59,9 @@ public class ModuleEvent implements app.events.ModuleEvent {
             case "warehouse:store-item=unkownHazard":
                 cliModule.getModule().showResponse("Fehler: Die Gefahrenklasse ist ungültig.");
                 return null;
+            case "warehouse:store-item=customerRequired":
+                cliModule.getModule().showResponse(data);
+                return null;
         }
         return null;
     }

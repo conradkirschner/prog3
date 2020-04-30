@@ -4,7 +4,6 @@ import app.events.Event;
 import app.events.RegisterEventCliInput;
 import app.events.RegisterEventOutput;
 import app.events.RegisterModuleEvent;
-import network.events.RegisterEvent;
 import cli.events.CloseCliEvent;
 
 import java.io.BufferedReader;
@@ -28,9 +27,7 @@ public class Bootstrap {
         warehouse.events.RegisterEvent WarehouseModuleRegister = new warehouse.events.RegisterEvent();
         user.events.RegisterEvent UserModuleRegister = new user.events.RegisterEvent();
         cli.events.RegisterEvent CliModuleRegister = new cli.events.RegisterEvent();
-        RegisterModuleEvent Network = new network.events.RegisterEvent();
 
-        app.addModule(Network);
         app.addModule(UserModuleRegister);
         app.addModule(WarehouseModuleRegister);
         app.addModule(CliModuleRegister);
@@ -43,3 +40,4 @@ public class Bootstrap {
         return ((CloseCliEvent) cliClose).getStatus();
     }
 }
+

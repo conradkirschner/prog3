@@ -1,4 +1,4 @@
-package warehouse.input;
+package cli.validators;
 
 
 import app.EventStream;
@@ -49,6 +49,7 @@ public class NewItemInput {
                     break;
                 case "owner":
                     this.owner = (Customer) this.eventStream.pushData("user:get", entryMapping[1]);
+                    if (this.owner == null) return null;
                     break;
                 case "expireAt":
                     this.expireAt = ZonedDateTime.parse(entryMapping[1]);

@@ -3,7 +3,6 @@ package warehouse.events;
 import app.App;
 import app.events.Event;
 import warehouse.entity.Item;
-import warehouse.input.NewItemInput;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -66,7 +65,8 @@ public class ModuleEvent implements app.events.ModuleEvent {
                     appModule.eventStream.pushData("warehouse:store-item=full_storage", "Storage is full");
                 } else if (itemId.equals("-2")) {
                     appModule.eventStream.pushData("warehouse:store-item=unkownHazard", "Storage is full");
-
+                }else if (itemId.equals("-3")) {
+                    appModule.eventStream.pushData("warehouse:store-item=customerRequired", "Es wird ein gültiger Benutzer für das Einlagern des Items benötigt");
                 } else {
                     appModule.eventStream.pushData("warehouse:store-item=success",itemId );
 

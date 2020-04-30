@@ -6,17 +6,16 @@ Erreichter Stand: 2 Punkte
 - [Warehouse](./src/warehouse/readme.md)
 - [CLI](./src/cli/readme.md)
 
-### Alle Module sollten möglichst unabhänging von einander agieren können über eine JSON API
- - openApi Specs werden ergänzt
 ## 1 Punkt:
-- [x] zip Archiv
-- [x] IntelliJ-Projekt (kein Gradle, Maven o.ä.)
-- [x] readme vorhanden
-- [x] Java8 (language level)
-- [x] kompilierbar
+- [x] zip Archiv 
+- [x] IntelliJ-Projekt (kein Gradle, Maven o.ä.) 
+- [x] readme vorhanden 
+- [x] Java8 (language level) 
+- [x] kompilierbar 
 - [x] main-Methoden nur im default package
-- [x] ausführbar
-- [x] vollständige Funktionalität der GL
+- [x] ausführbar 
+- [x] Darstellungslogik und Geschäftslogik getrennt 
+- [x] prototypisches CLI (nicht notwendig, wenn umfangreicheres  CLI realisiert ist) 
 
 ## 2 Punkte:
 - [ ] ~~Präsenzaufgaben erfüllt~~
@@ -24,10 +23,10 @@ Erreichter Stand: 2 Punkte
 - [x] JUnit5 als Testframework
 - [x] Mockito als Mock/Spy-framework
 - [x] keine leeren Test
-- [x] mindestens zwei Tests mit Mockito
-- [x] mindestens je ein Test für CRUD
+- [x] Beobachterentwurfsmuster und events realisiert 
+- [x] beide Beobachter getestet 17. zwei listener getestet 
 ## 2,5 Punkte:
-- [ ] Einfügen der Frachtstücke vollständig getestet (mindestens 8 Testfälle)
-- [x] keine Code-Duplikate
+- [ ]  angemessene Aufzählungstypen verwendet 
+- [ ]  nach MVC strukturiert 
 ## Contributes to:
 https://www.flaticon.com/free-icon/back-button_93634 - For Back Buton
