@@ -14,7 +14,9 @@ import user.entity.Customer;
 import user.events.UserListData;
 import warehouse.entity.Item;
 import warehouse.events.GetCargoData;
+import warehouse.model.Warehouse;
 import warehouseManager.entity.AllItems;
+import warehouseManager.entity.AllWarehouses;
 
 public class Cli {
     // running
@@ -245,11 +247,20 @@ public class Cli {
         }
         if (this.newCargoInput.isValid(input)) {
 
-            Event warehouse = this.eventStream.pushData("warehouse-manager:get", "Hauptwarenlager1");
-            Event event = this.eventStream.pushData("warehouse:store-item", "Hauptwarenlager1$$" + this.newCargoInput.getData());
-            if (event instanceof Error) {
-                // @todo add handling (invalid username or warehouse full - message display)
-                this.insertScreen.setMessage(((Error) event).getMessage());
+            Error error = null;
+
+            AllWarehouses warehouses = (AllWarehouses) this.eventStream.pushData("warehouse-manager:get-all", "");
+            for (Warehouse warehouse: warehouses.getWarehouses()) {
+                Event event = this.eventStream.pushData("warehouse:store-item", warehouse.getWarehouseName() + "$$" + this.newCargoInput.getData());
+                if (!(event instanceof Error)) { // no error means success
+                    error = null;
+                    break;
+                } else {
+                    error = (Error) event;
+                }
+            }
+            if (error != null ){
+                this.insertScreen.setMessage(error.getMessage());
                 this.views.get("input:content").run();
                 return;
             }

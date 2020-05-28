@@ -6,6 +6,7 @@ import app.App;
 import app.events.Event;
 import warehouse.model.Warehouse;
 import warehouseManager.entity.AllItems;
+import warehouseManager.entity.AllWarehouses;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -56,13 +57,13 @@ public class ModuleEvent implements app.events.ModuleEvent {
         switch (command) {
             case "warehouse-manager:new":
                 Warehouse warehouse = new Warehouse(data, appModule.eventStream);
-                warehouse.setUp(10,1000);
+                warehouse.setUp(1,50);
                 warehouseManagerModule.getModule().addWarehouse(warehouse);
                 break;
             case "warehouse-manager:get-all-items":
-                ArrayList<Warehouse> warehouseArrayList = warehouseManagerModule.getModule().getWarehouses();
+                AllWarehouses warehouseArrayList = warehouseManagerModule.getModule().getWarehouses();
                 ArrayList<Item> items = new ArrayList<>();
-                for (Warehouse warehouse1: warehouseArrayList) {
+                for (Warehouse warehouse1: warehouseArrayList.getWarehouses()) {
                     items.addAll(warehouse1.getItems());
                 }
                 returnHere();
@@ -73,6 +74,10 @@ public class ModuleEvent implements app.events.ModuleEvent {
                 returnStop();
                 warehouseManagerModule.getModule().getWarehouse(data);
                 break;
+            case "warehouse-manager:get-all":
+                returnHere();
+                returnStop();
+                return (Event) warehouseManagerModule.getModule().getWarehouses();
             case "warehouse:remove":
                 //not required
         }

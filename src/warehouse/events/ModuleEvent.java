@@ -52,15 +52,20 @@ public class ModuleEvent implements app.events.ModuleEvent {
         app.Module appModule = (app.Module) app.getModule("event-stream");
         String[] idAndCargo = null;
         switch (command) {
-
+            // Notify InsertThread
             case "warehouse:store-item":
                 idAndCargo = data.split("\\$\\$");
+
                 String itemId = String.valueOf(warehouseManagerModule.getModule().getWarehouse(idAndCargo[0]).store(idAndCargo[1]));
 
                 if (itemId.equals("-1")) {
-                    appModule.eventStream.pushData("warehouse:store-item=full_storage", "Storage is full");
+                    appModule.eventStream.pushData("warehouse:store-item=full_storage", "Storage is full in " + idAndCargo[0] + ". Try other one");
+                    returnStop();
+                    returnHere();
+                    return new FailedToInsert();
+
                 } else if (itemId.equals("-2")) {
-                    appModule.eventStream.pushData("warehouse:store-item=unkownHazard", "Storage is full");
+                    appModule.eventStream.pushData("warehouse:store-item=unkownHazard", "Unknown Hazard");
                 }else if (itemId.equals("-3")) {
                     appModule.eventStream.pushData("warehouse:store-item=customerRequired", "Es wird ein gültiger Benutzer für das Einlagern des Items benötigt");
                 } else {

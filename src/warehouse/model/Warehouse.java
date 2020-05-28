@@ -7,25 +7,35 @@ import warehouse.entity.Item;
 import warehouse.entity.StoragePlace;
 import warehouse.errors.UnkownHazardError;
 import cli.validators.NewItemInput;
+import warehouse.events.RegisterEvent;
+import warehouse.thread.InsertThread;
+import warehouse.thread.RemoveThread;
 
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Warehouse {
+public class Warehouse extends Thread{
     private String id;
     private ArrayList<StoragePlace> storagePlaces;
     private EventStream eventStream;
+
+    private InsertThread insertThread;
+    private RemoveThread removeThread;
+
 
     public Warehouse(String id, EventStream eventStream) {
         this.id = id;
         this.eventStream = eventStream;
         this.storagePlaces = new ArrayList<StoragePlace>();
+        insertThread = new InsertThread(this);
+        removeThread = new RemoveThread(this);
+        insertThread.start();
+        removeThread.start();
 
     }
-
-    public String getId() {
+    public String getWarehouseName() {
         return id;
     }
 
@@ -35,6 +45,26 @@ public class Warehouse {
             this.storagePlaces.add(new StoragePlace( this,storagePlaceCounter, new BigDecimal(maxValue)));
         }
     }
+
+    public int storeParallel(Item item) throws ParseException {
+        synchronized(this.insertThread) {
+            if (this.insertThread.getState().name().equals("WAITING")) {
+                this.insertThread.setItem(item);
+                this.insertThread.notify();
+                return 0;
+            }
+        }
+        // Thread failed, return failure and restart
+        synchronized(this.insertThread) {
+            if (this.insertThread.getState().name().equals("TERMINATED")) {
+                this.insertThread = new InsertThread(this);
+                this.insertThread.start();
+                return -1;
+            }
+        }
+        return -1;
+    }
+
     public int store(String jsonItem) throws ParseException {
         // get item type here
         Item item = null;
@@ -47,7 +77,7 @@ public class Warehouse {
         } catch (UnkownHazardError unkownHazardError) {
             return -2;
         }
-        return this.store(item);
+        return this.storeParallel(item);
     }
     public int store(Item item) {
         for (StoragePlace storagePlace : this.storagePlaces) {

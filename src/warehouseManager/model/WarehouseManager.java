@@ -2,6 +2,7 @@ package warehouseManager.model;
 
 import app.EventStream;
 import warehouse.model.Warehouse;
+import warehouseManager.entity.AllWarehouses;
 
 import java.util.ArrayList;
 
@@ -18,7 +19,7 @@ public class WarehouseManager {
     public Warehouse getWarehouse(String id) {
         for( Warehouse warehouse: warehouses )
         {
-            if(warehouse.getId().equals(id)) {
+            if(warehouse.getWarehouseName().equals(id)) {
                 return warehouse;
             }
         }
@@ -29,7 +30,7 @@ public class WarehouseManager {
         this.warehouses.add(warehouse);
     }
 
-    public ArrayList<Warehouse> getWarehouses() {
-        return warehouses;
+    public AllWarehouses getWarehouses() {
+        return new AllWarehouses(warehouses);
     }
 }
