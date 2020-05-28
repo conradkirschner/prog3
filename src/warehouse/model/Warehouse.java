@@ -2,14 +2,11 @@ package warehouse.model;
 
 import app.EventStream;
 
-import app.events.Event;
 import warehouse.entity.Item;
 import warehouse.entity.StoragePlace;
 import warehouse.errors.UnkownHazardError;
 import cli.validators.NewItemInput;
-import warehouse.events.RegisterEvent;
 import warehouse.thread.InsertThread;
-import warehouse.thread.RemoveThread;
 
 import java.math.BigDecimal;
 import java.text.ParseException;
@@ -22,7 +19,6 @@ public class Warehouse extends Thread{
     private EventStream eventStream;
 
     private InsertThread insertThread;
-    private RemoveThread removeThread;
 
 
     public Warehouse(String id, EventStream eventStream) {
@@ -30,9 +26,7 @@ public class Warehouse extends Thread{
         this.eventStream = eventStream;
         this.storagePlaces = new ArrayList<StoragePlace>();
         insertThread = new InsertThread(this);
-        removeThread = new RemoveThread(this);
         insertThread.start();
-        removeThread.start();
 
     }
     public String getWarehouseName() {
@@ -77,11 +71,11 @@ public class Warehouse extends Thread{
         } catch (UnkownHazardError unkownHazardError) {
             return -2;
         }
-        return this.storeParallel(item);
+        return this.store(item);
     }
     public int store(Item item) {
         for (StoragePlace storagePlace : this.storagePlaces) {
-            if (item.getValue().compareTo(storagePlace.getLeftSpace()) < 0) {
+            if (item.getValue().compareTo(storagePlace.getLeftSpace()) <= 0) {
                 storagePlace.setItem(item);
                 return 1;
             }

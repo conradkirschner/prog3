@@ -1,6 +1,6 @@
 #Programmierung 3
 Von Conrad Kirschner - 
-Erreichter Stand: 1 Punkte
+Erreichter Stand: 1.5 Punkte
 ##Modules 
 - [User](./src/user/readme.md)
 - [Warehouse](./src/warehouse/readme.md)
@@ -14,8 +14,7 @@ Erreichter Stand: 1 Punkte
 - [x] kompilierbar 
 - [x] main-Methoden nur im default package
 - [x] ausführbar 
-- [x] Darstellungslogik und Geschäftslogik getrennt 
-- [x] prototypisches CLI (nicht notwendig, wenn umfangreicheres  CLI realisiert ist) 
+- [x] Simulation der Einlagerung 
 
 ## 2 Punkte:
 - [ ] ~~Präsenzaufgaben erfüllt~~
@@ -23,11 +22,12 @@ Erreichter Stand: 1 Punkte
 - [x] JUnit5 als Testframework
 - [x] Mockito als Mock/Spy-framework
 - [x] keine leeren Test
-- [x] Beobachterentwurfsmuster und events realisiert 
-- [x] beide Beobachter getestet
-- [x] zwei listener getestet 
+- [x] Simulation mit zwei Lagern und Ein- und Auslagerungsthread 
+- [x] keine Verwendung von Thread.sleep bzw. nur mit 0-Werten 
+- [x] Trennung zwischen Verwaltungs- und Simulationslogik 
+- [ ] mindestens je ein Test für alle an der Umlagerung beteiligten Methoden 
 ## 2,5 Punkte:
-- [ ]  angemessene Aufzählungstypen verwendet 
-- [ ]  nach MVC strukturiert 
+- [ ]  Simulation mit drei Lagern und 5 threads 
+- [ ]  alle Tests sind deterministisch
 ## Contributes to:
 https://www.flaticon.com/free-icon/back-button_93634 - For Back Buton

@@ -46,7 +46,7 @@ class BootstrapTest {
         );
         ByteArrayOutputStream bo = new ByteArrayOutputStream();
         App app = Bootstrap.setup(bufferedReader, new PrintStream(bo));
-        Bootstrap.run(app);
+        Bootstrap.run(app, false);
         bo.flush();
         String allWrittenLines = new String(bo.toByteArray());
         System.out.print(allWrittenLines);

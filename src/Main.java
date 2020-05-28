@@ -21,6 +21,8 @@ public class Main {
         BufferedReader cliInput = new BufferedReader(new InputStreamReader(System.in));
         PrintStream output = System.out;
         App app = setup(cliInput, output);
-        run(app);
+
+        // if simulation is on, then we don't need any CLI input possibility
+        run(app, true);
     }
 }

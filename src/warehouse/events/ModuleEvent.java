@@ -3,6 +3,7 @@ package warehouse.events;
 import app.App;
 import app.events.Event;
 import warehouse.entity.Item;
+import warehouse.model.Warehouse;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -47,7 +48,6 @@ public class ModuleEvent implements app.events.ModuleEvent {
 
     @Override
     public Event runModuleEvent(String command, String data, App app, Event event) throws IOException, ParseException {
-        warehouse.Module warehouseModule = (warehouse.Module) app.getModule("warehouse");
         warehouseManager.Module warehouseManagerModule = (warehouseManager.Module) app.getModule("warehouse-manager");
         app.Module appModule = (app.Module) app.getModule("event-stream");
         String[] idAndCargo = null;
@@ -69,13 +69,17 @@ public class ModuleEvent implements app.events.ModuleEvent {
                 }else if (itemId.equals("-3")) {
                     appModule.eventStream.pushData("warehouse:store-item=customerRequired", "Es wird ein gültiger Benutzer für das Einlagern des Items benötigt");
                 } else {
-                    appModule.eventStream.pushData("warehouse:store-item=success",itemId );
+                    appModule.eventStream.pushData("warehouse:store-item=success", itemId);
 
                 }
                 break;
             case "warehouse:get-item":
                 this.returnHere();
-                return warehouseModule.warehouse.getItem(data);
+                for (Warehouse warehouse: warehouseManagerModule.getModule().getWarehouses().getWarehouses()) {
+                    Item item = warehouse.getItem(data);
+                    if (item != null) return item;
+                }
+                return null;
 
                 // data is the filter setting
             case "warehouse:get-all-items":
@@ -95,12 +99,20 @@ public class ModuleEvent implements app.events.ModuleEvent {
             case "warehouse:update-item":
                 this.returnHere();
                 String[] splittedData = data.split("@");
-                // NewItemInput newItemInput = new NewItemInput(appModule.eventStream);
-                // Item item = newItemInput.getItem(splittedData[1]);
-                warehouseModule.warehouse.updateItem(splittedData[0]);
+                for (Warehouse warehouse: warehouseManagerModule.getModule().getWarehouses().getWarehouses()) {
+                    Item item = warehouse.getItem(data);
+                    if (item != null) {
+                        warehouse.updateItem(splittedData[0]);
+                    }
+                }
                 return null;
             case "warehouse:delete-item":
-                warehouseModule.warehouse.deleteItem(data);
+                for (Warehouse warehouse: warehouseManagerModule.getModule().getWarehouses().getWarehouses()) {
+                    Item item = warehouse.getItem(data);
+                    if (item != null) {
+                        warehouse.deleteItem(data);
+                    }
+                }
                 break;
         }
         //this.stopRun();
