@@ -48,19 +48,15 @@ public class ModuleEvent implements app.events.ModuleEvent {
     @Override
     public Event runModuleEvent(String command, String data, App app, Event event) throws IOException, ParseException {
         warehouse.Module warehouseModule = (warehouse.Module) app.getModule("warehouse");
+        warehouseManager.Module warehouseManagerModule = (warehouseManager.Module) app.getModule("warehouse-manager");
         app.Module appModule = (app.Module) app.getModule("event-stream");
-
+        String[] idAndCargo = null;
         switch (command) {
-            // @todo allow multiple warehouses set a uuid here!
-            case "warehouse:build":
-                String[] sizeAndCount = data.split(":");
-                warehouseModule.getModule().setUp(
-                        Integer.parseInt(sizeAndCount[0]),
-                        Integer.parseInt(sizeAndCount[1])
-                );
-                break;
+
             case "warehouse:store-item":
-                String itemId = String.valueOf(warehouseModule.getModule().store(data));
+                idAndCargo = data.split("\\$\\$");
+                String itemId = String.valueOf(warehouseManagerModule.getModule().getWarehouse(idAndCargo[0]).store(idAndCargo[1]));
+
                 if (itemId.equals("-1")) {
                     appModule.eventStream.pushData("warehouse:store-item=full_storage", "Storage is full");
                 } else if (itemId.equals("-2")) {
@@ -78,9 +74,11 @@ public class ModuleEvent implements app.events.ModuleEvent {
 
                 // data is the filter setting
             case "warehouse:get-all-items":
+                String[] nameAndFilter = data.split("\\$\\$");
+
                 this.returnHere();
                 GetCargoData returnData = new GetCargoData(new ArrayList<Item>());
-                returnData.addItems(warehouseModule.warehouse.getItems(data));
+                returnData.addItems(warehouseManagerModule.getModule().getWarehouse(nameAndFilter[0]).getItems(nameAndFilter[1]));
 
 
                 if (event instanceof  GetCargoData) {

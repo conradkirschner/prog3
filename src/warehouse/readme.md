@@ -2,14 +2,12 @@
 # User Module 
 
 ## Api 
-- [x] warehouse:build
 - [x] warehouse:store-item
 - [x] warehouse:update-item
 - [x] warehouse:delete-item
 
 |   Command	|  Data 	|  Action 	|  Information 	|
 |---	|---	|---	|---	|	
-| warehouse:build  	|  storageSize 	|   setUp()	| will setup everything   	|  	
 | warehouse:get-item  	|  Item ID	|   getItem()	| returns a item   	|  	
 | warehouse:store-item  	|  jsonialized Item 	|   store()	| stores a item, will fire success event   	|  	
 | warehouse:store-item=success  	|  storage ID 	|   -	| -   	|  	

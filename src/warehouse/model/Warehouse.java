@@ -2,6 +2,7 @@ package warehouse.model;
 
 import app.EventStream;
 
+import app.events.Event;
 import warehouse.entity.Item;
 import warehouse.entity.StoragePlace;
 import warehouse.errors.UnkownHazardError;
@@ -24,7 +25,11 @@ public class Warehouse {
 
     }
 
-    public void setUp(int size,int maxValue) {
+    public String getId() {
+        return id;
+    }
+
+    public void setUp(int size, int maxValue) {
         this.storagePlaces = new ArrayList<StoragePlace>();
         for (int storagePlaceCounter = 0; storagePlaceCounter < size; storagePlaceCounter ++ ) {
             this.storagePlaces.add(new StoragePlace( this,storagePlaceCounter, new BigDecimal(maxValue)));

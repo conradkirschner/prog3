@@ -11,8 +11,6 @@ public class Module implements app.events.Module {
         this.app = app;
         user.Module userModule = (user.Module) app.getModule("user");
         app.Module appModule = (app.Module) app.getModule("event-stream");
-
-        this.warehouse = new Warehouse("test", appModule.eventStream);
     }
 
     @Override

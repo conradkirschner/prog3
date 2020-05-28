@@ -43,7 +43,7 @@ public class ModuleEvent implements app.events.ModuleEvent {
     }
 
     @Override
-    public Event runModuleEvent(String command, String data, App app, Event event) throws IOException, ParseException {
+    public Event runModuleEvent(String command, String data, App app, Event event) {
         cli.Module cliModule = (cli.Module) app.getModule("cli");
 
         System.out.println("[verbose] ["+ command + "]["+ data + "]");

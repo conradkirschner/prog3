@@ -14,6 +14,7 @@ import user.entity.Customer;
 import user.events.UserListData;
 import warehouse.entity.Item;
 import warehouse.events.GetCargoData;
+import warehouseManager.entity.AllItems;
 
 public class Cli {
     // running
@@ -177,15 +178,15 @@ public class Cli {
                         }
                  break;
                 case "cargo":
-                    Event filteredCargo = this.eventStream.pushData("warehouse:get-all-items", "type:" + input[1]);
+                    Event filteredCargo = this.eventStream.pushData("warehouse-manager:get-all-items", "type:" + input[1]);
                     insertHazardList(filteredCargo);
                     break;
                 case "hazard:y":
-                    Event hazardListY = this.eventStream.pushData("warehouse:get-all-items","hazard:y");
+                    Event hazardListY = this.eventStream.pushData("warehouse-manager:get-all-items","hazard:y");
                     insertHazardList(hazardListY);
                     break;
                 case "hazard:n":
-                    Event hazardListN = this.eventStream.pushData("warehouse:get-all-items","hazard:n");
+                    Event hazardListN = this.eventStream.pushData("warehouse-manager:get-all-items","hazard:n");
                     insertHazardList(hazardListN);
                     break;
                 }
@@ -197,22 +198,30 @@ public class Cli {
         this.overviewMode();
     }
 
-    private void insertHazardList(Event hazardList){
-        if (hazardList instanceof GetCargoData) {
-            ArrayList<Item> items = ((GetCargoData) hazardList).getItems();
-            this.overviewScreen.rows = new String[items.size()][];
+    private void insertHazardList(Event hazardList) {
+        ArrayList<Item> items = new ArrayList<>();
 
-            for(int i = 0; i < items.size(); i++) {
-                this.overviewScreen.rows[i] = new String[7];
-                this.overviewScreen.rows[i][0] = String.valueOf(items.get(i).getId());
-                this.overviewScreen.rows[i][1] = String.valueOf((items.get(i).getHazards() == null)?"":items.get(i).getHazards().toString());
-                this.overviewScreen.rows[i][2] = String.valueOf(items.get(i).getValue());
-                this.overviewScreen.rows[i][3] = items.get(i).getDurationOfStorage().toMillis() / 1000 + " s";
-                this.overviewScreen.rows[i][4] = String.valueOf(items.get(i).getOwner().getName());
-                this.overviewScreen.rows[i][5] = String.valueOf(items.get(i).getLastInspectionDate());
-                this.overviewScreen.rows[i][6] = String.valueOf(items.get(i).type);
-            }
+        if (hazardList instanceof GetCargoData ) {
+            items = ((GetCargoData) hazardList).getItems();
         }
+        if (hazardList instanceof AllItems ) {
+            items = ((AllItems) hazardList).getItems();
+        }
+
+
+        this.overviewScreen.rows = new String[items.size()][];
+
+        for(int i = 0; i < items.size(); i++) {
+            this.overviewScreen.rows[i] = new String[7];
+            this.overviewScreen.rows[i][0] = String.valueOf(items.get(i).getId());
+            this.overviewScreen.rows[i][1] = String.valueOf((items.get(i).getHazards() == null)?"":items.get(i).getHazards().toString());
+            this.overviewScreen.rows[i][2] = String.valueOf(items.get(i).getValue());
+            this.overviewScreen.rows[i][3] = items.get(i).getDurationOfStorage().toMillis() / 1000 + " s";
+            this.overviewScreen.rows[i][4] = String.valueOf(items.get(i).getOwner().getName());
+            this.overviewScreen.rows[i][5] = String.valueOf(items.get(i).getLastInspectionDate());
+            this.overviewScreen.rows[i][6] = String.valueOf(items.get(i).type);
+        }
+
     }
     private void deleteMode() {
         this.views.get("delete:usage").run();
@@ -235,7 +244,9 @@ public class Cli {
             return;
         }
         if (this.newCargoInput.isValid(input)) {
-            Event event = this.eventStream.pushData("warehouse:store-item", this.newCargoInput.getData());
+
+            Event warehouse = this.eventStream.pushData("warehouse-manager:get", "Hauptwarenlager1");
+            Event event = this.eventStream.pushData("warehouse:store-item", "Hauptwarenlager1$$" + this.newCargoInput.getData());
             if (event instanceof Error) {
                 // @todo add handling (invalid username or warehouse full - message display)
                 this.insertScreen.setMessage(((Error) event).getMessage());
@@ -247,6 +258,7 @@ public class Cli {
              */
             return;
         }
+
         this.insertMode();
     }
 
