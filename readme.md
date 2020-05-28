@@ -1,6 +1,6 @@
 #Programmierung 3
 Von Conrad Kirschner - 
-Erreichter Stand: 2 Punkte
+Erreichter Stand: 1 Punkte
 ##Modules 
 - [User](./src/user/readme.md)
 - [Warehouse](./src/warehouse/readme.md)
@@ -24,7 +24,8 @@ Erreichter Stand: 2 Punkte
 - [x] Mockito als Mock/Spy-framework
 - [x] keine leeren Test
 - [x] Beobachterentwurfsmuster und events realisiert 
-- [x] beide Beobachter getestet 17. zwei listener getestet 
+- [x] beide Beobachter getestet
+- [x] zwei listener getestet 
 ## 2,5 Punkte:
 - [ ]  angemessene Aufzählungstypen verwendet 
 - [ ]  nach MVC strukturiert 
