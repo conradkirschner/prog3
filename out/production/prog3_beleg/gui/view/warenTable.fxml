@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="716.0" prefWidth="639.0"
+            fx:controller="gui.controller.TableWarenController" xmlns:fx="tableView">
+    <children>
+        <TableView fx:id="warenTable" layoutY="-5.0" prefHeight="830.0" prefWidth="800.0">
+            <columns>
+                <TableColumn fx:id="id" prefWidth="75.0" text="Id"/>
+                <TableColumn fx:id="owner" prefWidth="75.0" text="Besitzer"/>
+                <TableColumn fx:id="type" prefWidth="75.0" text="Typ"/>
+                <TableColumn fx:id="wage" prefWidth="104.0" text="Gewicht"/>
+                <TableColumn fx:id="hazard" prefWidth="104.0" text="Gefahrengut"/>
+                <TableColumn fx:id="fragile" prefWidth="104.0" text="Zerbrechlich"/>
+                <TableColumn fx:id="pressure" minWidth="0.0" prefWidth="102.0" text="Druck"/>
+                <TableColumn fx:id="storage_date" minWidth="0.0" prefWidth="102.0" text="Eingelagert bis"/>
+            </columns>
+            <contextMenu>
+                <ContextMenu>
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Ware hinzufügen"/>
+                    </items>
+                </ContextMenu>
+            </contextMenu>
+        </TableView>
+    </children>
+</AnchorPane>
