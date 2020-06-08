@@ -23,6 +23,6 @@ public class Main {
         App app = setup(cliInput, output);
 
         // if simulation is on, then we don't need any CLI input possibility
-        run(app, true);
+        run(app, false, true);
     }
 }

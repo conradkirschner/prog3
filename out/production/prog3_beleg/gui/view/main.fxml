@@ -58,25 +58,16 @@
                                             <PropertyValueFactory property="storeUntil" />
                                         </cellValueFactory>
                                     </TableColumn>
+                                    <TableColumn minWidth="0.0" prefWidth="102.0" text="Lager">
+                                        <cellValueFactory>
+                                            <PropertyValueFactory property="warehouse" />
+                                        </cellValueFactory>
+                                    </TableColumn>
                                 </columns>
-                                 <contextMenu>
-                                    <ContextMenu>
-                                      <items>
-                                        <MenuItem mnemonicParsing="false" text="Ware hinzufügen" />
-                                      </items>
-                                    </ContextMenu>
-                                 </contextMenu>
                               </TableView>
                            </children>
                         </AnchorPane>
                   </content>
-                     <contextMenu>
-                        <ContextMenu>
-                          <items>
-                            <MenuItem fx:id="addWaren"  mnemonicParsing="false" text="Waren hinzufügen" />
-                          </items>
-                        </ContextMenu>
-                     </contextMenu>
                 </Tab>
                 <Tab text="Nutzer">
                   <content>
