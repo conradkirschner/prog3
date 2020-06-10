@@ -60,7 +60,7 @@ public class Window {
     }
 
     public void loadWare() {
-        this.tableWarenController.data.removeAll();
+       // this.tableWarenController.data.clear();
 
         AllWarehouses allWarehouses = (AllWarehouses) this.eventStream.pushData("warehouse-manager:get-all" , "");
         for (Warehouse warehouse :allWarehouses.getWarehouses()) {
@@ -92,8 +92,9 @@ public class Window {
 
     public void loadWarehouses(){
         AllWarehouses allWarehouses = (AllWarehouses) this.eventStream.pushData("warehouse-manager:get-all" , "");
+        this.warenPanelController.warehouseSelectionData.clear();
+
         for (Warehouse warehouse :allWarehouses.getWarehouses()) {
-            this.warenPanelController.warehouseSelectionData.removeAll();
             this.warenPanelController.warehouseSelectionData.add(warehouse.getWarehouseName());
         }
     }

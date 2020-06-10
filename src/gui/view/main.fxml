@@ -7,16 +7,16 @@
 <?import javafx.scene.text.Text?>
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="Window" xmlns:fx="http://javafx.com/fxml/1">
   <children>
-    <MenuBar style="-fx-min-height: 500px; -fx-min-width: 800px;" VBox.vgrow="NEVER" />
+    <MenuBar style="-fx-min-height: 500px; -fx-min-width:1000px;" VBox.vgrow="NEVER" />
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-            <TabPane layoutY="-474.0" prefHeight="849.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
+            <TabPane layoutY="-474.0" prefHeight="849.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab text="Waren">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="716.0" prefWidth="639.0">
                            <children>
-                              <TableView fx:id="warenTable" layoutY="-5.0" prefHeight="830.0" prefWidth="800.0">
+                              <TableView fx:id="warenTable" layoutY="-5.0" prefHeight="830.0" prefWidth="1000.0">
                                 <columns>
                                     <TableColumn prefWidth="75.0" text="Id" >
                                         <cellValueFactory>
@@ -73,7 +73,7 @@
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TableView fx:id="userTable"  prefHeight="818.0" prefWidth="800.0">
+                              <TableView fx:id="userTable"  prefHeight="818.0" prefWidth="1000.0">
                                 <columns>
                                   <TableColumn fx:id="username" prefWidth="75.0" text="Name" />
                                 </columns>
@@ -84,9 +84,9 @@
                 </Tab>
                   <Tab text="Einstellungen">
                      <content>
-                        <AnchorPane minHeight="822" minWidth="800" prefHeight="180.0" prefWidth="200.0">
+                        <AnchorPane minHeight="822" minWidth="1000" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <Pane prefHeight="822.0" prefWidth="800.0">
+                              <Pane prefHeight="822.0" prefWidth="1000.0">
                                  <children>
                                     <Text layoutX="14.0" layoutY="804.0" strokeType="OUTSIDE" strokeWidth="0.0" text="von Conrad Kirschner - Abgabe4" />
                                     <Text fill="#000000dc" fontSmoothingType="LCD" layoutX="14.0" layoutY="27.0" strokeWidth="0.0" text="Einstellungen" underline="true">
