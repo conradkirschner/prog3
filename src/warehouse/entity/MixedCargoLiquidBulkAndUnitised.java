@@ -4,10 +4,8 @@ import storageContract.administration.Customer;
 import storageContract.cargo.Hazard;
 
 import java.math.BigDecimal;
-import java.time.Duration;
 import java.time.ZonedDateTime;
 import java.util.Collection;
-import java.util.Date;
 
 public class MixedCargoLiquidBulkAndUnitised extends LiquidBulkCargo implements storageContract.cargo.MixedCargoLiquidBulkAndUnitised {
     private Boolean fragile;
@@ -22,6 +20,7 @@ public class MixedCargoLiquidBulkAndUnitised extends LiquidBulkCargo implements 
     ) {
         super( weight, owner, hazards, expireDate, pressurized);
         this.type =  "MixedCargoLiquidBulkAndUnitised";
+        this.fragile = fragile;
     }
 
     @Override

@@ -1,7 +1,6 @@
 package cli.validators;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.text.SimpleDateFormat;
 import java.time.ZonedDateTime;
 
@@ -52,7 +51,7 @@ public class NewCargoInput extends Object implements Validator {
             }
 
             // gefahrenstoffe ,...,..
-            if (input[4].equals("") ) return  false;
+            if (input[4].equals(" ") ) return  false;
 
             // zerbrechlich (y/n)
             if (input[5].equals("y") == false || !input[5].equals("n") == false) {

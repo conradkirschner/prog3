@@ -22,31 +22,5 @@ public class TableWarenController {
     private void init() {
         this.warenContextMenu = new WarenContextMenu(this.warenTableView, this.warenPanelController, this.newUserDialog);
         this.warenTableView.setItems(this.data);
-        addRow();
     }
-
-    public void addRow() {
-        data.add(new Waren(
-                "1",
-                "2",
-                "3",
-                "4",
-                "5",
-                "6",
-                "7",
-                "8",
-                "sandbox"
-        ));
-
-    }
-
-    public void removeRow(int index) {
-        data.remove(index);
-    }
-
-    public void updateRow() {
-
-    }
-
-
 }

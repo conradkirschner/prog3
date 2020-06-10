@@ -14,6 +14,8 @@ import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import warehouse.entity.Item;
 import warehouse.entity.LiquidBulkCargo;
+import warehouse.entity.MixedCargoLiquidBulkAndUnitised;
+import warehouse.entity.UnitisedCargo;
 import warehouse.events.GetCargoData;
 import warehouse.model.Warehouse;
 import warehouseManager.entity.AllWarehouses;
@@ -60,22 +62,60 @@ public class Window {
     }
 
     public void loadWare() {
-       // this.tableWarenController.data.clear();
+        this.tableWarenController.data.clear();
 
         AllWarehouses allWarehouses = (AllWarehouses) this.eventStream.pushData("warehouse-manager:get-all" , "");
         for (Warehouse warehouse :allWarehouses.getWarehouses()) {
             GetCargoData allItems = (GetCargoData) this.eventStream.pushData("warehouse:get-all-items" , warehouse.getWarehouseName() + "$$ ");
             for (Item item :allItems.getItems()) {
-                if (item instanceof LiquidBulkCargo) {
+                if (item instanceof MixedCargoLiquidBulkAndUnitised) {
+                    MixedCargoLiquidBulkAndUnitised convertedItem = (MixedCargoLiquidBulkAndUnitised) item;
+                    this.tableWarenController.data.add(new Waren(
+                            item.getId(),
+                            item.getOwner().getName(),
+                            item.type,
+                            item.getValue().toString(),
+                            (item.getHazards()==null)?"":item.getHazards().toString(),
+                            (convertedItem.isFragile())?"true":"false",
+                            (convertedItem.isPressurized())?"true":"false",
+                            String.valueOf(item.getDurationOfStorage().toMillis()/1000),
+                            warehouse.getWarehouseName()
+                    ));
+                } else if (item instanceof LiquidBulkCargo) {
                     LiquidBulkCargo convertedItem = (LiquidBulkCargo) item;
                     this.tableWarenController.data.add(new Waren(
                             item.getId(),
                             item.getOwner().getName(),
                             item.type,
                             item.getValue().toString(),
-                            item.getHazards().toString(),
-                            "n",
-                            (convertedItem.isPressurized())?"y":"n",
+                            (item.getHazards()==null)?"":item.getHazards().toString(),
+                            "false",
+                            (convertedItem.isPressurized())?"true":"false",
+                            String.valueOf(item.getDurationOfStorage().toMillis()/1000),
+                            warehouse.getWarehouseName()
+                    ));
+                } else if(item instanceof UnitisedCargo) {
+                    UnitisedCargo convertedItem = (UnitisedCargo) item;
+                    this.tableWarenController.data.add(new Waren(
+                            item.getId(),
+                            item.getOwner().getName(),
+                            item.type,
+                            item.getValue().toString(),
+                            (item.getHazards()==null)?"":item.getHazards().toString(),
+                            (convertedItem.isFragile())?"true":"false",
+                            "false",
+                            String.valueOf(item.getDurationOfStorage().toMillis()/1000),
+                            warehouse.getWarehouseName()
+                    ));
+                } else { // item
+                    this.tableWarenController.data.add(new Waren(
+                            item.getId(),
+                            item.getOwner().getName(),
+                            item.type,
+                            item.getValue().toString(),
+                            (item.getHazards()==null)?"":item.getHazards().toString(),
+                            "false",
+                            "false",
                             String.valueOf(item.getDurationOfStorage().toMillis()/1000),
                             warehouse.getWarehouseName()
                     ));

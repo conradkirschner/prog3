@@ -43,34 +43,46 @@ public class WarenPanelController {
     }
 
     public void open(Waren waren) throws IOException {
-
+        TextField ownerTextInput = (TextField) this.dialogScene.lookup("#owner");
+        ChoiceBox typeSelection = (ChoiceBox) this.dialogScene.lookup("#type");
+        TextField waggeTextInput = (TextField) this.dialogScene.lookup("#wagge");
+        TextField hazzardTextInput = (TextField) this.dialogScene.lookup("#hazzard");
+        CheckBox fragileCheckbox = (CheckBox) this.dialogScene.lookup("#fragile");
+        CheckBox pressureCheckbox = (CheckBox) this.dialogScene.lookup("#pressure");
+        ChoiceBox warehouseSelection = (ChoiceBox) this.dialogScene.lookup("#warehouse");
+        TextField storeUntilTextInput = (TextField) this.dialogScene.lookup("#storeUntil");
         this.showError("");
         if(waren == null) {
             this.dialogStage.setTitle("Neue Ware hinzufügen");
-        } else {
-            this.dialogStage.setTitle("Ware bearbeiten");
-            TextField ownerTextInput = (TextField) this.dialogScene.lookup("#owner");
-            ChoiceBox typeSelection = (ChoiceBox) this.dialogScene.lookup("#type");
-            TextField waggeTextInput = (TextField) this.dialogScene.lookup("#wagge");
-            TextField hazzardTextInput = (TextField) this.dialogScene.lookup("#hazzard");
-            CheckBox fragileCheckbox = (CheckBox) this.dialogScene.lookup("#fragile");
-            CheckBox pressureCheckbox = (CheckBox) this.dialogScene.lookup("#pressure");
-            ChoiceBox warehouseSelection = (ChoiceBox) this.dialogScene.lookup("#warehouse");
-            TextField storeUntilTextInput = (TextField) this.dialogScene.lookup("#storeUntil");
-
-            ownerTextInput.setText(waren.getOwner());
-            waggeTextInput.setText(waren.getWagge());
-            hazzardTextInput.setText(waren.getHazzard());
-            storeUntilTextInput.setText(waren.getStoreUntil());
-
+            ownerTextInput.setText("");
+            waggeTextInput.setText("");
+            hazzardTextInput.setText("");
+            storeUntilTextInput.setText("");
             typeSelection.getSelectionModel().select(0);
             warehouseSelection.getSelectionModel().select(0);
+            fragileCheckbox.setSelected(false);
+            pressureCheckbox.setSelected(false);
 
-            if (waren.getPressure().equals("ja")) {
+        } else {
+            this.dialogStage.setTitle("Ware bearbeiten");
+            ownerTextInput.setText(waren.getOwner());
+            waggeTextInput.setText(waren.getWagge());
+            hazzardTextInput.setText(waren.getHazzard().replace("[", "").replace("]","").replace(" ", ""));
+            storeUntilTextInput.setText(waren.getStoreUntil());
+
+            typeSelection.setValue(waren.getType());
+            warehouseSelection.setValue(waren.getWarehouse());
+
+            if (waren.getPressure().equals("true")) {
                 pressureCheckbox.setSelected(true);
+            } else {
+                pressureCheckbox.setSelected(false);
             }
-            if (waren.getFragile().equals("ja")) {
+            if (waren.getFragile().equals("true")) {
                 fragileCheckbox.setSelected(true);
+            } else {
+                fragileCheckbox.setSelected(false);
+
             }
 
         }
@@ -95,17 +107,16 @@ public class WarenPanelController {
         TextField storeUntilTextInput = (TextField) this.dialogScene.lookup("#storeUntil");
 
         NewCargoInput newCargoInput = new NewCargoInput();
-
-        boolean isValid =  newCargoInput.isValid(
-                (typeSelection.getValue() + " " +
-                        ownerTextInput.getText() + " " +
-                        waggeTextInput.getText() + " " +
-                        storeUntilTextInput.getText() + " " +
-                        hazzardTextInput.getText() + " " +
-                        convertCheckboxToString(fragileCheckbox) + " " +
-                        convertCheckboxToString(pressureCheckbox) + " " +
-                        "y ").split(" ")  // block is not required for homework
-                );
+        String[] input = new String[8];
+        input[0] = typeSelection.getValue() + "";
+        input[1] = ownerTextInput.getText();
+        input[2] = waggeTextInput.getText();
+        input[3] = storeUntilTextInput.getText();
+        input[4] = (hazzardTextInput.getText().equals("")?"":hazzardTextInput.getText());
+        input[5] = convertCheckboxToString(fragileCheckbox);
+        input[6] = convertCheckboxToString(pressureCheckbox);
+        input[7] = "y";
+        boolean isValid =  newCargoInput.isValid(input);
         if (!isValid) {
             this.showError("Ungültige Eingabe");
             return;
@@ -115,9 +126,9 @@ public class WarenPanelController {
     }
     private String convertCheckboxToString(CheckBox checkBox) {
         if(checkBox.isSelected()) {
-            return "y";
+            return "true";
         }
-        return "n";
+        return "false";
     }
 
     public void close() {

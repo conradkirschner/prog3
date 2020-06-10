@@ -17,6 +17,9 @@
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="716.0" prefWidth="639.0">
                            <children>
                               <TableView fx:id="warenTable" layoutY="-5.0" prefHeight="830.0" prefWidth="1000.0">
+                                  <placeholder>
+                                    <Label text=""/>
+                                  </placeholder>
                                 <columns>
                                     <TableColumn prefWidth="75.0" text="Id" >
                                         <cellValueFactory>
@@ -74,6 +77,9 @@
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
                               <TableView fx:id="userTable"  prefHeight="818.0" prefWidth="1000.0">
+                                  <placeholder>
+                                      <Label text=""/>
+                                  </placeholder>
                                 <columns>
                                   <TableColumn fx:id="username" prefWidth="75.0" text="Name" />
                                 </columns>
