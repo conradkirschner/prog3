@@ -51,17 +51,13 @@ public class ModuleEvent implements app.events.ModuleEvent {
     public Event runModuleEvent(String command, String data, App app, Event event) throws IOException, ParseException {
         gui.Module gui = (gui.Module) app.getModule("gui");
         switch (command) {
-            case "warehouse-manager:new":
-                System.out.println("gui -> " + data);
-                break;
 
-            case "warehouse:store-item":
-                System.out.println("gui -> " + data);
+            case "gui:refresh-items":
+                gui.getModule().loadWare();
                 break;
             case "warehouse:store-item=success":
                 gui.getModule().closeWarenDialog();
                 gui.getModule().loadWare();
-
                 return null;
             case "warehouse:store-item=full_storage":
                 gui.getModule().showWareResponse("Lager ist voll");

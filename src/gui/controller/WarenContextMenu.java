@@ -74,11 +74,7 @@ public class WarenContextMenu {
         // delete Item
         menuItem3.setOnAction(event -> {
             Waren waren = (Waren) tableRow.getItem();
-            try {
-                this.warenPanelController.open(waren);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            this.warenPanelController.removeItem(waren.getId());
             event.consume();
         });
         // new Item

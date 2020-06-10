@@ -134,4 +134,9 @@ public class WarenPanelController {
     public void close() {
         this.dialogStage.close();
     }
+
+    public void removeItem(String id) {
+        this.eventStream.pushData("warehouse:delete-item", id);
+        this.eventStream.pushData("gui:refresh-items", id);
+    }
 }
