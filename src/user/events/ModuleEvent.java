@@ -5,7 +5,6 @@ import app.events.Event;
 
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.UUID;
 
 public class ModuleEvent implements app.events.ModuleEvent {
 
@@ -20,6 +19,12 @@ public class ModuleEvent implements app.events.ModuleEvent {
     public void stopRun() {
         this.shouldRun = false;
     }
+
+    @Override
+    public String getName() {
+        return "user";
+    }
+
     @Override
     public Boolean shouldRun() {
         return shouldRun;

@@ -26,6 +26,11 @@ public class ModuleEvent implements app.events.ModuleEvent {
     }
 
     @Override
+    public String getName() {
+        return "warehouse-manager";
+    }
+
+    @Override
     public Boolean shouldRun() {
         return shouldRun;
     }

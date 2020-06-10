@@ -13,6 +13,7 @@ public class Waren {
     private final String fragile;
     private final String pressure;
     private final String storeUntil;
+    private final String warehouse;
 
     public Waren(
             String id,
@@ -22,7 +23,8 @@ public class Waren {
             String hazzard,
             String fragile,
             String pressure,
-            String storeUntil
+            String storeUntil,
+            String warehouse
     ) {
         this.id = id;
         this.owner = owner;
@@ -32,6 +34,7 @@ public class Waren {
         this.fragile = fragile;
         this.pressure = pressure;
         this.storeUntil = storeUntil;
+        this.warehouse = warehouse;
     }
 
     public String getId() {
@@ -64,5 +67,9 @@ public class Waren {
 
     public String getStoreUntil() {
         return storeUntil;
+    }
+
+    public String getWarehouse() {
+        return warehouse;
     }
 }

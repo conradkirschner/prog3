@@ -9,16 +9,18 @@ public class TableWarenController {
     private final TableView<Waren> warenTableView;
     private WarenContextMenu warenContextMenu;
     private WarenPanelController warenPanelController;
+    private NewUserDialog newUserDialog;
     public ObservableList<Waren> data = FXCollections.observableArrayList();
 
-    public TableWarenController(TableView<Waren> warenTableView, WarenPanelController dialog) {
+    public TableWarenController(TableView<Waren> warenTableView, WarenPanelController dialog, NewUserDialog newUserDialog) {
         this.warenTableView = warenTableView;
         this.warenPanelController = dialog;
+        this.newUserDialog = newUserDialog;
         init();
     }
 
     private void init() {
-        this.warenContextMenu = new WarenContextMenu(this.warenTableView, this.warenPanelController);
+        this.warenContextMenu = new WarenContextMenu(this.warenTableView, this.warenPanelController, this.newUserDialog);
         this.warenTableView.setItems(this.data);
         addRow();
     }
@@ -32,16 +34,8 @@ public class TableWarenController {
                 "5",
                 "6",
                 "7",
-                "8"
-        ));    data.add(new Waren(
-                "11",
-                "22",
-                "33",
-                "43",
-                "35",
-                "6",
-                "7",
-                "8"
+                "8",
+                "sandbox"
         ));
 
     }

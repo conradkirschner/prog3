@@ -8,6 +8,9 @@ import java.net.SocketException;
 import java.util.ArrayList;
 import java.util.UUID;
 
+/**
+ * UDP Peer Server, start to enable peer2peer
+ */
 public class Main1 {
 
     public static void main(String[] args) {

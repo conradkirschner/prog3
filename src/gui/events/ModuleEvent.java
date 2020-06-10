@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.text.ParseException;
 
 public class ModuleEvent implements app.events.ModuleEvent {
-
     public Boolean shouldRun;
     public Boolean shouldReturn;
 
@@ -19,6 +18,12 @@ public class ModuleEvent implements app.events.ModuleEvent {
     public void stopRun() {
         this.shouldRun = false;
     }
+
+    @Override
+    public String getName() {
+        return "gui";
+    }
+
     @Override
     public Boolean shouldRun() {
         return shouldRun;
@@ -44,11 +49,34 @@ public class ModuleEvent implements app.events.ModuleEvent {
     }
 
     public Event runModuleEvent(String command, String data, App app, Event event) throws IOException, ParseException {
+        gui.Module gui = (gui.Module) app.getModule("gui");
         switch (command) {
+            case "warehouse-manager:new":
+                System.out.println("gui -> " + data);
+                break;
 
+            case "warehouse:store-item":
+                System.out.println("gui -> " + data);
+                break;
+            case "warehouse:store-item=success":
+                gui.getModule().closeWarenDialog();
+                gui.getModule().loadWare();
+
+                return null;
+            case "warehouse:store-item=full_storage":
+                gui.getModule().showWareResponse("Lager ist voll");
+                return null;
+            case "warehouse:store-item=unkownHazard":
+                gui.getModule().showWareResponse("Gefahrenklasse ist unbekannt");
+                return null;
+            case "warehouse:store-item=customerRequired":
+                gui.getModule().showWareResponse("User ist unbekannt");
+                return null;
         }
 
-        System.out.print("gui triggered - ");
+        System.out.println("gui triggered - ");
+        System.out.println(command);
+        System.out.println(data);
         //this.stopRun();
         return null;
     }

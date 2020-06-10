@@ -10,6 +10,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 
 public class ModuleEvent implements app.events.ModuleEvent {
+
     public Boolean shouldRun;
     public Boolean shouldReturn;
 
@@ -20,6 +21,11 @@ public class ModuleEvent implements app.events.ModuleEvent {
 
     public void stopRun() {
         this.shouldRun = false;
+    }
+
+    @Override
+    public String getName() {
+        return "warehouse";
     }
 
     @Override

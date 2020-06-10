@@ -33,6 +33,7 @@ public class EventStream  {
     public Event pushData(String command, String data) {
         Event returnValue = null;
         for (ModuleEvent moduleEvent : moduleEventListeners) {
+            System.out.println(moduleEvent.getName());
             if(moduleEvent.shouldRun()) {
                 try {
                     Event event = moduleEvent.runModuleEvent(command, data, app, returnValue);

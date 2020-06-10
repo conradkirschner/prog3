@@ -3,12 +3,10 @@ package network.events;
 import PeerServer.Client;
 import app.App;
 import app.events.Event;
-import cli.Cli;
 
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.UUID;
 
 public class ModuleEvent implements app.events.ModuleEvent {
 
@@ -23,6 +21,12 @@ public class ModuleEvent implements app.events.ModuleEvent {
     public void stopRun() {
         this.shouldRun = false;
     }
+
+    @Override
+    public String getName() {
+        return "network";
+    }
+
     @Override
     public Boolean shouldRun() {
         return shouldRun;
