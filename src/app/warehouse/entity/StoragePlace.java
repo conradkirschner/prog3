@@ -1,18 +1,14 @@
 package app.warehouse.entity;
 
-import warehouse.model.Warehouse;
-
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
 public class StoragePlace {
     private int storageID;
-    private Warehouse warehouse;
     private ArrayList<Item> items;
     private BigDecimal maxSize;
 
-    public StoragePlace(Warehouse warehouse, int storageID, BigDecimal maxSize) {
-        this.warehouse = warehouse;
+    public StoragePlace(int storageID, BigDecimal maxSize) {
         this.maxSize = maxSize;
         this.storageID = storageID;
         this.items = new ArrayList<Item>();
@@ -43,10 +39,6 @@ public class StoragePlace {
     }
     public int getStorageID() {
         return this.storageID;
-    }
-
-    public Warehouse getWarehouse() {
-        return warehouse;
     }
 
     public BigDecimal getMaxSize() {

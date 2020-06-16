@@ -1,10 +1,23 @@
 package app.cli.validators;
 
+import app.user.entity.User;
+import app.user.events.GetUserEvent;
+import app.warehouse.entity.Item;
+import app.warehouse.entity.LiquidBulkCargo;
+import famework.annotation.Inject;
+import famework.annotation.Service;
+import famework.event.EventHandler;
+
 import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
 import java.time.ZonedDateTime;
 
+@Service
 public class NewCargoInput extends Object implements Validator {
+
+
+    @Inject
+    private EventHandler eventHandler;
+
     public String error;
     private String type;
     private String owner;
@@ -16,17 +29,9 @@ public class NewCargoInput extends Object implements Validator {
     private String block;
 
     public Boolean isValid(String[] input) {
+        Item item = null;
         try {
-            // type
-            switch (input[0]) {
-                case "LiquidBulkCargo":
-                case "Item":
-                case "MixedCargoLiquidBulkAndUnitised":
-                case "UnitisedCargo":
-                    break;
-                default:
-                    return false;
-            }
+
             // customer name
             if (input[1].equals("")) return  false;
             // weight
@@ -66,13 +71,33 @@ public class NewCargoInput extends Object implements Validator {
                 this.error = "Bitte y oder n angeben für den Zustand der Zerbrechlichkeit";
             }
             this.type = input[0];
-            this.owner = input[1];
+            GetUserEvent getUserEvent = new GetUserEvent(null);
+            getUserEvent.setFilterByName(input[1]);
+
+            GetUserEvent user = (GetUserEvent) eventHandler.push(getUserEvent);
             this.weight = bigInteger.toString();
             this.timeToStay = input[3];
             this.hazards = input[4];
             this.fragile = input[5];
             this.pressure = input[6];
             this.block = input[7];
+            // type
+            switch (input[0]) {
+                case "LiquidBulkCargo":
+                    item = new LiquidBulkCargo(
+                            new BigDecimal(this.weight),
+                            user.getUsers().get(0),
+                            this.hazards,
+                            this.timeToStay,
+                            this.pressure
+                    )
+                case "Item":
+                case "MixedCargoLiquidBulkAndUnitised":
+                case "UnitisedCargo":
+                    break;
+                default:
+                    return false;
+            }
         } catch (ArrayIndexOutOfBoundsException error) {
             this.error = "Bitte überprüfe die Syntax!";
             return false;
@@ -81,46 +106,11 @@ public class NewCargoInput extends Object implements Validator {
 
         return input.length != 1;
     }
-
-    /**
-     * @todo use real json parser but it is not allowed here https://mvnrepository.com/artifact/org.json/json
-     * @return
-     */
-    public String getData() {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
-
-        String[][] keys = {
-                {
-                        "type", this.type
-                }, {
-                "owner", this.owner
-        }, {
-                "weight", this.weight
-        }, {
-                "expireAt", this.timeToStay
-        }, {
-                "hazards", this.hazards
-        }, {
-                "fragile", this.fragile
-        }, {
-                "pressure", this.pressure
-        }, {
-                "block", this.block
-        }
-        };
-
-        StringBuilder json = new StringBuilder("{");
-        for (int i = 0; i < keys.length; i++) {
-            if ((i + 1) < keys.length) {
-                json.append("\"").append(keys[i][0]).append("\":\"").append(keys[i][1]).append("\"").append(" , ");
-            } else {
-                json.append("\"").append(keys[i][0]).append("\":\"").append(keys[i][1]).append("\"");
-            }
-        }
-        json.append("}");
-        return json.toString();
-    }
     public String getMessage() {
         return this.error;
+    }
+
+    public Item getItem() {
+
     }
 }

@@ -30,8 +30,11 @@ public class Get implements Subscriber {
     @Override
     public Event update(Event event) {
         if (event instanceof GetUserEvent){
+            if (!((GetUserEvent) event).getFilterByName().equals("")) {
+                return new GetUserEvent(userManager.getUser());
+            }
+            return (Event) new GetUserEvent(userManager.getUser(((GetUserEvent) event).getFilterByName()));
 
-            return new GetUserEvent(userManager.getUser());
         }
         return null;
     }

@@ -13,28 +13,28 @@ public class WarehouseManager {
 
     private ArrayList<Warehouse> warehouses;
 
-    public WarehouseManager(ConfigBag test) {
-        this.config = test;
+    public WarehouseManager(ConfigBag config) {
+        this.config = config;
         this.warehouses = new ArrayList<>();
 
     }
 
-    public ArrayList<Warehouse> getUser() {
+    public ArrayList<Warehouse> getWarehouses() {
         return warehouses;
     }
 
-    public void newUser(Warehouse warehouse) {
+    public void newWarehouse(Warehouse warehouse) {
         this.warehouses.add(warehouse);
     }
 
-    public void removeUser(String username) {
-      this.warehouses.remove(findUserByName(username));
+    public void removeWarehouse(String warehouseId) {
+      this.warehouses.remove(findWarehouseById(warehouseId));
     }
 
-    private Warehouse findUserByName(String username) {
+    private Warehouse findWarehouseById(String warehouseId) {
         Warehouse found = null;
         for (Warehouse warehouse : this.warehouses) {
-            if (warehouse.getUsername().equals(username)) {
+            if (warehouse.getId().equals(warehouseId)) {
                 found= warehouse;
             }
         }

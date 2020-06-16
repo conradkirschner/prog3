@@ -31,7 +31,7 @@ public class Get implements Subscriber {
     public Event update(Event event) {
         if (event instanceof GetWarehouseEvent){
 
-            return new GetWarehouseEvent(warehouseManager.getUser());
+            return new GetWarehouseEvent(warehouseManager.getWarehouses());
         }
         return null;
     }

@@ -31,8 +31,8 @@ public class Create implements Subscriber {
     @Override
     public Event update(Event event) {
         if (event instanceof CreateWarehouseEvent){
-            Warehouse warehouse = new Warehouse(((CreateWarehouseEvent) event).getUsername());
-            warehouseManager.newUser(warehouse);
+            Warehouse warehouse = new Warehouse(((CreateWarehouseEvent) event).getId());
+            warehouseManager.newWarehouse(warehouse);
             return null;
         }
         return null;

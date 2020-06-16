@@ -1,6 +1,11 @@
 package app.user.entity;
 
-public class User {
+import storageContract.administration.Customer;
+
+import java.math.BigDecimal;
+import java.time.Duration;
+
+public class User implements Customer {
     private String username;
     private String name;
     private String maxValue;
@@ -10,12 +15,12 @@ public class User {
         return this.getUsername();
     }
 
-    public String getMaxValue() {
-        return "maxValue";
+    public BigDecimal getMaxValue() {
+        return new BigDecimal(10);
     }
 
-    public String getMaxDurationOfStorage() {
-        return "maxDurationOfStorage";
+    public Duration getMaxDurationOfStorage() {
+        return Duration.ofSeconds(-12);
     }
 
     public User(String username) {

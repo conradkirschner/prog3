@@ -10,6 +10,8 @@ import app.cli.validators.SearchInput;
 import app.user.entity.User;
 import app.user.events.CreateUserEvent;
 import app.user.events.GetUserEvent;
+import app.warehouse.events.CreateWarehouseEvent;
+import app.warehouse.events.StoreItemEvent;
 import famework.annotation.AutoloadSubscriber;
 import famework.annotation.Inject;
 import famework.annotation.Service;
@@ -97,6 +99,8 @@ public class ParseInput implements Subscriber {
 
            if (this.newCargoInput.isValid(inputs)) {
                Error error = null;
+               StoreItemEvent storeItem = (StoreItemEvent) this.eventHandler.push(new StoreItemEvent(this.newCargoInput.getItem()));
+//
 //               AllWarehouses warehouses = (AllWarehouses) this.eventStream.pushData("warehouse-manager:get-all", "");
 //               for (Warehouse warehouse: warehouses.getWarehouses()) {
 //                   Event event = this.eventStream.pushData("warehouse:store-item", warehouse.getWarehouseName() + "$$" + this.newCargoInput.getData());

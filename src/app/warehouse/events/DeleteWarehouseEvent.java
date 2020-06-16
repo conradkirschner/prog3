@@ -9,13 +9,13 @@ public class DeleteWarehouseEvent implements Event {
     public String getName() {
         return name;
     }
-    String username;
+    String id;
 
-    public DeleteWarehouseEvent(String username) {
-        this.username = username;
+    public DeleteWarehouseEvent(String id) {
+        this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getId() {
+        return id;
     }
 }

@@ -22,6 +22,16 @@ public class UserManager {
     public ArrayList<User> getUser() {
         return users;
     }
+    public ArrayList<User> getUser(String username) {
+        for (User user:this.users) {
+            if (user.getUsername().equals(username)) {
+                ArrayList<User> users = new ArrayList<>();
+                users.add(user);
+                return users;
+            }
+        }
+        return null;
+    }
 
     public void newUser(User user) {
         this.users.add(user);

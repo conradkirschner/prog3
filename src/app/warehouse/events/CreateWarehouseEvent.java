@@ -9,18 +9,18 @@ public class CreateWarehouseEvent implements Event {
     public String getName() {
         return name;
     }
-    String username;
+    String id;
 
-    public CreateWarehouseEvent(String username) {
-        this.username = username;
+    public CreateWarehouseEvent(String id) {
+        this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getId() {
+        return id;
     }
 
-    public CreateWarehouseEvent setUsername(String username) {
-        this.username = username;
+    public CreateWarehouseEvent setId(String id) {
+        this.id = id;
         return this;
     }
 }
