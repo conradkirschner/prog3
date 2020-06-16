@@ -14,9 +14,9 @@ public class EventHandler {
         if(subscriber.getSubscribedEvents() == null) {
 //            System.out.println("noEvents found");
         }
-        for(Event event: subscriber.getSubscribedEvents()) {
-
-            Listener listener = new SubscriberListener(event, subscriber);
+        for(SubscriberContainerInterface subscriberContainerInterfaces: subscriber.getSubscribedEvents()) {
+            Event event = (Event) subscriberContainerInterfaces.getSubscribedEvent();
+            Listener listener = new SubscriberListener(event, subscriber, subscriberContainerInterfaces.getPrio());
             this.registry.addListener(listener);
         }
 

@@ -3,10 +3,16 @@ package famework.event;
 public class SubscriberListener implements  Listener {
     private Event event;
     private Subscriber subscriber;
+    private int prio;
 
-    public SubscriberListener(Event event, Subscriber subscriber) {
+    public SubscriberListener(Event event, Subscriber subscriber, int prio) {
         this.event = event;
         this.subscriber = subscriber;
+        this.prio = prio;
+    }
+
+    public Event getEvent() {
+        return this.event;
     }
 
     @Override
@@ -19,6 +25,6 @@ public class SubscriberListener implements  Listener {
 
     @Override
     public int getPrio() {
-        return 0;
+        return this.prio;
     }
 }

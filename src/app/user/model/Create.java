@@ -9,6 +9,8 @@ import famework.annotation.Inject;
 import famework.annotation.Service;
 import famework.event.Event;
 import famework.event.Subscriber;
+import famework.event.SubscriberContainer;
+import famework.event.SubscriberContainerInterface;
 
 import java.util.ArrayList;
 
@@ -20,9 +22,9 @@ public class Create implements Subscriber {
     UserManager userManager;
 
     @Override
-    public ArrayList<Event> getSubscribedEvents() {
-        ArrayList<Event> events = new ArrayList<>();
-        events.add(new CreateUserEvent(""));
+    public ArrayList<SubscriberContainerInterface> getSubscribedEvents() {
+        ArrayList<SubscriberContainerInterface> events = new ArrayList<>();
+        events.add(new SubscriberContainer(new CreateUserEvent(""), 0));
         return events;
     }
 

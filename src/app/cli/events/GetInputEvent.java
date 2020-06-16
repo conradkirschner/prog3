@@ -6,6 +6,7 @@ public class GetInputEvent implements Event {
     static String name = GetInputEvent.class.getName();
 
     private String content;
+    private String view;
 
     public GetInputEvent(String content) {
         this.content = content;

@@ -17,7 +17,6 @@ public class Listener implements famework.event.Listener {
 
     @Override
     public Event update(Event event) {
-        out.println("Triggered");
         return null;
     }
 

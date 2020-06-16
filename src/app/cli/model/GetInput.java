@@ -8,8 +8,13 @@ import famework.annotation.Inject;
 import famework.annotation.Service;
 import famework.event.Event;
 import famework.event.Subscriber;
+import famework.event.SubscriberContainer;
+import famework.event.SubscriberContainerInterface;
 
-import java.io.*;
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 @Service
@@ -26,9 +31,9 @@ public class GetInput implements Subscriber {
     }
 
     @Override
-    public ArrayList<Event> getSubscribedEvents() {
-        ArrayList<Event> events = new ArrayList<>();
-        events.add(new GetInputEvent(""));
+    public ArrayList<SubscriberContainerInterface> getSubscribedEvents() {
+        ArrayList<SubscriberContainerInterface> events = new ArrayList<>();
+        events.add(new SubscriberContainer(new GetInputEvent(""), 0));
         return events;
     }
 
@@ -36,8 +41,7 @@ public class GetInput implements Subscriber {
     public Event update(Event event) {
         BufferedReader buffer=new BufferedReader(new InputStreamReader(in));
         try {
-            String line=buffer.readLine();
-            return new GetInputEvent(line);
+            return new GetInputEvent(buffer.readLine());
         } catch (IOException e) {
             e.printStackTrace();
         }
