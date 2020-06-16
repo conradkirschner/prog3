@@ -1,28 +1,25 @@
-import PeerServer.Start;
-import app.App;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.PrintStream;
-
-import static app.Bootstrap.run;
-import static app.Bootstrap.setup;
+import app.user.events.CreateUserEvent;
+import app.user.events.DeleteUserEvent;
+import app.user.events.GetUserEvent;
+import famework.Kernel;
+import famework.event.EventHandler;
 
 public class Main {
-    public static void main(String[] args) {
-        // start server
-        if (args.length != 0 && args[0].equals("server")) {
-            Start startServer = new Start();
-            startServer.start();
-        }
+    public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException {
 
+            Kernel kernel = new Kernel();
+        EventHandler eventHandler = kernel.run();
 
+        GetUserEvent userEvent = (GetUserEvent) eventHandler.push(new GetUserEvent(null));
 
-        BufferedReader cliInput = new BufferedReader(new InputStreamReader(System.in));
-        PrintStream output = System.out;
-        App app = setup(cliInput, output);
+        System.out.println("Current User" + userEvent.getUsers());
 
-        // if simulation is on, then we don't need any CLI input possibility
-        run(app, false, true);
+        eventHandler.push(new CreateUserEvent("test"));
+        userEvent = (GetUserEvent) eventHandler.push(new GetUserEvent(null));
+        System.out.println("Current User" + userEvent.getUsers());
+        userEvent = (GetUserEvent) eventHandler.push(new GetUserEvent(null));
+        eventHandler.push(new DeleteUserEvent("test"));
+        System.out.println("Current User" + userEvent.getUsers());
+
     }
 }

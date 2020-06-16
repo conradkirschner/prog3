@@ -1,11 +1,13 @@
 #Programmierung 3
 Von Conrad Kirschner - 
-Erreichter Stand: 1.5 Punkte
+Erreichter Stand: 1 Punkte  
+## Todo
+Refactor für Semesterbeleg
 ##Modules 
-- [User](./src/user/readme.md)
+- [User](src/app/app.user/readme.md)
 - [Warehouse](./src/warehouse/readme.md)
-- [CLI](./src/cli/readme.md)
-
+- [CLI](./src/cli/readme.md)  
+...
 ## 1 Punkt:
 - [x] zip Archiv 
 - [x] IntelliJ-Projekt (kein Gradle, Maven o.ä.) 
@@ -14,20 +16,20 @@ Erreichter Stand: 1.5 Punkte
 - [x] kompilierbar 
 - [x] main-Methoden nur im default package
 - [x] ausführbar 
-- [x] Simulation der Einlagerung 
+- [x] Einfügen, Auflisten und Löschen von Frachtstücken in der GUI 
 
 ## 2 Punkte:
 - [ ] ~~Präsenzaufgaben erfüllt~~
-- [x] Trennung zwischen Test- und Produktiv-Code
-- [x] JUnit5 als Testframework
-- [x] Mockito als Mock/Spy-framework
-- [x] keine leeren Test
-- [x] Simulation mit zwei Lagern und Ein- und Auslagerungsthread 
-- [x] keine Verwendung von Thread.sleep bzw. nur mit 0-Werten 
-- [x] Trennung zwischen Verwaltungs- und Simulationslogik 
-- [ ] mindestens je ein Test für alle an der Umlagerung beteiligten Methoden 
+- [ ] Trennung zwischen Test- und Produktiv-Code
+- [ ] JUnit5 als Testframework
+- [ ] Mockito als Mock/Spy-framework
+- [ ] keine leeren Test
+- [ ] Geschäfts und Darstellungslogik getrennt 
+- [ ] View und Model synchronisiert  
+- [ ] sortierbare Darstellung der Fracht mit Lagerposition, Einlagerungsdauer und Kunde 
+- [ ] skalierbare Darstellung  
 ## 2,5 Punkte:
-- [ ]  Simulation mit drei Lagern und 5 threads 
-- [ ]  alle Tests sind deterministisch
+- [ ]  Änderung der Lagerposition mittels drag&drop 
+- [ ]  data binding verwendet 
 ## Contributes to:
 https://www.flaticon.com/free-icon/back-button_93634 - For Back Buton
