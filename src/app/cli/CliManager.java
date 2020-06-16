@@ -24,7 +24,6 @@ public class CliManager implements Subscriber {
     public CliManager(ConfigBag configBag, PrintStream printStream) {
         this.configBag = configBag;
         this.printStream = printStream;
-        printStream.println("works");
     }
 
 
@@ -42,7 +41,8 @@ public class CliManager implements Subscriber {
         }
         return null;
     }
-    private void run(){
-
+    private void run() {
+        printStream.println("works");
+        mainScreen.getContent();
     }
 }

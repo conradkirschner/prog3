@@ -10,13 +10,13 @@ public class ConfigReader {
         String[] packageName = clazz.getName().split("\\.");
 
         String path = resolveClassLocation(clazz) + "config/" + packageName[1] + ".properties";
-        System.out.println(path);
         Properties config = new Properties();
         try {
             InputStream input = new FileInputStream(path);
             config.load(input);
         } catch (IOException e) {
-            e.printStackTrace();
+            return mergeWithSysProperties(new Properties());
+
         }
         return mergeWithSysProperties(config);
     }

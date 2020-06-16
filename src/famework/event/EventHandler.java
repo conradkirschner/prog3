@@ -12,7 +12,7 @@ public class EventHandler {
     public void registerSubscriber(Subscriber subscriber) {
         if (subscriber == null) return;
         if(subscriber.getSubscribedEvents() == null) {
-            System.out.println("noEvents found");
+//            System.out.println("noEvents found");
         }
         for(Event event: subscriber.getSubscribedEvents()) {
 

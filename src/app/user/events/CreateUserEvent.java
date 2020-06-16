@@ -1,10 +1,9 @@
 package app.user.events;
 
-import app.example.TestEvent;
 import famework.event.Event;
 
 public class CreateUserEvent implements Event {
-    static String name = TestEvent.class.getName();
+    static String name = CreateUserEvent.class.getName();
 
     @Override
     public String getName() {

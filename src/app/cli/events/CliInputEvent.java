@@ -2,8 +2,8 @@ package app.cli.events;
 
 import famework.event.Event;
 
-public class CliStartEvent implements Event {
-    static String name = CliStartEvent.class.getName();
+public class CliInputEvent implements Event {
+    static String name = CliInputEvent.class.getName();
 
     @Override
     public String getName() {

@@ -24,11 +24,13 @@ public class Kernel {
     EventHandler eventHandler;
     public EventHandler run(ArrayList<Object> imports) {
         this.eventHandler = new EventHandler();
+        imports.add(this.eventHandler);
         this.di = new DI();
+        imports.add(this.di);
+        imports.add(this.di.getRegistry());
         Registry registry = this.di.getRegistry();
         registry.add(imports);
         File directory = new File("./src/app/");
-        System.out.println(directory.getAbsolutePath());
 
         Class[] classes = null;
         try {
@@ -43,11 +45,6 @@ public class Kernel {
 
         return eventHandler;
     }
-
-    public Registry getModules() {
-        return di.getRegistry();
-    }
-
     private ArrayList<Class> loadServices(Class[] classes, int retries) {
         boolean failure = false;
 
@@ -132,7 +129,8 @@ public class Kernel {
 
     /**
      * Scans all classes accessible from the context class loader which belong to the given package and subpackages.
-     * @see https://stackoverflow.com/questions/520328/can-you-find-all-classes-in-a-package-using-reflection
+     *
+     * @source http://stackoverflow.com/questions/520328/can-you-find-all-classes-in-a-package-using-reflection
      * @param packageName The base package
      * @return The classes
      * @throws ClassNotFoundException
@@ -158,7 +156,8 @@ public class Kernel {
 
     /**
      * Recursive method used to find all classes in a given directory and subdirs.
-     * @see https://stackoverflow.com/questions/520328/can-you-find-all-classes-in-a-package-using-reflection
+     *
+     * @source http://stackoverflow.com/questions/520328/can-you-find-all-classes-in-a-package-using-reflection
      * @param directory   The base directory
      * @param packageName The package name for classes found inside the base directory
      * @return The classes

@@ -1,13 +1,12 @@
 package app.user.events;
 
-import app.example.TestEvent;
 import app.user.entity.User;
 import famework.event.Event;
 
 import java.util.ArrayList;
 
 public class GetUserEvent implements Event {
-    static String name = TestEvent.class.getName();
+    static String name = GetUserEvent.class.getName();
 
     ArrayList<User> users;
 

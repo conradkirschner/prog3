@@ -16,7 +16,6 @@ public class Subscriber implements famework.event.Subscriber {
 
     @Override
     public Event update(Event event) {
-        System.out.println("Subscribes");
         return null;
     }
 }
