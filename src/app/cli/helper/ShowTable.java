@@ -1,6 +1,8 @@
 package app.cli.helper;
 
 
+import famework.annotation.Service;
+
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,6 +12,7 @@ import java.util.List;
 /**
  * @Auhor https://www.logicbig.com/how-to/code-snippets/jcode-java-cmd-command-line-table.html
  */
+@Service
 public class ShowTable {
     private PrintStream output;
     private static final String HORIZONTAL_SEP = "-";

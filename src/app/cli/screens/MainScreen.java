@@ -1,6 +1,7 @@
 package app.cli.screens;
 
 import famework.annotation.Service;
+import famework.configReader.ConfigBag;
 
 import java.io.PrintStream;
 
@@ -8,15 +9,17 @@ import java.io.PrintStream;
 public class MainScreen implements Screen {
 
     private PrintStream output;
+    String version ="";
 
-    public MainScreen(PrintStream output) {
+    public MainScreen(PrintStream output, ConfigBag configBag) {
         this.output = output;
+        version = configBag.props.getProperty("version");
     }
 
     @Override
     public void getContent() {
         this.output.println("--------------------------------------------");
-        this.output.println("##--PROG-3--####--Warehouse-v0.0.1--######");
+        this.output.println("##--PROG-3--####--Warehouse-v"+ this.version +"--######");
         this.output.println(":c - Einfügemodus");
         this.output.println(":d - Löschmodus");
         this.output.println(":r - Anzeigemodus");
