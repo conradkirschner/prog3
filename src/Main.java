@@ -1,15 +1,22 @@
+import app.cli.CliManager;
 import app.user.events.CreateUserEvent;
 import app.user.events.DeleteUserEvent;
 import app.user.events.GetUserEvent;
 import famework.Kernel;
 import famework.event.EventHandler;
 
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException {
 
             Kernel kernel = new Kernel();
-        EventHandler eventHandler = kernel.run();
-
+        ArrayList<Object> config = new ArrayList<>();
+        config.add(System.out);
+        config.add(System.in);
+        EventHandler eventHandler = kernel.run(config);
+        CliManager cliManager = (CliManager) kernel.getModules().getRegistered(CliManager.class.getName());
+        cliManager.run();
         GetUserEvent userEvent = (GetUserEvent) eventHandler.push(new GetUserEvent(null));
 
         System.out.println("Current User" + userEvent.getUsers());

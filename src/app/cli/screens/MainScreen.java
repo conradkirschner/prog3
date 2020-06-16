@@ -1,8 +1,12 @@
 package app.cli.screens;
 
+import famework.annotation.Service;
+
 import java.io.PrintStream;
 
+@Service
 public class MainScreen implements Screen {
+
     private PrintStream output;
 
     public MainScreen(PrintStream output) {

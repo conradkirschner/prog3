@@ -32,6 +32,16 @@ public class Registry {
         return null;
     }
 
+    public Registry add(Object obj) {
+        this.registeredInstances.add(obj);
+        return this;
+    }
+    public Registry add(ArrayList<Object> obj) {
+        for (Object newObject: obj) {
+            add(newObject);
+        }
+        return this;
+    }
     public Registry add(Class obj) {
         ConfigReader configReader = new ConfigReader();
         Properties properties = configReader.getConfig(obj);

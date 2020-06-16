@@ -1,27 +1,29 @@
 package app.cli;
 
+import app.cli.screens.MainScreen;
+import famework.annotation.Inject;
 import famework.annotation.Service;
 import famework.configReader.ConfigBag;
+
+import java.io.PrintStream;
 
 @Service
 public class CliManager {
     ConfigBag configBag;
+    PrintStream printStream;
 
-    public CliManager(ConfigBag configBag) {
+    @Inject
+    MainScreen mainScreen;
+
+    public CliManager(ConfigBag configBag, PrintStream printStream) {
         this.configBag = configBag;
-        ClassLoader classLoader = CliManager.class.getClassLoader();
-        try {
-            Class aClass = classLoader.loadClass("com.jenkov.MyClass");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        System.out.println(System.out.getClass());
-        String output = configBag.props.getProperty("output");
-        String input = configBag.props.getProperty("input");
+        this.printStream = printStream;
+        printStream.println("works");
     }
 
     public int run() {
-
+        mainScreen.getContent();
         return 0;
+
     }
 }
