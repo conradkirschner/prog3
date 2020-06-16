@@ -23,6 +23,7 @@ public class EventRegistry {
         this.listeners.sort(new Comparator<Listener>() {
             @Override
             public int compare(Listener o1, Listener o2) {
+                if(o1 == null) return -1;
                 if(o2 == null) return 1;
                 return Integer.compare(o1.getPrio(), o2.getPrio());
             }

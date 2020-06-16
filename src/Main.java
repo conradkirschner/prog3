@@ -1,4 +1,4 @@
-import app.cli.CliManager;
+import app.cli.events.CliStartEvent;
 import app.user.events.CreateUserEvent;
 import app.user.events.DeleteUserEvent;
 import app.user.events.GetUserEvent;
@@ -15,8 +15,7 @@ public class Main {
         config.add(System.out);
         config.add(System.in);
         EventHandler eventHandler = kernel.run(config);
-        CliManager cliManager = (CliManager) kernel.getModules().getRegistered(CliManager.class.getName());
-        cliManager.run();
+       eventHandler.push(new CliStartEvent());
         GetUserEvent userEvent = (GetUserEvent) eventHandler.push(new GetUserEvent(null));
 
         System.out.println("Current User" + userEvent.getUsers());
