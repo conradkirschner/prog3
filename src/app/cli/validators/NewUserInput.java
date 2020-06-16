@@ -1,10 +1,11 @@
 package app.cli.validators;
 
-import java.util.ArrayList;
+import famework.annotation.Service;
 
 /**
  * There is no real validation required!
  */
+@Service
 public class NewUserInput implements Validator {
     public String input;
     public String error;

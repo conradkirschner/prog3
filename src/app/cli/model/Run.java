@@ -29,7 +29,8 @@ public class Run implements Subscriber {
 
     @Override
     public Event update(Event event) {
-        cliManager.run();
-        return null;
+        while (true) {
+            cliManager.run();
+        }
     }
 }

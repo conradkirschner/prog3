@@ -1,7 +1,8 @@
 package app.cli.validators;
 
-import java.util.ArrayList;
+import famework.annotation.Service;
 
+@Service
 public class SearchInput implements Validator {
     public String error;
     private String type;

@@ -2,9 +2,11 @@ package app.cli.screens;
 
 
 import app.cli.helper.ShowTable;
+import famework.annotation.Service;
 
 import java.io.PrintStream;
 
+@Service
 public class OverviewScreen implements Screen {
     private String mode;
     public String[][] rows = new String[10][];
@@ -12,6 +14,12 @@ public class OverviewScreen implements Screen {
 
     public OverviewScreen(PrintStream output) {
         this.output = output;
+        this.mode = "";
+    }
+
+    public OverviewScreen setRows(String[][] rows) {
+        this.rows = rows;
+        return this;
     }
 
     public void setMode(String mode) {
@@ -33,6 +41,7 @@ public class OverviewScreen implements Screen {
             default:
                 return;
         }
+        this.setMode("");
     }
 
     private void showCargo() {

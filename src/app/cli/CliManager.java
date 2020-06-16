@@ -20,6 +20,10 @@ public class CliManager {
 
     Screen currentScreen;
 
+    public Screen getCurrentScreen() {
+        return currentScreen;
+    }
+
     public void setCurrentScreen(Screen currentScreen) {
         this.currentScreen = currentScreen;
     }
@@ -33,8 +37,11 @@ public class CliManager {
     }
 
     public void run() {
-        printStream.println("works");
-        mainScreen.getContent();
+        if (currentScreen == null) {
+            currentScreen = mainScreen;
+        }
+        currentScreen.getContent();
+        currentScreen.getUsage();
         GetInputEvent getInput = (GetInputEvent) this.eventHandler.push(new GetInputEvent(""));
     }
 }

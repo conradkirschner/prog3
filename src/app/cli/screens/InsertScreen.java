@@ -1,7 +1,10 @@
 package app.cli.screens;
 
+import famework.annotation.Service;
+
 import java.io.PrintStream;
 
+@Service
 public class InsertScreen implements Screen {
     public Boolean status = false;
     public String message = "";
