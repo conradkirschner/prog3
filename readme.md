@@ -4,7 +4,7 @@ Erreichter Stand: 1 Punkte
 ## Todo
 Refactor für Semesterbeleg
 ##Modules 
-- [User](src/app/app.user/readme.md)
+- [User](src/app/app.warehouse/readme.md)
 - [Warehouse](./src/warehouse/readme.md)
 - [CLI](./src/cli/readme.md)  
 ...

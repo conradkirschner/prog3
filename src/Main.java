@@ -16,14 +16,14 @@ public class Main {
        eventHandler.push(new CliStartEvent());
         GetUserEvent userEvent = (GetUserEvent) eventHandler.push(new GetUserEvent(null));
 //
-//        System.out.println("Current User" + userEvent.getUsers());
+//        System.out.println("Current Warehouse" + userEvent.getWarehouses());
 //
-//        eventHandler.push(new CreateUserEvent("test"));
-//        userEvent = (GetUserEvent) eventHandler.push(new GetUserEvent(null));
-//        System.out.println("Current User" + userEvent.getUsers());
-//        userEvent = (GetUserEvent) eventHandler.push(new GetUserEvent(null));
+//        eventHandler.push(new CreateWarehouseEvent("test"));
+//        userEvent = (GetWarehouseEvent) eventHandler.push(new GetWarehouseEvent(null));
+//        System.out.println("Current Warehouse" + userEvent.getWarehouses());
+//        userEvent = (GetWarehouseEvent) eventHandler.push(new GetWarehouseEvent(null));
 //        eventHandler.push(new DeleteUserEvent("test"));
-//        System.out.println("Current User" + userEvent.getUsers());
+//        System.out.println("Current Warehouse" + userEvent.getWarehouses());
 
     }
 }
