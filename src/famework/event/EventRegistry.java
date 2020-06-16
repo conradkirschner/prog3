@@ -2,6 +2,7 @@ package famework.event;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.ConcurrentModificationException;
 
 public class EventRegistry {
     private ArrayList<Listener> listeners;
@@ -28,12 +29,23 @@ public class EventRegistry {
                 return Integer.compare(o1.getPrio(), o2.getPrio());
             }
         });
-        Event eventResponse = event;
+        Event eventResponse = null;
 
-        for(Listener listener: this.listeners) {
-            if (listener == null) continue;
-            eventResponse = listener.update(event);
+        try {
+            for(Listener listener: this.listeners) {
+                if (listener == null) continue;
+                Event response = listener.update(event);
+                if(response != null) {
+                    eventResponse = listener.update(event);
+                } else {
+                    listener.update(event);
+                }
+            }
+        } catch (ConcurrentModificationException exception) {
+            // disable fail-fast from iteration list
+            return push(event);
         }
+
         return eventResponse;
     }
 }
