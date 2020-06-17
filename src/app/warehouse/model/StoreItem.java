@@ -2,6 +2,8 @@ package app.warehouse.model;
 
 
 import app.warehouse.WarehouseManager;
+import app.warehouse.entity.Item;
+import app.warehouse.entity.Warehouse;
 import app.warehouse.events.StoreItemEvent;
 import famework.annotation.AutoloadSubscriber;
 import famework.annotation.Inject;
@@ -23,15 +25,30 @@ public class StoreItem implements Subscriber {
     @Override
     public ArrayList<SubscriberContainerInterface> getSubscribedEvents() {
         ArrayList<SubscriberContainerInterface> events = new ArrayList<>();
-        events.add(new SubscriberContainer(new StoreItemEvent(null, null), 0));
+        events.add(new SubscriberContainer(new StoreItemEvent(null, null), 10));
         return events;
     }
 
     @Override
     public Event update(Event event) {
-        if (event instanceof StoreItemEvent){
+        if (event instanceof StoreItemEvent) {
             StoreItemEvent itemEvent = ((StoreItemEvent) event);
-            itemEvent.getWarehouse().storeItem(itemEvent.getItem());
+            StoreItemEvent response = new StoreItemEvent(itemEvent.getItem(), itemEvent.getWarehouse());
+
+            Warehouse selectedWarehouse = itemEvent.getWarehouse();
+
+            if (selectedWarehouse != null) {
+                return new StoreItemEvent(selectedWarehouse.storeItem(itemEvent.getItem()), itemEvent.getWarehouse());
+            }
+            ArrayList<Warehouse> warehouses = warehouseManager.getWarehouses();
+            for (Warehouse warehouse:warehouses) {
+                Item stored = warehouse.storeItem(itemEvent.getItem());
+                if (stored != null) {
+                    StoreItemEvent success = new StoreItemEvent(stored, warehouse);
+                    success.setSuccess(true);
+                   return success;
+                }
+            }
             return null;
         }
         return null;

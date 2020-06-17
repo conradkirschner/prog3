@@ -10,7 +10,7 @@ import app.cli.validators.SearchInput;
 import app.user.entity.User;
 import app.user.events.CreateUserEvent;
 import app.user.events.GetUserEvent;
-import app.warehouse.events.CreateWarehouseEvent;
+import app.warehouse.entity.Item;
 import app.warehouse.events.StoreItemEvent;
 import famework.annotation.AutoloadSubscriber;
 import famework.annotation.Inject;
@@ -99,7 +99,13 @@ public class ParseInput implements Subscriber {
 
            if (this.newCargoInput.isValid(inputs)) {
                Error error = null;
-               StoreItemEvent storeItem = (StoreItemEvent) this.eventHandler.push(new StoreItemEvent(this.newCargoInput.getItem()));
+               Item item = this.newCargoInput.getItem();
+               if (item != null) {
+                   StoreItemEvent storeItem = (StoreItemEvent) this.eventHandler.push(new StoreItemEvent(item,null));
+                    if (storeItem.getSuccess()) {
+                        this.cliManager.setCurrentScreen(mainScreen);
+                    }
+               }
 //
 //               AllWarehouses warehouses = (AllWarehouses) this.eventStream.pushData("warehouse-manager:get-all", "");
 //               for (Warehouse warehouse: warehouses.getWarehouses()) {

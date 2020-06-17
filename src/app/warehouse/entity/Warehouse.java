@@ -22,7 +22,7 @@ public class Warehouse {
     public Item storeItem(Item item) {
         boolean stored = false;
         for (StoragePlace storagePlace: this.storagePlaces) {
-            if (storagePlace.getLeftSpace().compareTo(item.weight) <= 0) {
+            if (storagePlace.getLeftSpace().compareTo(item.weight) >= 0) {
                 storagePlace.setItem(item);
                 stored=true;
                 break;

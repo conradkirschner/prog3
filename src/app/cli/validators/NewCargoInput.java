@@ -1,15 +1,19 @@
 package app.cli.validators;
 
-import app.user.entity.User;
 import app.user.events.GetUserEvent;
 import app.warehouse.entity.Item;
 import app.warehouse.entity.LiquidBulkCargo;
+import app.warehouse.entity.MixedCargoLiquidBulkAndUnitised;
+import app.warehouse.entity.UnitisedCargo;
 import famework.annotation.Inject;
 import famework.annotation.Service;
 import famework.event.EventHandler;
+import storageContract.cargo.Hazard;
 
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Service
 public class NewCargoInput extends Object implements Validator {
@@ -18,6 +22,7 @@ public class NewCargoInput extends Object implements Validator {
     @Inject
     private EventHandler eventHandler;
 
+    private Item item;
     public String error;
     private String type;
     private String owner;
@@ -29,7 +34,7 @@ public class NewCargoInput extends Object implements Validator {
     private String block;
 
     public Boolean isValid(String[] input) {
-        Item item = null;
+        item = null;
         try {
 
             // customer name
@@ -46,9 +51,9 @@ public class NewCargoInput extends Object implements Validator {
             }
             // einlagerungsdauer
             if (input[3].equals("") ) return  false;
+            int integer = Integer.parseInt(input[3]);
+            ZonedDateTime time = ZonedDateTime.now().plusSeconds(integer);
             try {
-                Integer integer = Integer.parseInt(input[3]);
-                ZonedDateTime time = ZonedDateTime.now().plusSeconds(integer);
                 input[3] = time.toString();
             } catch (Exception exception) {
                 this.error = "Einlagerungsdauer als Zahl eingeben!";
@@ -73,27 +78,74 @@ public class NewCargoInput extends Object implements Validator {
             this.type = input[0];
             GetUserEvent getUserEvent = new GetUserEvent(null);
             getUserEvent.setFilterByName(input[1]);
-
             GetUserEvent user = (GetUserEvent) eventHandler.push(getUserEvent);
+            if (user.getUsers().size() == 0) {
+                return false;
+            }
             this.weight = bigInteger.toString();
-            this.timeToStay = input[3];
+            Collection<Hazard> hazards = new ArrayList<Hazard>();
+            String[] hazardInputs = input[4].split(",");
+            for(String hazzard:hazardInputs) {
+                switch (hazzard) {
+                    case "explosive":
+                        hazards.add(Hazard.explosive);
+                        break;
+                    case "radioactive":
+                        hazards.add(Hazard.radioactive);
+                        break;
+                    case "toxic":
+                        hazards.add(Hazard.toxic);
+                        break;
+                    case "fammable":
+                        hazards.add(Hazard.flammable);
+                        break;
+                }
+            }
             this.hazards = input[4];
             this.fragile = input[5];
-            this.pressure = input[6];
+            boolean pressure = false;
+            if (input[6].equals("y")) {
+                pressure = true;
+            }
+            boolean fragile = false;
+            if (input[7].equals("y")) {
+                fragile = true;
+            }
             this.block = input[7];
             // type
             switch (input[0]) {
                 case "LiquidBulkCargo":
-                    item = new LiquidBulkCargo(
+                    this.item = new LiquidBulkCargo(
                             new BigDecimal(this.weight),
                             user.getUsers().get(0),
-                            this.hazards,
-                            this.timeToStay,
-                            this.pressure
-                    )
+                            hazards,
+                            time,
+                            pressure
+                    );
                 case "Item":
+                    this.item = new Item(
+                            new BigDecimal(this.weight),
+                            user.getUsers().get(0),
+                            hazards,
+                            time
+                    );
                 case "MixedCargoLiquidBulkAndUnitised":
+                    this.item = new MixedCargoLiquidBulkAndUnitised(
+                            new BigDecimal(this.weight),
+                            user.getUsers().get(0),
+                            hazards,
+                            time,
+                            pressure,
+                            fragile
+                    );
                 case "UnitisedCargo":
+                    this.item = new UnitisedCargo(
+                            new BigDecimal(this.weight),
+                            user.getUsers().get(0),
+                            hazards,
+                            time,
+                            fragile
+                    );
                     break;
                 default:
                     return false;
@@ -111,6 +163,6 @@ public class NewCargoInput extends Object implements Validator {
     }
 
     public Item getItem() {
-
+        return this.item;
     }
 }

@@ -13,6 +13,9 @@ public class StoreItemEvent implements Event {
     }
     Item item;
     Warehouse warehouse;
+    boolean success;
+
+
 
     public StoreItemEvent(Item item, Warehouse warehouse) {
         this.item = item;
@@ -22,7 +25,14 @@ public class StoreItemEvent implements Event {
     public Warehouse getWarehouse() {
         return warehouse;
     }
+    public boolean isSuccess() {
+        return success;
+    }
 
+    public StoreItemEvent setSuccess(boolean success) {
+        this.success = success;
+        return this;
+    }
     public Item getItem() {
         return item;
     }
@@ -30,5 +40,10 @@ public class StoreItemEvent implements Event {
     public StoreItemEvent setItem(Item item) {
         this.item = item;
         return this;
+    }
+
+    public boolean getSuccess() {
+        return this.success;
+
     }
 }
