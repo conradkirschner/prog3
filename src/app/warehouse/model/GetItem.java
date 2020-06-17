@@ -4,7 +4,7 @@ package app.warehouse.model;
 import app.warehouse.WarehouseManager;
 import app.warehouse.entity.Item;
 import app.warehouse.entity.Warehouse;
-import app.warehouse.events.StoreItemEvent;
+import app.warehouse.events.GetItemEvent;
 import famework.annotation.AutoloadSubscriber;
 import famework.annotation.Inject;
 import famework.annotation.Service;
@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 @Service
 @AutoloadSubscriber
-public class StoreItem implements Subscriber {
+public class GetItem implements Subscriber {
 
     @Inject
     WarehouseManager warehouseManager;
@@ -25,29 +25,26 @@ public class StoreItem implements Subscriber {
     @Override
     public ArrayList<SubscriberContainerInterface> getSubscribedEvents() {
         ArrayList<SubscriberContainerInterface> events = new ArrayList<>();
-        events.add(new SubscriberContainer(new StoreItemEvent(), 10));
+        events.add(new SubscriberContainer(new GetItemEvent(), 0));
         return events;
     }
 
     @Override
     public Event update(Event event) {
-        if (event instanceof StoreItemEvent) {
-            StoreItemEvent itemEvent = ((StoreItemEvent) event);
-            StoreItemEvent response = new StoreItemEvent(itemEvent.getItem(), itemEvent.getWarehouse());
-
-            Warehouse selectedWarehouse = itemEvent.getWarehouse();
-
-            if (selectedWarehouse != null) {
-                return new StoreItemEvent(selectedWarehouse.storeItem(itemEvent.getItem()), itemEvent.getWarehouse());
-            }
+        if (event instanceof GetItemEvent){
+            Item item;
+            ArrayList<Item> items = new ArrayList<>();
             ArrayList<Warehouse> warehouses = warehouseManager.getWarehouses();
             for (Warehouse warehouse:warehouses) {
-                Item stored = warehouse.storeItem(itemEvent.getItem());
-                if (stored != null) {
-                   return new StoreItemEvent(stored, warehouse, true);
+                String type = ((GetItemEvent) event).getType();
+                boolean hazardFilter = ((GetItemEvent) event).isHazardsFilter();
+                if (type == null) {
+                    items.addAll(warehouse.getItems(hazardFilter));
+                    continue;
                 }
+                items.addAll(warehouse.getItems(type));
             }
-            return null;
+            return new GetItemEvent(items);
         }
         return null;
     }

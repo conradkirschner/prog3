@@ -1,8 +1,7 @@
-package app.user.model;
+package app.warehouse.model;
 
-
-import app.user.UserManager;
-import app.user.events.GetUserEvent;
+import app.warehouse.WarehouseManager;
+import app.warehouse.events.DeleteWarehouseEvent;
 import famework.annotation.AutoloadSubscriber;
 import famework.annotation.Inject;
 import famework.annotation.Service;
@@ -15,26 +14,24 @@ import java.util.ArrayList;
 
 @Service
 @AutoloadSubscriber
-public class Get implements Subscriber {
+public class DeleteWarehouse implements Subscriber {
 
     @Inject
-    UserManager userManager;
+    WarehouseManager warehouseManager;
 
     @Override
     public ArrayList<SubscriberContainerInterface> getSubscribedEvents() {
         ArrayList<SubscriberContainerInterface> events = new ArrayList<>();
-        events.add(new SubscriberContainer(new GetUserEvent(), 0));
+        events.add(new SubscriberContainer(new DeleteWarehouseEvent(), 0));
         return events;
     }
 
     @Override
     public Event update(Event event) {
-        if (event instanceof GetUserEvent) {
-            if (((GetUserEvent) event).getFilterByName().equals("")) {
-                return new GetUserEvent(userManager.getUser());
-            }
-            return new GetUserEvent(userManager.getUser(((GetUserEvent) event).getFilterByName()));
-
+        if (event instanceof DeleteWarehouseEvent){
+            String username = ((DeleteWarehouseEvent) event).getId();
+            warehouseManager.removeWarehouse(username);
+            return null;
         }
         return null;
     }

@@ -39,11 +39,15 @@ public class OverviewScreen implements Screen {
                 this.showHazard();
                 break;
             default:
-                return;
         }
-        this.setMode("");
+        reset();
+
     }
 
+    private void reset() {
+        this.setMode("");
+        rows = new String[10][];
+    }
     private void showCargo() {
         if (rows == null) {
             this.output.println("Keine Fracht gefunden");
@@ -57,6 +61,7 @@ public class OverviewScreen implements Screen {
             st.addRow(cargo[0]);
         }
         st.print();
+        reset();
     }
 
     private void showHazard() {
@@ -72,6 +77,7 @@ public class OverviewScreen implements Screen {
             st.addRow(fracht[0], fracht[1], fracht[2], fracht[3], fracht[4], fracht[5], fracht[6]);
         }
         st.print();
+        reset();
     }
 
     private void showCustomer() {
@@ -88,6 +94,7 @@ public class OverviewScreen implements Screen {
             st.addRow(customer[0]);
         }
         st.print();
+        reset();
     }
 
     @Override

@@ -19,6 +19,29 @@ public class Warehouse {
         return this.id;
     }
 
+    public ArrayList<Item> getItems(String type) {
+        ArrayList<Item> items = new ArrayList<>();
+        for(StoragePlace storagePlace: this.storagePlaces) {
+            Item found = storagePlace.getItem(type);
+            if(found != null) {
+                items.add(found);
+                break;
+            }
+        }
+        return items;
+    }
+    public ArrayList<Item> getItems(boolean type) {
+        ArrayList<Item> items = new ArrayList<>();
+        for(StoragePlace storagePlace: this.storagePlaces) {
+            Item found = storagePlace.getItem(type);
+            if(found != null) {
+                items.add(found);
+                break;
+            }
+        }
+        return items;
+    }
+
     public Item storeItem(Item item) {
         boolean stored = false;
         for (StoragePlace storagePlace: this.storagePlaces) {

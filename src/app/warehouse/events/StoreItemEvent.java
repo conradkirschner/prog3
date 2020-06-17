@@ -34,6 +34,12 @@ public class StoreItemEvent implements Event {
         this.warehouse = warehouse;
     }
 
+    public StoreItemEvent(Item item, Warehouse warehouse, boolean success) {
+        this.item = item;
+        this.warehouse = warehouse;
+        this.success = success;
+    }
+
     /**
      * Klick to see subscriber
      */
@@ -47,14 +53,7 @@ public class StoreItemEvent implements Event {
     public Warehouse getWarehouse() {
         return warehouse;
     }
-    public boolean isSuccess() {
-        return success;
-    }
 
-    public StoreItemEvent setSuccess(boolean success) {
-        this.success = success;
-        return this;
-    }
     public Item getItem() {
         return item;
     }

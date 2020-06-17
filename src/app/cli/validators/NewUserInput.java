@@ -13,6 +13,7 @@ public class NewUserInput implements Validator {
 
     public Boolean isValid(String[] input) {
         this.username = input[0];
+        if (this.username.equals("")) return false;
         return input.length == 1;
     }
 

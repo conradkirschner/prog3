@@ -2,7 +2,8 @@ package app.warehouse.model;
 
 
 import app.warehouse.WarehouseManager;
-import app.warehouse.events.GetWarehouseEvent;
+import app.warehouse.entity.Warehouse;
+import app.warehouse.events.CreateWarehouseEvent;
 import famework.annotation.AutoloadSubscriber;
 import famework.annotation.Inject;
 import famework.annotation.Service;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 
 @Service
 @AutoloadSubscriber
-public class Get implements Subscriber {
+public class CreateWarehouse implements Subscriber {
 
     @Inject
     WarehouseManager warehouseManager;
@@ -23,15 +24,16 @@ public class Get implements Subscriber {
     @Override
     public ArrayList<SubscriberContainerInterface> getSubscribedEvents() {
         ArrayList<SubscriberContainerInterface> events = new ArrayList<>();
-        events.add(new SubscriberContainer(new GetWarehouseEvent(), 0));
+        events.add(new SubscriberContainer(new CreateWarehouseEvent(), 0));
         return events;
     }
 
     @Override
     public Event update(Event event) {
-        if (event instanceof GetWarehouseEvent){
-
-            return new GetWarehouseEvent(warehouseManager.getWarehouses());
+        if (event instanceof CreateWarehouseEvent){
+            Warehouse warehouse = new Warehouse(((CreateWarehouseEvent) event).getId());
+            warehouseManager.newWarehouse(warehouse);
+            return null;
         }
         return null;
     }

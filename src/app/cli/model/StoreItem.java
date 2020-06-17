@@ -1,9 +1,8 @@
-package app.warehouse.model;
+package app.cli.model;
 
 
-import app.warehouse.WarehouseManager;
-import app.warehouse.entity.Warehouse;
-import app.warehouse.events.CreateWarehouseEvent;
+import app.cli.CliManager;
+import app.warehouse.events.StoreItemEvent;
 import famework.annotation.AutoloadSubscriber;
 import famework.annotation.Inject;
 import famework.annotation.Service;
@@ -16,24 +15,28 @@ import java.util.ArrayList;
 
 @Service
 @AutoloadSubscriber
-public class Create implements Subscriber {
+public class StoreItem implements Subscriber {
 
     @Inject
-    WarehouseManager warehouseManager;
+    CliManager cliManager;
 
     @Override
     public ArrayList<SubscriberContainerInterface> getSubscribedEvents() {
         ArrayList<SubscriberContainerInterface> events = new ArrayList<>();
-        events.add(new SubscriberContainer(new CreateWarehouseEvent(), 0));
+        events.add(new SubscriberContainer(new StoreItemEvent(), 1000));
         return events;
     }
 
     @Override
     public Event update(Event event) {
-        if (event instanceof CreateWarehouseEvent){
-            Warehouse warehouse = new Warehouse(((CreateWarehouseEvent) event).getId());
-            warehouseManager.newWarehouse(warehouse);
-            return null;
+        if (event instanceof StoreItemEvent) {
+           if (((StoreItemEvent) event).getSuccess()) {
+               cliManager.setFlashMessage("Item gespeichert!");
+               cliManager.setPreviousScreen();
+               return null;
+           }
+            cliManager.showError("Konnte Item nicht speichern");
+
         }
         return null;
     }

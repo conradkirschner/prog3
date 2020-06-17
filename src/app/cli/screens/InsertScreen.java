@@ -41,7 +41,7 @@ public class InsertScreen implements Screen {
                 "[unter Druck (y/n)] [fest (y/n)]]");
         this.output.println("");
         this.output.println("Beispiele: o UnitisedCargo Beispielkunde 2000 86400 , n");
-        this.output.println("o MixedCargoLiquidBulkAndUnitised Beispielkunde 4000.50 86400 radioactive n y");
+        this.output.println("o MixedCargoLiquidBulkAndUnitised Beispielkunde 40.50 86400 radioactive n y y");
         this.output.println("--------------------------------------------");
     }
 

@@ -33,7 +33,7 @@ public class Create implements Subscriber {
         if (event instanceof CreateUserEvent){
             User user = new User(((CreateUserEvent) event).getUsername());
             userManager.newUser(user);
-            return null;
+            return new CreateUserEvent(user.getUsername(), true);
         }
         return null;
     }

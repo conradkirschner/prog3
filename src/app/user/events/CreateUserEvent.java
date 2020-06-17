@@ -11,9 +11,14 @@ public class CreateUserEvent implements Event {
         return name;
     }
     String username;
+    Boolean status;
 
     public CreateUserEvent(String username) {
         this.username = username;
+    }
+    public CreateUserEvent(String username, boolean status) {
+        this.username = username;
+        this.status = status;
     }
 
     /**
@@ -26,6 +31,10 @@ public class CreateUserEvent implements Event {
 
     public String getUsername() {
         return username;
+    }
+
+    public Boolean getStatus() {
+        return status;
     }
 
     public CreateUserEvent setUsername(String username) {
