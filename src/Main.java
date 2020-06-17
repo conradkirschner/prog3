@@ -14,7 +14,7 @@ public class Main {
         config.add(System.in);
         EventHandler eventHandler = kernel.run(config);
        eventHandler.push(new CliStartEvent());
-        GetUserEvent userEvent = (GetUserEvent) eventHandler.push(new GetUserEvent(null));
+        GetUserEvent userEvent = (GetUserEvent) eventHandler.push(new GetUserEvent());
 //
 //        System.out.println("Current Warehouse" + userEvent.getWarehouses());
 //

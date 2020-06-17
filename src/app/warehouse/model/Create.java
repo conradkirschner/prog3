@@ -24,7 +24,7 @@ public class Create implements Subscriber {
     @Override
     public ArrayList<SubscriberContainerInterface> getSubscribedEvents() {
         ArrayList<SubscriberContainerInterface> events = new ArrayList<>();
-        events.add(new SubscriberContainer(new CreateWarehouseEvent(""), 0));
+        events.add(new SubscriberContainer(new CreateWarehouseEvent(), 0));
         return events;
     }
 

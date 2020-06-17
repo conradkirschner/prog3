@@ -1,5 +1,6 @@
 package app.user.events;
 
+import famework.annotation.EventRegister;
 import famework.event.Event;
 
 public class DeleteUserEvent implements Event {
@@ -13,6 +14,14 @@ public class DeleteUserEvent implements Event {
 
     public DeleteUserEvent(String username) {
         this.username = username;
+    }
+
+    /**
+     * Klick to see subscriber
+     */
+    @EventRegister
+    public DeleteUserEvent() {
+        this.username = null;
     }
 
     public String getUsername() {

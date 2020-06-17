@@ -42,6 +42,6 @@ public class CliManager {
         }
         currentScreen.getContent();
         currentScreen.getUsage();
-        GetInputEvent getInput = (GetInputEvent) this.eventHandler.push(new GetInputEvent(""));
+        GetInputEvent getInput = (GetInputEvent) this.eventHandler.push(new GetInputEvent());
     }
 }

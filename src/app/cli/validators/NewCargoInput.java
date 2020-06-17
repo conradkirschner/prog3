@@ -76,7 +76,7 @@ public class NewCargoInput extends Object implements Validator {
                 this.error = "Bitte y oder n angeben für den Zustand der Zerbrechlichkeit";
             }
             this.type = input[0];
-            GetUserEvent getUserEvent = new GetUserEvent(null);
+            GetUserEvent getUserEvent = new GetUserEvent();
             getUserEvent.setFilterByName(input[1]);
             GetUserEvent user = (GetUserEvent) eventHandler.push(getUserEvent);
             if (user.getUsers().size() == 0) {
@@ -113,6 +113,9 @@ public class NewCargoInput extends Object implements Validator {
             }
             this.block = input[7];
             // type
+            /**
+             * @Todo move this to warehouse event
+             */
             switch (input[0]) {
                 case "LiquidBulkCargo":
                     this.item = new LiquidBulkCargo(

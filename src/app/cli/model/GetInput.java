@@ -33,7 +33,7 @@ public class GetInput implements Subscriber {
     @Override
     public ArrayList<SubscriberContainerInterface> getSubscribedEvents() {
         ArrayList<SubscriberContainerInterface> events = new ArrayList<>();
-        events.add(new SubscriberContainer(new GetInputEvent(""), 0));
+        events.add(new SubscriberContainer(new GetInputEvent(), 0));
         return events;
     }
 
@@ -45,6 +45,6 @@ public class GetInput implements Subscriber {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return new GetInputEvent("");
+        return new GetInputEvent();
     }
 }

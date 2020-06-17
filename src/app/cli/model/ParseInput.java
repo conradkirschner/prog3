@@ -57,7 +57,7 @@ public class ParseInput implements Subscriber {
     @Override
     public ArrayList<SubscriberContainerInterface> getSubscribedEvents() {
         ArrayList<SubscriberContainerInterface> events = new ArrayList<>();
-        events.add(new SubscriberContainer(new GetInputEvent(""), 100));
+        events.add(new SubscriberContainer(new GetInputEvent(), 100));
         return events;
     }
 
@@ -101,7 +101,7 @@ public class ParseInput implements Subscriber {
                Error error = null;
                Item item = this.newCargoInput.getItem();
                if (item != null) {
-                   StoreItemEvent storeItem = (StoreItemEvent) this.eventHandler.push(new StoreItemEvent(item,null));
+                   StoreItemEvent storeItem = (StoreItemEvent) this.eventHandler.push(new StoreItemEvent(item));
                     if (storeItem.getSuccess()) {
                         this.cliManager.setCurrentScreen(mainScreen);
                     }
@@ -135,7 +135,7 @@ public class ParseInput implements Subscriber {
                this.overviewScreen.setMode("customer");
                switch(this.searchInput.getType()) {
                    case "customer":
-                       GetUserEvent userList = (GetUserEvent) this.eventHandler.push(new GetUserEvent(null));
+                       GetUserEvent userList = (GetUserEvent) this.eventHandler.push(new GetUserEvent());
                        if (userList != null) {
                            ArrayList<User> customer = userList.getUsers();
 

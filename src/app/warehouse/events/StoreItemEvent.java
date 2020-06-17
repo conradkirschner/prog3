@@ -2,6 +2,7 @@ package app.warehouse.events;
 
 import app.warehouse.entity.Item;
 import app.warehouse.entity.Warehouse;
+import famework.annotation.EventRegister;
 import famework.event.Event;
 
 public class StoreItemEvent implements Event {
@@ -12,14 +13,35 @@ public class StoreItemEvent implements Event {
         return name;
     }
     Item item;
+    String inputString;
     Warehouse warehouse;
     boolean success;
 
 
+    /**
+     * Possible Event settings
+     */
+
+    public StoreItemEvent(String inputString) {
+          this.inputString = inputString;
+    }
+    public StoreItemEvent(Item item) {
+        this.item = item;
+    }
 
     public StoreItemEvent(Item item, Warehouse warehouse) {
         this.item = item;
         this.warehouse = warehouse;
+    }
+
+    /**
+     * Klick to see subscriber
+     */
+    @EventRegister
+    public StoreItemEvent() {
+        this.item = null;
+        this.warehouse = null;
+        this.inputString = null;
     }
 
     public Warehouse getWarehouse() {

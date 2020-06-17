@@ -23,7 +23,7 @@ public class Get implements Subscriber {
     @Override
     public ArrayList<SubscriberContainerInterface> getSubscribedEvents() {
         ArrayList<SubscriberContainerInterface> events = new ArrayList<>();
-        events.add(new SubscriberContainer(new GetUserEvent(null), 0));
+        events.add(new SubscriberContainer(new GetUserEvent(), 0));
         return events;
     }
 

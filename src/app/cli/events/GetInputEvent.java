@@ -1,5 +1,6 @@
 package app.cli.events;
 
+import famework.annotation.EventRegister;
 import famework.event.Event;
 
 public class GetInputEvent implements Event {
@@ -10,6 +11,14 @@ public class GetInputEvent implements Event {
 
     public GetInputEvent(String content) {
         this.content = content;
+    }
+
+    /**
+     * Klick to see subscriber
+     */
+    @EventRegister
+    public GetInputEvent() {
+        this.content = null;
     }
     public String getContent() {
         return content;

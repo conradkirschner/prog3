@@ -22,7 +22,7 @@ public class Delete implements Subscriber {
     @Override
     public ArrayList<SubscriberContainerInterface> getSubscribedEvents() {
         ArrayList<SubscriberContainerInterface> events = new ArrayList<>();
-        events.add(new SubscriberContainer(new DeleteUserEvent(""), 0));
+        events.add(new SubscriberContainer(new DeleteUserEvent(), 0));
         return events;
     }
 

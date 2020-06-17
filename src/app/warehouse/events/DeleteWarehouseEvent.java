@@ -1,5 +1,6 @@
 package app.warehouse.events;
 
+import famework.annotation.EventRegister;
 import famework.event.Event;
 
 public class DeleteWarehouseEvent implements Event {
@@ -13,6 +14,14 @@ public class DeleteWarehouseEvent implements Event {
 
     public DeleteWarehouseEvent(String id) {
         this.id = id;
+    }
+
+    /**
+     * Klick to see subscriber
+     */
+    @EventRegister
+    public DeleteWarehouseEvent() {
+        this.id = "";
     }
 
     public String getId() {

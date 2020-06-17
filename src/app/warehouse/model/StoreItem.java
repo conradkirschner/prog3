@@ -25,7 +25,7 @@ public class StoreItem implements Subscriber {
     @Override
     public ArrayList<SubscriberContainerInterface> getSubscribedEvents() {
         ArrayList<SubscriberContainerInterface> events = new ArrayList<>();
-        events.add(new SubscriberContainer(new StoreItemEvent(null, null), 10));
+        events.add(new SubscriberContainer(new StoreItemEvent(), 10));
         return events;
     }
 
