@@ -14,7 +14,14 @@ public class StoragePlace {
         this.items = new ArrayList<Item>();
     }
 
-    public Item getItem(String type) {
+    public Item getItemById(String itemId) {
+        for(Item item:this.items) {
+            if (itemId == null) return item;
+            if (item.getId().equals(itemId)) return item;
+        }
+        return null;
+    }
+    public Item getItemByType(String type) {
         for(Item item:this.items) {
             if (type == null) return item;
             if (item.type.equals(type)) return item;

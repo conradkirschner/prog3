@@ -2,6 +2,7 @@ package app.warehouse.entity;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Warehouse {
     private String id;
@@ -19,10 +20,22 @@ public class Warehouse {
         return this.id;
     }
 
+    public ArrayList<Item> updateItem(String id) {
+        ArrayList<Item> items = new ArrayList<>();
+        for(StoragePlace storagePlace: this.storagePlaces) {
+            Item found = storagePlace.getItemById(id);
+            if(found != null) {
+                found.setInspectDate(new Date());
+                items.add(found);
+                break;
+            }
+        }
+        return items;
+    }
     public ArrayList<Item> getItems(String type) {
         ArrayList<Item> items = new ArrayList<>();
         for(StoragePlace storagePlace: this.storagePlaces) {
-            Item found = storagePlace.getItem(type);
+            Item found = storagePlace.getItemByType(type);
             if(found != null) {
                 items.add(found);
                 break;
@@ -55,5 +68,15 @@ public class Warehouse {
             return item;
         }
         return null;
+    }
+
+    public boolean deleteItem(String id) {
+        for(StoragePlace storagePlace: this.storagePlaces) {
+            boolean found = storagePlace.removeItem(id);
+            if (found) {
+                return true;
+            }
+        }
+        return false;
     }
 }

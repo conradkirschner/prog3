@@ -61,7 +61,6 @@ public class OverviewScreen implements Screen {
             st.addRow(cargo[0]);
         }
         st.print();
-        reset();
     }
 
     private void showHazard() {

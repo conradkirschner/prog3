@@ -11,6 +11,11 @@ public class DeleteUserEvent implements Event {
         return name;
     }
     String username;
+    boolean success;
+
+    public DeleteUserEvent(boolean success) {
+        this.success = success;
+    }
 
     public DeleteUserEvent(String username) {
         this.username = username;
@@ -26,5 +31,9 @@ public class DeleteUserEvent implements Event {
 
     public String getUsername() {
         return username;
+    }
+
+    public boolean getSuccess() {
+        return success;
     }
 }

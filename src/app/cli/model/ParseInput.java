@@ -4,14 +4,15 @@ package app.cli.model;
 import app.cli.CliManager;
 import app.cli.events.GetInputEvent;
 import app.cli.screens.*;
-import app.cli.validators.NewCargoInput;
-import app.cli.validators.NewUserInput;
-import app.cli.validators.SearchInput;
+import app.cli.validators.*;
 import app.user.entity.User;
 import app.user.events.CreateUserEvent;
+import app.user.events.DeleteUserEvent;
 import app.user.events.GetUserEvent;
 import app.warehouse.entity.Item;
+import app.warehouse.events.DeleteItemEvent;
 import app.warehouse.events.GetItemEvent;
+import app.warehouse.events.UpdateItemEvent;
 import famework.annotation.AutoloadSubscriber;
 import famework.annotation.Inject;
 import famework.annotation.Service;
@@ -49,6 +50,12 @@ public class ParseInput implements Subscriber {
     SearchInput searchInput;
 
     @Inject
+    DeleteInput deleteInput;
+
+    @Inject
+    UpdateInput updateInput;
+
+    @Inject
     CliManager cliManager;
 
     @Inject
@@ -64,32 +71,29 @@ public class ParseInput implements Subscriber {
     @Override
     public Event update(Event event) {
        GetInputEvent getInputEvent = (GetInputEvent) event;
-        String input = getInputEvent.getContent();
-        Screen screen = cliManager.getCurrentScreen();
+       String input = getInputEvent.getContent();
+       Screen screen = cliManager.getCurrentScreen();
        if (screen instanceof MainScreen) {
-           if (input.length() > 0 && input.charAt(0) == ':') {
-               switch (input.charAt(1)) {
-                   case 'c':
-                       cliManager.setCurrentScreen(insertScreen);
-                       break;
-                   case 'd':
-                       cliManager.setCurrentScreen(deleteScreen);
-                       break;
-                   case 'r':
-                       cliManager.setCurrentScreen(overviewScreen);
-                       break;
-                   case 'u':
-                       cliManager.setCurrentScreen(updateScreen);
-                       break;
-                   case 'p':
-                       cliManager.setCurrentScreen(mainScreen);
-                       break;
+           String[] inputs = input.split(":");
+           if (inputs.length == 2) {
+               if (inputs[1].equals("c")) {
+                cliManager.setCurrentScreen(insertScreen);
+               }
+               if (inputs[1].equals("d")) {
+                cliManager.setCurrentScreen(deleteScreen);
+               }
+               if (inputs[1].equals("r")) {
+                cliManager.setCurrentScreen(overviewScreen);
+               }
+               if (inputs[1].equals("u")) {
+                cliManager.setCurrentScreen(updateScreen);
+               }
+               if (inputs[1].equals("p")) {
+                cliManager.setCurrentScreen(overviewScreen);
                }
            }
-//           else if (input.equals("config")) {
-//               cliManager.setCurrentScreen(configScreen);
-//           }
-       } else if(screen instanceof InsertScreen) {
+       }
+       else if(screen instanceof InsertScreen) {
            String[] inputs = input.split(" ");
            if (this.newUserInput.isValid(inputs)) {
                this.eventHandler.push(new CreateUserEvent(this.newUserInput.get()));
@@ -101,27 +105,9 @@ public class ParseInput implements Subscriber {
                return new GetInputEvent(((GetInputEvent) event).getContent(), true);
            }
            return null;
-               //
-//               AllWarehouses warehouses = (AllWarehouses) this.eventStream.pushData("warehouse-manager:get-all", "");
-//               for (Warehouse warehouse: warehouses.getWarehouses()) {
-//                   Event event = this.eventStream.pushData("warehouse:store-item", warehouse.getWarehouseName() + "$$" + this.newCargoInput.getData());
-//                   if (!(event instanceof Error)) { // no error means success
-//                       error = null;
-//                       break;
-//                   } else {
-//                       error = (Error) event;
-//                   }
-//               }
-//               if (error != null ){
-//                   this.insertScreen.setMessage(error.getMessage());
-//                   this.views.get("input:content").run();
-//                   return;
-//               }
-               /*
-                * push success message then return to mainPage
-                */
 
-       } else if(screen instanceof OverviewScreen) {
+       }
+       else if (screen instanceof OverviewScreen) {
            String[] inputs = input.split(" ");
            if (this.searchInput.isValid(inputs)) {
                this.overviewScreen.rows = null;
@@ -183,8 +169,45 @@ public class ParseInput implements Subscriber {
                this.cliManager.setPreviousScreen();
            }
        }
+       else if (screen instanceof DeleteScreen) {
+           String[] inputs = input.split(" ");
+           if (this.deleteInput.isValid(inputs)) {
+               String username = this.deleteInput.getUsername();
+               String position = this.deleteInput.getPosition();
+               if (username != null) {
+                   DeleteUserEvent userDelete = (DeleteUserEvent) eventHandler.push(new DeleteUserEvent(username));
+                   if (userDelete.getSuccess()) {
+                       this.cliManager.setFlashMessage("User \"" + username + "\" erfolgreich gelöscht");
+                       this.cliManager.setPreviousScreen();
+                   }
+                 return null;
+               }
+               DeleteItemEvent itemDelete = (DeleteItemEvent) eventHandler.push(new DeleteItemEvent(position));
 
+               if (itemDelete.getSuccess()) {
+                   this.cliManager.setFlashMessage("Item \"" + position + "\" erfolgreich gelöscht");
+                   this.cliManager.setPreviousScreen();
+                   return null;
+               }
+               return null;
+           } else {
+               this.cliManager.setFlashMessage("Going back");
+               this.cliManager.setPreviousScreen();
+           }
+       }
+       else if (screen instanceof UpdateScreen) {
+           String[] inputs = input.split(" ");
+           if (this.updateInput.isValid(inputs)) {
+                this.eventHandler.push(new UpdateItemEvent(this.updateInput.getId()));
+           } else {
+               this.cliManager.setFlashMessage("Going back");
+               this.cliManager.setPreviousScreen();
+           }
+       }
 
-        return null;
+       if (screen instanceof MainScreen && input.equals("")) {
+           cliManager.stop();
+       }
+       return null;
     }
 }

@@ -11,7 +11,12 @@ public class SubscriberContainer implements SubscriberContainerInterface {
 
     @Override
     public Event getSubscribedEvent() {
-        return (Event) subscribed;
+        try {
+            return (Event) subscribed;
+        } catch (ClassCastException e) {
+            System.out.println("Did you set the correct Events to the Subscriber?");
+        }
+        return null;
     }
 
     @Override

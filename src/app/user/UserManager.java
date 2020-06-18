@@ -37,8 +37,8 @@ public class UserManager {
         this.users.add(user);
     }
 
-    public void removeUser(String username) {
-      this.users.remove(findUserByName(username));
+    public boolean removeUser(String username) {
+        return this.users.remove(findUserByName(username));
     }
 
     private User findUserByName(String username) {

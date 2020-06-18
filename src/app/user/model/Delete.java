@@ -30,8 +30,7 @@ public class Delete implements Subscriber {
     public Event update(Event event) {
         if (event instanceof DeleteUserEvent){
             String username = ((DeleteUserEvent) event).getUsername();
-            userManager.removeUser(username);
-            return null;
+            return new DeleteUserEvent(userManager.removeUser(username));
         }
         return null;
     }

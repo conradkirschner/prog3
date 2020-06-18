@@ -34,7 +34,7 @@ public class DeleteScreen implements Screen {
     public void getUsage() {
         this.output.println("--------------------------------------------");
         this.output.println(" \uF0B7 [Kundenname] löscht den Kunden");
-        this.output.println(" \uF0B7 [Lagerposition] löscht das Frachtstüc");
+        this.output.println(" \uF0B7 [Lagerposition] löscht das Frachtstück");
         this.output.println("--------------------------------------------");
     }
 

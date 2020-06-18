@@ -23,6 +23,7 @@ public class CliManager {
     private Screen currentScreen;
     private String flashMessage;
 
+    private boolean active;
     private EventHandler eventHandler;
 
     public CliManager(ConfigBag configBag, PrintStream printStream, EventHandler eventHandler) {
@@ -30,6 +31,7 @@ public class CliManager {
         this.printStream = printStream;
         this.eventHandler = eventHandler;
         this.history = new ArrayList<>();
+        this.active = true;
     }
     public Screen getCurrentScreen() {
         int index = history.size() -1;
@@ -74,5 +76,17 @@ public class CliManager {
     }
     public void setFlashMessage(String flashMessage) {
         this.flashMessage = flashMessage;
+    }
+
+    public void stop() {
+        this.active = false;
+    }
+
+    public void start() {
+        this.active = true;
+    }
+
+    public boolean shouldRun() {
+        return this.active;
     }
 }
