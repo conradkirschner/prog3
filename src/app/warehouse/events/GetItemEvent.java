@@ -18,7 +18,7 @@ public class GetItemEvent implements Event {
     Warehouse warehouse;
     boolean success;
     String type;
-    boolean hazardsFilter;
+    Boolean hazardsFilter;
 
 
 
@@ -30,7 +30,7 @@ public class GetItemEvent implements Event {
         this.items = items;
     }
 
-    public GetItemEvent(boolean hazardsFilter) {
+    public GetItemEvent(Boolean hazardsFilter) {
         this.hazardsFilter = hazardsFilter;
     }
 
@@ -66,7 +66,7 @@ public class GetItemEvent implements Event {
         return success;
     }
 
-    public boolean isHazardsFilter() {
+    public Boolean isHazardsFilter() {
         return hazardsFilter;
     }
 

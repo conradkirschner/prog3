@@ -1,20 +1,40 @@
 import app.cli.events.CliStartEvent;
+import app.persistence.events.LoadApplicationEvent;
 import app.user.events.GetUserEvent;
 import famework.Kernel;
 import famework.event.EventHandler;
+import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
-public class Main {
-    public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException {
+public class Main  extends Application {
 
-            Kernel kernel = new Kernel();
+    public void start(Stage stage) throws Exception {
+        Kernel kernel = new Kernel();
         ArrayList<Object> config = new ArrayList<>();
         config.add(System.out);
         config.add(System.in);
         EventHandler eventHandler = kernel.run(config);
-       eventHandler.push(new CliStartEvent());
+        eventHandler.push(new LoadApplicationEvent("JOS"));
+
+        eventHandler.push(new CliStartEvent());
+//        Platform.runLater(new Runnable(){
+//            @Override
+//            public void run() {
+//                eventHandler.push(new GUIStartEvent());
+//            }
+//        });
+       Platform.runLater(new Runnable(){
+            @Override
+            public void run() {
+            }
+        });
+
+//        new Thread(() -> eventHandler.push(new CliStartEvent())).start();
         GetUserEvent userEvent = (GetUserEvent) eventHandler.push(new GetUserEvent());
+
 //
 //        System.out.println("Current Warehouse" + userEvent.getWarehouses());
 //

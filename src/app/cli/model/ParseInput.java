@@ -5,6 +5,7 @@ import app.cli.CliManager;
 import app.cli.events.GetInputEvent;
 import app.cli.screens.*;
 import app.cli.validators.*;
+import app.persistence.events.SaveApplicationEvent;
 import app.user.entity.User;
 import app.user.events.CreateUserEvent;
 import app.user.events.DeleteUserEvent;
@@ -41,6 +42,9 @@ public class ParseInput implements Subscriber {
     UpdateScreen updateScreen;
 
     @Inject
+    PersistenceScreen persistenceScreen;
+
+    @Inject
     NewUserInput newUserInput;
 
     @Inject
@@ -54,6 +58,9 @@ public class ParseInput implements Subscriber {
 
     @Inject
     UpdateInput updateInput;
+
+    @Inject
+    PersistenceInput persistenceInput;
 
     @Inject
     CliManager cliManager;
@@ -89,7 +96,7 @@ public class ParseInput implements Subscriber {
                 cliManager.setCurrentScreen(updateScreen);
                }
                if (inputs[1].equals("p")) {
-                cliManager.setCurrentScreen(overviewScreen);
+                cliManager.setCurrentScreen(persistenceScreen);
                }
            }
        }
@@ -204,8 +211,23 @@ public class ParseInput implements Subscriber {
                this.cliManager.setPreviousScreen();
            }
        }
+       else if (screen instanceof PersistenceScreen) {
+           String[] inputs = input.split(" ");
+           if (persistenceInput.isValid(inputs)) {
+               SaveApplicationEvent saveApplication = (SaveApplicationEvent) this.eventHandler.push(new SaveApplicationEvent(this.persistenceInput.getType()));
+               if (saveApplication.getStatus()) {
+                   this.cliManager.setFlashMessage("Erfolgreich gespeichert");
+                   this.cliManager.setPreviousScreen();
+               } else {
+                   this.cliManager.setFlashMessage("Speichern gescheitert!");
+               }
 
-       if (screen instanceof MainScreen && input.equals("")) {
+           } else {
+               this.cliManager.setFlashMessage("Going back");
+               this.cliManager.setPreviousScreen();
+           }
+       }
+           if (screen instanceof MainScreen && input.equals("")) {
            cliManager.stop();
        }
        return null;

@@ -21,12 +21,14 @@ public class Item implements Cargo {
     protected ZonedDateTime storageDate;
     protected Date inspectDate;
     protected String id;
+    protected String warehouse;
 
     public Item(
             BigDecimal weight,
             Customer owner,
             Collection<Hazard> hazards,
-            ZonedDateTime expireDate
+            ZonedDateTime expireDate,
+            String warehouse
     ) {
         if (owner == null ) throw new IllegalArgumentException("Owner darf nicht null sein");
         UUID uuid = UUID.randomUUID();
@@ -39,6 +41,7 @@ public class Item implements Cargo {
         this.storageDate = ZonedDateTime.now();
         this.inspectDate = new Date();
         this.id = uuid.toString();
+        this.warehouse = warehouse;
     }
 
     @Override
@@ -96,5 +99,12 @@ public class Item implements Cargo {
 
     public String getId() {
         return this.id;
+    }
+
+    public void setWarehouse(String warehouse) {
+        this.warehouse = warehouse;
+    }
+    public String getWarehouse() {
+        return this.warehouse;
     }
 }

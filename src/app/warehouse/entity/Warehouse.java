@@ -32,6 +32,15 @@ public class Warehouse {
         }
         return items;
     }
+
+    public ArrayList<Item> getItems() {
+        ArrayList<Item> items = new ArrayList<>();
+        for(StoragePlace storagePlace: this.storagePlaces) {
+            ArrayList<Item> found = storagePlace.getItems();
+            items.addAll(found);
+        }
+        return items;
+    }
     public ArrayList<Item> getItems(String type) {
         ArrayList<Item> items = new ArrayList<>();
         for(StoragePlace storagePlace: this.storagePlaces) {
@@ -43,6 +52,19 @@ public class Warehouse {
         }
         return items;
     }
+
+    public ArrayList<Item> getItemByType(String type) {
+        ArrayList<Item> items = new ArrayList<>();
+        for(StoragePlace storagePlace: this.storagePlaces) {
+            Item found = storagePlace.getItemByType(type);
+            if(found != null) {
+                items.add(found);
+                break;
+            }
+        }
+        return items;
+    }
+
     public ArrayList<Item> getItems(boolean type) {
         ArrayList<Item> items = new ArrayList<>();
         for(StoragePlace storagePlace: this.storagePlaces) {
@@ -59,6 +81,7 @@ public class Warehouse {
         boolean stored = false;
         for (StoragePlace storagePlace: this.storagePlaces) {
             if (storagePlace.getLeftSpace().compareTo(item.weight) >= 0) {
+                item.setWarehouse(this.getId());
                 storagePlace.setItem(item);
                 stored=true;
                 break;

@@ -1,10 +1,15 @@
 package famework.event;
 
+import java.util.ArrayList;
+
 public class EventHandler {
     private EventRegistry registry;
+    private ArrayList<Event> history;
+
 
     public EventHandler() {
         this.registry = new EventRegistry();
+        this.history = new ArrayList<>();
     }
     public void registerListener(Listener listener){
         this.registry.addListener(listener);
@@ -23,6 +28,10 @@ public class EventHandler {
     }
 
     public Event push(Event event) {
+        history.add(event);
         return this.registry.push(event);
+    }
+    public ArrayList<Event> getHistory() {
+        return this.history;
     }
 }

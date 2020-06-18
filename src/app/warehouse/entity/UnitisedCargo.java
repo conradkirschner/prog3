@@ -4,10 +4,8 @@ import storageContract.administration.Customer;
 import storageContract.cargo.Hazard;
 
 import java.math.BigDecimal;
-import java.time.Duration;
 import java.time.ZonedDateTime;
 import java.util.Collection;
-import java.util.Date;
 
 public class UnitisedCargo extends Item implements storageContract.cargo.UnitisedCargo {
 
@@ -18,9 +16,10 @@ public class UnitisedCargo extends Item implements storageContract.cargo.Unitise
             Customer owner,
             Collection<Hazard> hazards,
             ZonedDateTime expireDate,
+            String warehouse,
             Boolean fragile
     ) {
-        super( weight, owner, hazards, expireDate);
+        super( weight, owner, hazards, expireDate, warehouse);
         this.fragile = fragile;
         this.type = "UnitisedCargo";
     }

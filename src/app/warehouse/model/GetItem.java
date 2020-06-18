@@ -37,9 +37,13 @@ public class GetItem implements Subscriber {
             ArrayList<Warehouse> warehouses = warehouseManager.getWarehouses();
             for (Warehouse warehouse:warehouses) {
                 String type = ((GetItemEvent) event).getType();
-                boolean hazardFilter = ((GetItemEvent) event).isHazardsFilter();
-                if (type == null) {
+                Boolean hazardFilter = ((GetItemEvent) event).isHazardsFilter();
+                if (hazardFilter != null) {
                     items.addAll(warehouse.getItems(hazardFilter));
+                    continue;
+                }
+                if (type == null) {
+                    items.addAll(warehouse.getItems());
                     continue;
                 }
                 items.addAll(warehouse.getItems(type));

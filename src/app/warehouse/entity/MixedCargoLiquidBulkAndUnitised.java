@@ -15,10 +15,11 @@ public class MixedCargoLiquidBulkAndUnitised extends LiquidBulkCargo implements 
             Customer owner,
             Collection<Hazard> hazards,
             ZonedDateTime expireDate,
+            String warehouse,
             Boolean pressurized,
             Boolean fragile
     ) {
-        super( weight, owner, hazards, expireDate, pressurized);
+        super( weight, owner, hazards, expireDate, warehouse, pressurized);
         this.type =  "MixedCargoLiquidBulkAndUnitised";
         this.fragile = fragile;
     }

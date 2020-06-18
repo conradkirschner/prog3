@@ -4,10 +4,7 @@ package app.warehouse.model;
 import app.cli.events.GetInputEvent;
 import app.user.entity.User;
 import app.user.events.GetUserEvent;
-import app.warehouse.entity.Item;
-import app.warehouse.entity.LiquidBulkCargo;
-import app.warehouse.entity.MixedCargoLiquidBulkAndUnitised;
-import app.warehouse.entity.UnitisedCargo;
+import app.warehouse.entity.*;
 import app.warehouse.events.StoreItemEvent;
 import famework.annotation.AutoloadSubscriber;
 import famework.annotation.Inject;
@@ -58,6 +55,7 @@ public class ParseCliInput implements Subscriber {
             boolean pressure = parsePressure(input[5]);
             boolean fragile = parseFragile(input[6]);
             boolean block = parseBlock(input[7]);
+            String warehouse = null;
 
             switch (input[0]) {
                 case "LiquidBulkCargo":
@@ -66,6 +64,7 @@ public class ParseCliInput implements Subscriber {
                             user,
                             hazards,
                             storeUntil,
+                            warehouse,
                             pressure
                     );
                     break;
@@ -74,7 +73,8 @@ public class ParseCliInput implements Subscriber {
                             weight,
                             user,
                             hazards,
-                            storeUntil
+                            storeUntil,
+                            warehouse
                     );
                     break;
                 case "MixedCargoLiquidBulkAndUnitised":
@@ -83,6 +83,7 @@ public class ParseCliInput implements Subscriber {
                             user,
                             hazards,
                             storeUntil,
+                            warehouse,
                             pressure,
                             fragile
                     );
@@ -93,6 +94,7 @@ public class ParseCliInput implements Subscriber {
                             user,
                             hazards,
                             storeUntil,
+                            warehouse,
                             fragile
                     );
                     break;
