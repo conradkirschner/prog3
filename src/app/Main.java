@@ -1,3 +1,5 @@
+package app;
+
 import app.cli.events.CliStartEvent;
 import app.persistence.events.LoadApplicationEvent;
 import app.user.events.GetUserEvent;
