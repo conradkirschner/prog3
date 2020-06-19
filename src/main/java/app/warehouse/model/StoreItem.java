@@ -34,14 +34,23 @@ public class StoreItem implements Subscriber {
         if (event instanceof StoreItemEvent) {
             StoreItemEvent itemEvent = ((StoreItemEvent) event);
             StoreItemEvent response = new StoreItemEvent(itemEvent.getItem(), itemEvent.getWarehouse());
-
+            Item item = (Item) itemEvent.getItem();
             Warehouse selectedWarehouse = itemEvent.getWarehouse();
 
             if (selectedWarehouse != null) {
                 return new StoreItemEvent(selectedWarehouse.storeItem(itemEvent.getItem()), itemEvent.getWarehouse());
             }
+
             ArrayList<Warehouse> warehouses = warehouseManager.getWarehouses();
             for (Warehouse warehouse:warehouses) {
+                if(item.getWarehouse() != null && selectedWarehouse == null) {
+                    if (item.getWarehouse().equals(warehouse.getId())) {
+                        Item stored = warehouse.storeItem(itemEvent.getItem());
+                        return new StoreItemEvent(stored, warehouse, true);
+
+                    }
+                    continue;
+                }
                 Item stored = warehouse.storeItem(itemEvent.getItem());
                 if (stored != null) {
                    return new StoreItemEvent(stored, warehouse, true);

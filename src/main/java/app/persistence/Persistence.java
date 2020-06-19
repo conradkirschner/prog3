@@ -10,13 +10,13 @@ import app.warehouse.entity.Warehouse;
 import app.warehouse.events.CreateWarehouseEvent;
 import app.warehouse.events.GetItemEvent;
 import app.warehouse.events.GetWarehouseEvent;
+import app.warehouse.events.StoreItemEvent;
 import famework.annotation.Inject;
 import famework.annotation.Service;
 import famework.configReader.ConfigBag;
 import famework.event.EventHandler;
 
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
 
@@ -63,35 +63,24 @@ public class Persistence {
         byte[] itemBytes = new byte[0];
         byte[] userBytes = new byte[0];
         byte[] warehouseBytes = new byte[0];
-        try {
-            itemBytes = Files.readAllBytes(new File(runDir + savePathItems).toPath());
-            userBytes = Files.readAllBytes(new File(runDir + savePathUser).toPath());
-            warehouseBytes = Files.readAllBytes(new File(runDir + savePathWarehouse).toPath());
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
-        ArrayList<Item>  items = (ArrayList<Item>) load.loadFromJOS(itemBytes);
-        ArrayList<User>  users = (ArrayList<User>) load.loadFromJOS(userBytes);
-        ArrayList<String>  warehouses = (ArrayList<String>) load.loadFromJOS(warehouseBytes);
+        userBytes = readBytes(runDir + savePathUser);
+        warehouseBytes = readBytes(runDir + savePathWarehouse);
+        itemBytes = readBytes(runDir + savePathItems);
+
+
+        // bullet proofed loading
+        ArrayList<User>  users =(userBytes==null)?new ArrayList<User>(): (ArrayList<User>) load.loadFromJOS(userBytes);
+        ArrayList<String>  warehouses =(warehouseBytes==null)?new ArrayList<String>(): (ArrayList<String>) load.loadFromJOS(warehouseBytes);
+        ArrayList<Item>  items =(itemBytes==null)?new ArrayList<Item>(): (ArrayList<Item>) load.loadFromJOS(itemBytes);
+
         for (User user:users) {
             CreateUserEvent createUser = (CreateUserEvent) this.eventHandler.push(new CreateUserEvent(user.getUsername()));
         }
         for (String warehouseId:warehouses) {
             CreateWarehouseEvent createWarehouse = (CreateWarehouseEvent) this.eventHandler.push(new CreateWarehouseEvent(warehouseId));
         }
-        GetWarehouseEvent getWarehouse = (GetWarehouseEvent) this.eventHandler.push(new GetWarehouseEvent());
-        ArrayList<Warehouse> selectedWarehouses = getWarehouse.getWarehouses();
-
-        if (selectedWarehouses !=  null) {
-
-            for (Item item:items) {
-                for (Warehouse warehouse: selectedWarehouses) {
-                    if (warehouse.getId().equals(item.getWarehouse())) {
-                        warehouse.storeItem(item);
-                    }
-                }
-            }
+        for (Item item:items) {
+            StoreItemEvent storeItem = (StoreItemEvent) this.eventHandler.push(new StoreItemEvent(item));
         }
 
         return true;
@@ -103,5 +92,15 @@ public class Persistence {
 
     public void saveAsJBP() {
 
+    }
+
+    private byte[] readBytes(String path) {
+        byte[] bytes;
+        try {
+            bytes = Files.readAllBytes(new File(path).toPath());
+        } catch (Exception exception) {
+            bytes = null;
+        }
+        return bytes;
     }
 }

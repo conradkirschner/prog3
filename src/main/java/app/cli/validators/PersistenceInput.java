@@ -1,6 +1,5 @@
 package app.cli.validators;
 
-import app.cli.validators.Validator;
 import famework.annotation.Service;
 
 @Service
@@ -18,7 +17,7 @@ public class PersistenceInput implements Validator {
             type = "JBP";
             return true;
         }
-        return true;
+        return false;
     }
 
     public String getMessage() {

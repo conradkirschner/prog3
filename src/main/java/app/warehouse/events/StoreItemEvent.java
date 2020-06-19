@@ -12,10 +12,10 @@ public class StoreItemEvent implements Event {
     public String getName() {
         return name;
     }
-    Item item;
-    String inputString;
-    Warehouse warehouse;
-    boolean success;
+    private Item item;
+    private String inputString;
+    private Warehouse warehouse;
+    private boolean success;
 
 
     /**
@@ -27,6 +27,7 @@ public class StoreItemEvent implements Event {
     }
     public StoreItemEvent(Item item) {
         this.item = item;
+        this.warehouse = null;
     }
 
     public StoreItemEvent(Item item, Warehouse warehouse) {

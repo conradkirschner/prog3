@@ -1,6 +1,7 @@
 package app;
 
-import app.gui.events.GUIStartEvent;
+import app.cli.events.CliStartEvent;
+import app.persistence.events.LoadApplicationEvent;
 import app.user.events.GetUserEvent;
 import famework.Kernel;
 import famework.event.EventHandler;
@@ -17,9 +18,9 @@ public class Main  extends Application {
         config.add(System.out);
         config.add(System.in);
         EventHandler eventHandler = kernel.run(config);
-//        eventHandler.push(new LoadApplicationEvent("JOS"));
+        eventHandler.push(new LoadApplicationEvent("JOS"));
 
-        eventHandler.push(new GUIStartEvent());
+        eventHandler.push(new CliStartEvent());
 //        Platform.runLater(new Runnable(){
 //            @Override
 //            public void run() {

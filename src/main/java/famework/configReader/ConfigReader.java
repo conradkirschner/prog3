@@ -9,7 +9,7 @@ public class ConfigReader {
     public Properties getConfig(Class clazz) {
         String[] packageName = clazz.getName().split("\\.");
 
-        String path = resolveClassLocation(clazz) + "config/" + packageName[1] + ".properties";
+        String path = "config/" + packageName[1] + ".properties";
         Properties config = new Properties();
         try {
             InputStream input = new FileInputStream(path);

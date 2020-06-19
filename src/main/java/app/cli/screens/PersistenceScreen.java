@@ -1,7 +1,6 @@
 package app.cli.screens;
 
 
-import app.cli.screens.Screen;
 import famework.annotation.Service;
 
 import java.io.PrintStream;
@@ -22,8 +21,13 @@ public class PersistenceScreen implements Screen {
     @Override
     public void getUsage() {
         this.output.println("--------------------------------------------");
+
         this.output.println("[y] Speichern als JOS");
+        this.output.println("[y itemID] Speichert Item als JOS");
+
         this.output.println("[x] Speichern als JBP");
+        this.output.println("[x itemID] Speichert Item als JBP");
+
         this.output.println("--------------------------------------------");
     }
 }

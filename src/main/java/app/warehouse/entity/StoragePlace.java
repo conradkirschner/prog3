@@ -1,7 +1,5 @@
 package app.warehouse.entity;
 
-import app.warehouse.entity.Item;
-
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
@@ -43,8 +41,13 @@ public class StoragePlace {
     }
 
     public void setItem(app.warehouse.entity.Item item) {
-
-       item.setId("#" + item.getId() );
+        if (item.getId() != null) {
+            if (item.getId().charAt(0) == '#') {
+                item.setId("#" + item.getId() );
+            }
+        } else {
+            item.setId("#" + item.getId() );
+        }
         this.items.add(item);
     }
 

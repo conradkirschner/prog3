@@ -60,7 +60,7 @@ public class CliManager {
             int index = this.history.size() - 1;
             this.history.remove(index);
             this.setCurrentScreen(this.history.get(-1));
-        } catch (ArrayIndexOutOfBoundsException e) {
+        } catch (IndexOutOfBoundsException  e) {
             this.setCurrentScreen(mainScreen);
         }
     }
