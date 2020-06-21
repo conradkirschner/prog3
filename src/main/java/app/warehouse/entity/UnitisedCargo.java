@@ -1,7 +1,6 @@
 package app.warehouse.entity;
 
-import app.warehouse.entity.Item;
-import storageContract.administration.Customer;
+import app.user.entity.User;
 import storageContract.cargo.Hazard;
 
 import java.math.BigDecimal;
@@ -14,7 +13,7 @@ public class UnitisedCargo extends Item implements storageContract.cargo.Unitise
 
     public UnitisedCargo(
             BigDecimal weight,
-            Customer owner,
+            User owner,
             Collection<Hazard> hazards,
             ZonedDateTime expireDate,
             String warehouse,

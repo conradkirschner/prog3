@@ -2,7 +2,7 @@ package app.persistence.helper;
 
 import famework.annotation.Service;
 
-import java.beans.XMLEncoder;
+import javax.xml.bind.JAXB;
 import java.io.*;
 
 @Service
@@ -35,29 +35,15 @@ public class Store {
         return false;
     }
 
-    public boolean storeAsJOB(Object obj,String path) {
-        File saveFile = new File(path );
+    public boolean storeAsJBP(Object obj,String path) {
+        File saveFile = new File(path);
         saveFile.delete();
         try {
             saveFile.getParentFile().mkdirs();
             saveFile.createNewFile();
+            JAXB.marshal( obj, saveFile );
         } catch (IOException e) {
             e.printStackTrace();
-        }
-
-        XMLEncoder enc = null;
-
-        try
-        {
-            enc = new XMLEncoder( new FileOutputStream(path) );
-            enc.writeObject(obj );
-        }
-        catch ( IOException e ) {
-            e.printStackTrace();
-        }
-        finally {
-            if ( enc != null )
-                enc.close();
         }
         return true;
     }

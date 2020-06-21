@@ -2,10 +2,8 @@ package app.persistence.helper;
 
 import famework.annotation.Service;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.ObjectInput;
-import java.io.ObjectInputStream;
+import javax.xml.bind.JAXB;
+import java.io.*;
 
 @Service
 public class Load {
@@ -28,5 +26,10 @@ public class Load {
         } catch (IOException ignored) {
         }
         return obj;
+    }
+    public Object loadFromJBP(String path, Class clazz) {
+        File saveFile = new File(path);
+        Object objClass = JAXB.unmarshal(saveFile, clazz);
+        return objClass;
     }
 }

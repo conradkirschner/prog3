@@ -2,6 +2,7 @@ package app;
 
 import app.cli.events.CliStartEvent;
 import app.persistence.events.LoadApplicationEvent;
+import app.user.events.CreateUserEvent;
 import app.user.events.GetUserEvent;
 import famework.Kernel;
 import famework.event.EventHandler;
@@ -19,6 +20,7 @@ public class Main  extends Application {
         config.add(System.in);
         EventHandler eventHandler = kernel.run(config);
         eventHandler.push(new LoadApplicationEvent("JOS"));
+        eventHandler.push(new CreateUserEvent("Beispielkunde"));
 
         eventHandler.push(new CliStartEvent());
 //        Platform.runLater(new Runnable(){

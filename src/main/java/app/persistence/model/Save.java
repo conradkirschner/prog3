@@ -37,7 +37,7 @@ public class Save implements Subscriber {
                 return new SaveApplicationEvent(true);
             }
             if (saveEvent.getType().equals("JBP")) {
-                persistence.saveAsJOB();
+                persistence.saveAsJBP();
                 return new SaveApplicationEvent(true);
             }
         }

@@ -1,9 +1,10 @@
 package app.warehouse.entity;
 
-import storageContract.administration.Customer;
+import app.user.entity.User;
 import storageContract.cargo.Cargo;
 import storageContract.cargo.Hazard;
 
+import javax.xml.bind.annotation.XmlElement;
 import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.ZonedDateTime;
@@ -12,10 +13,12 @@ import java.util.Date;
 import java.util.UUID;
 
 public class Item implements Cargo {
+    @XmlElement(name="type")
     public String type = "Item";
-
+    @XmlElement(name="weight")
     protected BigDecimal weight;
-    protected Customer owner;
+    @XmlElement(name="user")
+    protected User user;
     protected Collection<Hazard> hazards;
     protected ZonedDateTime expireDate;
     protected ZonedDateTime storageDate;
@@ -25,17 +28,17 @@ public class Item implements Cargo {
 
     public Item(
             BigDecimal weight,
-            Customer owner,
+            User user,
             Collection<Hazard> hazards,
             ZonedDateTime expireDate,
             String warehouse
     ) {
-        if (owner == null ) throw new IllegalArgumentException("Owner darf nicht null sein");
+        if (user == null ) throw new IllegalArgumentException("Owner darf nicht null sein");
         UUID uuid = UUID.randomUUID();
 
 
         this.weight = weight;
-        this.owner = owner;
+        this.user = user;
         this.hazards = hazards;
         this.expireDate = expireDate;
         this.storageDate = ZonedDateTime.now();
@@ -44,12 +47,10 @@ public class Item implements Cargo {
         this.warehouse = warehouse;
     }
 
-    @Override
-    public Customer getOwner() {
-        return this.owner;
+    public User getOwner() {
+        return this.user;
     }
 
-    @Override
     public BigDecimal getValue() {
         return this.weight;
     }
@@ -58,12 +59,10 @@ public class Item implements Cargo {
         this.id = id;
     }
 
-    @Override
     public Duration getDurationOfStorage() {
         return Duration.between(ZonedDateTime.now(), expireDate);
     }
 
-    @Override
     public Collection<Hazard> getHazards() {
         return this.hazards;
     }
@@ -72,8 +71,8 @@ public class Item implements Cargo {
         this.weight = weight;
     }
 
-    public void setOwner(Customer owner) {
-        this.owner = owner;
+    public void setOwner(User user) {
+        this.user = user;
     }
 
     public void setHazards(Collection<Hazard> hazards) {
@@ -92,7 +91,6 @@ public class Item implements Cargo {
         this.inspectDate = inspectDate;
     }
 
-    @Override
     public Date getLastInspectionDate() {
         return this.inspectDate;
     }

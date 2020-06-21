@@ -1,7 +1,6 @@
 package app.warehouse.entity;
 
-import app.warehouse.entity.LiquidBulkCargo;
-import storageContract.administration.Customer;
+import app.user.entity.User;
 import storageContract.cargo.Hazard;
 
 import java.math.BigDecimal;
@@ -13,7 +12,7 @@ public class MixedCargoLiquidBulkAndUnitised extends LiquidBulkCargo implements 
 
     public MixedCargoLiquidBulkAndUnitised(
             BigDecimal weight,
-            Customer owner,
+            User owner,
             Collection<Hazard> hazards,
             ZonedDateTime expireDate,
             String warehouse,

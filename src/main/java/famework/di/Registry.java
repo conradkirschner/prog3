@@ -12,7 +12,6 @@ import java.util.Properties;
 public class Registry {
     private ArrayList<Class> registered;
     private ArrayList<Object> registeredInstances;
-//    ArrayList<Class> pending;
 
 
     public Registry() {

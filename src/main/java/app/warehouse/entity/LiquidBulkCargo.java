@@ -1,7 +1,6 @@
 package app.warehouse.entity;
 
-import app.warehouse.entity.Item;
-import storageContract.administration.Customer;
+import app.user.entity.User;
 import storageContract.cargo.Hazard;
 
 import java.math.BigDecimal;
@@ -13,13 +12,13 @@ public class LiquidBulkCargo extends Item implements storageContract.cargo.Liqui
 
     public LiquidBulkCargo(
             BigDecimal weight,
-            Customer owner,
+            User user,
             Collection<Hazard> hazards,
             ZonedDateTime expireDate,
             String warehouse,
             Boolean pressurized
     ) {
-        super(weight, owner, hazards, expireDate, warehouse);
+        super(weight, user, hazards, expireDate, warehouse);
 
         this.type = "LiquidBulkCargo";
         this.pressurized = pressurized;
