@@ -54,9 +54,26 @@ public class Persistence {
         for (Warehouse warehouse: warehouses) {
             warehouseString.add(warehouse.getId());
         }
-        store.storeAsJOS(users,runDir + savePathUser);
-        store.storeAsJOS(items,runDir + savePathItems);
-        store.storeAsJOS(warehouseString,runDir + savePathWarehouse);
+        store.storeAsJOS(users,runDir + savePathUser + ".data");
+        store.storeAsJOS(items,runDir + savePathItems+ ".data");
+        store.storeAsJOS(warehouseString,runDir + savePathWarehouse + ".data");
+    }
+    public void saveAsJOB() {
+        String runDir = System.getProperty("user.dir");
+
+        GetUserEvent getUser = (GetUserEvent) eventHandler.push(new GetUserEvent());
+        GetItemEvent getItem = (GetItemEvent) eventHandler.push(new GetItemEvent());
+        GetWarehouseEvent getWarehouse = (GetWarehouseEvent) eventHandler.push(new GetWarehouseEvent());
+        ArrayList<User>  users = getUser.getUsers();
+        ArrayList<Item>  items = getItem.getItems();
+        ArrayList<Warehouse>  warehouses = getWarehouse.getWarehouses();
+        ArrayList<String> warehouseString = new ArrayList<>();
+        for (Warehouse warehouse: warehouses) {
+            warehouseString.add(warehouse.getId());
+        }
+        store.storeAsJOB(users,runDir + savePathUser + ".xml");
+        store.storeAsJOB(items,runDir + savePathItems + ".xml");
+        store.storeAsJOB(warehouseString,runDir + savePathWarehouse + ".xml");
     }
     public boolean loadFromJOS() {
         String runDir = System.getProperty("user.dir");

@@ -6,10 +6,14 @@ import java.math.BigDecimal;
 import java.time.Duration;
 
 public class User implements Customer {
+
     private String username;
     private String name;
     private String maxValue;
     private String maxDurationOfStorage;
+
+    public User() {
+    }
 
     public String getName() {
         return this.getUsername();

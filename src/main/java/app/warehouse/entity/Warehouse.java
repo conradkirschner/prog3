@@ -1,15 +1,12 @@
 package app.warehouse.entity;
 
-import app.warehouse.entity.Item;
-import app.warehouse.entity.StoragePlace;
-
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class Warehouse {
-    private String id;
-    private ArrayList<StoragePlace> storagePlaces;
+    public String id;
+    public ArrayList<StoragePlace> storagePlaces;
 
     public Warehouse(String id) {
         this.id = id;
