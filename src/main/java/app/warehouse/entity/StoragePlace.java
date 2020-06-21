@@ -1,8 +1,11 @@
 package app.warehouse.entity;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class StoragePlace {
     private int storageID;
     private ArrayList<app.warehouse.entity.Item> items;
