@@ -2,6 +2,7 @@
 plugins {
     id 'java'
     // add
+    id 'idea'
     id 'application'
     id 'org.openjfx.javafxplugin' version '0.0.8'
 }
@@ -18,7 +19,13 @@ processResources {
     }
 }
 repositories {
-    mavenCentral()
+    maven {
+        url "https://repo1.maven.org/maven2/"
+        metadataSources {
+            mavenPom()
+            artifact()
+        }
+    }
 }
 
 dependencies {
@@ -29,7 +36,9 @@ dependencies {
     xmlbeans 'org.apache.xmlbeans:xmlbeans:2.5.0'
 }
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '5'
+    testImplementation('org.junit.jupiter:junit-jupiter:5.6.2')
+
+    testCompile "org.mockito:mockito-core:3.3.3"
 }
 
 // add
@@ -39,4 +48,11 @@ javafx {
 }
 run {
     standardInput = System.in
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
 }

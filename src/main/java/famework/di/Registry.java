@@ -4,7 +4,6 @@ import famework.configReader.ConfigBag;
 import famework.configReader.ConfigReader;
 
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Parameter;
 import java.util.ArrayList;
 import java.util.Properties;
@@ -59,9 +58,9 @@ public class Registry {
                     Object registeredClass = getRegistered(parameter.getType().getName());
                     if (registeredClass != null) {
                         parameters.add(registeredClass);
-                    } else
-                    {
-                        // todo: wait until class is loaded!
+                    } else {
+                        System.out.println("Module not found");
+                        parameters.add(null);
                     }
                 }
             }
@@ -76,8 +75,9 @@ public class Registry {
                 try {
                     Object[] parameter = parameters.toArray();
                     object = ctor[0].newInstance(parameter);
-                } catch (InvocationTargetException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
+                    object=null;
                 }
             }
         } catch (InstantiationException e) {
@@ -85,7 +85,9 @@ public class Registry {
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
-        this.registeredInstances.add(object);
+        if (object != null) {
+            this.registeredInstances.add(object);
+        }
         return this;
     }
 }

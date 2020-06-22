@@ -23,9 +23,13 @@ public class Kernel {
     DI di;
     EventHandler eventHandler;
     public EventHandler run(ArrayList<Object> imports) {
-        this.eventHandler = new EventHandler();
+        if (eventHandler == null) {
+            this.eventHandler = new EventHandler();
+        }
         imports.add(this.eventHandler);
-        this.di = new DI();
+        if (di == null) {
+            this.di = new DI();
+        }
         imports.add(this.di);
         imports.add(this.di.getRegistry());
         Registry registry = this.di.getRegistry();
@@ -34,9 +38,7 @@ public class Kernel {
         Class[] classes = null;
         try {
             classes = getClasses("app");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();
         }
         loadServices(classes,0);
@@ -72,11 +74,7 @@ public class Kernel {
         for(Class clazz : classList) {
             try {
                 inject(clazz);
-            } catch (NoSuchFieldException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            } catch (NullPointerException e) {
+            } catch (NoSuchFieldException | IllegalAccessException e) {
                 // not loaded
                 waitingLine.add(clazz);
             }

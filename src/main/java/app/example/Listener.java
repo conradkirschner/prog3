@@ -3,6 +3,7 @@ package app.example;
 import famework.annotation.AutoloadListener;
 import famework.annotation.Service;
 import famework.event.Event;
+import famework.event.Subscriber;
 
 import java.io.PrintStream;
 
@@ -23,5 +24,10 @@ public class Listener implements famework.event.Listener {
     @Override
     public int getPrio() {
         return 0;
+    }
+
+    @Override
+    public Subscriber getSubscriber() {
+        return null;
     }
 }

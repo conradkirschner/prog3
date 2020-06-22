@@ -23,6 +23,10 @@ public class SubscriberListener implements Listener {
         return null;
     }
 
+    public Subscriber getSubscriber() {
+        return subscriber;
+    }
+
     @Override
     public int getPrio() {
         return this.prio;

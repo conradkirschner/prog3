@@ -9,7 +9,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
@@ -27,15 +26,17 @@ class KernelTest {
 
     @Test
     void testRun() {
-        // Setup
-        final ArrayList<Object> imports = new ArrayList<>(Arrays.asList("value"));
+        ArrayList<Object> imports = new ArrayList<>();
+        imports.add(System.in);
+        imports.add(System.out);
+
         when(kernelUnderTest.di.getRegistry()).thenReturn(new Registry());
 
-        // Run the test
+
         final EventHandler result = kernelUnderTest.run(imports);
 
-        // Verify the results
-        verify(kernelUnderTest.eventHandler).registerSubscriber(any(Subscriber.class));
-        verify(kernelUnderTest.eventHandler).registerListener(any(Listener.class));
+        // checks that every module could be loaded, increment when you add new subscriber
+        verify(kernelUnderTest.eventHandler, times(19)).registerSubscriber(any(Subscriber.class));
+        verify(kernelUnderTest.eventHandler, times(1)).registerListener(any(Listener.class));
     }
 }

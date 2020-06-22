@@ -31,6 +31,11 @@ public class EventHandler {
         history.add(event);
         return this.registry.push(event);
     }
+
+    public EventRegistry getRegistry() {
+        return registry;
+    }
+
     public ArrayList<Event> getHistory() {
         return this.history;
     }
