@@ -30,7 +30,6 @@ public class Kernel {
         imports.add(this.di.getRegistry());
         Registry registry = this.di.getRegistry();
         registry.add(imports);
-        File directory = new File("./src/app/");
 
         Class[] classes = null;
         try {
