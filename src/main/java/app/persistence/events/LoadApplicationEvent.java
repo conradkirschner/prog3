@@ -11,8 +11,8 @@ public class LoadApplicationEvent implements Event {
         return name;
     }
 
-    Boolean status;
-    String type;
+    private Boolean status;
+    private String type;
 
     public LoadApplicationEvent(Boolean status) {
         this.status = status;

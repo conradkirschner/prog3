@@ -1,10 +1,19 @@
 package famework.di;
 
+import famework.event.Event;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.mock;
+
+class ServiceClass {
+    public ServiceClass() {
+    }
+}
 
 class RegistryTest {
 
@@ -16,43 +25,42 @@ class RegistryTest {
     }
 
     @Test
-    void testGetRegistered1() {
-        // Setup
-
-        // Run the test
-        final Object result = registryUnderTest.getRegistered("name");
-
-        // Verify the results
+    void testGetRegisteredNotDefined() {
+        final Object result = registryUnderTest.getRegistered("not defined");
+        assertEquals(null, result);
     }
 
     @Test
     void testAdd() {
-        // Setup
-
-        // Run the test
-        final Registry result = registryUnderTest.add("obj");
-
-        // Verify the results
+        Event event = mock(Event.class);
+        final Registry result = registryUnderTest.add(event);
+        result.getRegistered(event.getClass().getName());
+        assertEquals(event, result.getRegistered(event.getClass().getName()));
     }
 
     @Test
     void testAdd1() {
-        // Setup
-        final ArrayList<Object> obj = new ArrayList<>(Arrays.asList("value"));
+        Event event = mock(Event.class);
 
-        // Run the test
+        final ArrayList<Object> obj = new ArrayList<>();
+        obj.add(event);
+
+
         final Registry result = registryUnderTest.add(obj);
-
-        // Verify the results
+        assertEquals(event, result.getRegistered(event.getClass().getName()));
     }
 
     @Test
     void testAdd2() {
-        // Setup
+        ServiceClass serviceClass =(ServiceClass) mock(ServiceClass.class);
 
-        // Run the test
-        final Registry result = registryUnderTest.add(Object.class);
-
-        // Verify the results
+        final Registry result = registryUnderTest.add(ServiceClass.class);
+        String className = serviceClass.getClass().getName().substring(
+                0,
+                serviceClass.getClass().getName().indexOf('$')
+        );
+        assertTrue(
+                (result.getRegistered(className) instanceof  ServiceClass)
+        );
     }
 }

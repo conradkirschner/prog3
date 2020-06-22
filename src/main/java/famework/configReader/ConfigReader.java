@@ -21,9 +21,6 @@ public class ConfigReader {
         return mergeWithSysProperties(config);
     }
 
-    private String resolveClassLocation(Class clazz) {
-        return clazz.getProtectionDomain().getCodeSource().getLocation().getPath();
-    }
     private Properties mergeWithSysProperties(Properties fileProperties){
         Properties merged = new Properties();
         Properties system = System.getProperties();

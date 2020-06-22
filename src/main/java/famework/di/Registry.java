@@ -18,9 +18,6 @@ public class Registry {
         this.registeredInstances = new ArrayList<Object>();
     }
 
-    public ArrayList<Class> getRegistered() {
-        return registered;
-    }
     public Object getRegistered(String name) {
         for(Object registeredInsanze: registeredInstances){
             if(name.equals(registeredInsanze.getClass().getName())){
@@ -73,8 +70,8 @@ public class Registry {
                 object = obj.newInstance();
             } else {
                 try {
-                    Object[] parameter = parameters.toArray();
-                    object = ctor[0].newInstance(parameter);
+                    object = (parameters.size()==0)?ctor[0].newInstance():ctor[0].newInstance(parameters.toArray());
+
                 } catch (Exception e) {
                     e.printStackTrace();
                     object=null;
