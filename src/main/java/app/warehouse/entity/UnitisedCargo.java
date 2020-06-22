@@ -4,8 +4,8 @@ import app.user.entity.User;
 import storageContract.cargo.Hazard;
 
 import java.math.BigDecimal;
-import java.time.ZonedDateTime;
 import java.util.Collection;
+import java.util.Date;
 
 public class UnitisedCargo extends Item implements storageContract.cargo.UnitisedCargo {
 
@@ -15,7 +15,7 @@ public class UnitisedCargo extends Item implements storageContract.cargo.Unitise
             BigDecimal weight,
             User owner,
             Collection<Hazard> hazards,
-            ZonedDateTime expireDate,
+            Date expireDate,
             String warehouse,
             Boolean fragile
     ) {

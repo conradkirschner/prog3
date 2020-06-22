@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<WarehouseList>
+    <warehouse>
+        <id>own</id>
+        <storagePlaces>
+            <storageID>100</storageID>
+            <items>
+                <type>MixedCargoLiquidBulkAndUnitised</type>
+                <weight>40.50</weight>
+                <user>
+                    <name>Beispielkunde</name>
+                    <username>Beispielkunde</username>
+                </user>
+                <hazards>radioactive</hazards>
+                <expireDate>2020-06-23T02:52:30.382+02:00</expireDate>
+                <storageDate>2020-06-22T02:53:30.638+02:00</storageDate>
+                <inspectDate>2020-06-22T02:53:30.638+02:00</inspectDate>
+                <id>0cd11868-731c-4197-a8d1-7e3ff218e9ad</id>
+                <warehouse>own</warehouse>
+            </items>
+            <maxSize>100</maxSize>
+        </storagePlaces>
+        <storagePlaces>
+            <storageID>101</storageID>
+            <maxSize>100</maxSize>
+        </storagePlaces>
+        <storagePlaces>
+            <storageID>102</storageID>
+            <maxSize>100</maxSize>
+        </storagePlaces>
+    </warehouse>
+</WarehouseList>

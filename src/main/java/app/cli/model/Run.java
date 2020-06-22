@@ -3,7 +3,6 @@ package app.cli.model;
 
 import app.cli.CliManager;
 import app.cli.events.CliStartEvent;
-import app.warehouse.events.CreateWarehouseEvent;
 import famework.annotation.AutoloadSubscriber;
 import famework.annotation.Inject;
 import famework.annotation.Service;
@@ -40,7 +39,7 @@ public class Run implements Subscriber {
 
     @Override
     public Event update(Event event) {
-        CreateWarehouseEvent createWarehouse = (CreateWarehouseEvent) this.eventHandler.push(new CreateWarehouseEvent("own"));
+//        CreateWarehouseEvent createWarehouse = (CreateWarehouseEvent) this.eventHandler.push(new CreateWarehouseEvent("own"));
 
         boolean protectedExit = true;
         do {

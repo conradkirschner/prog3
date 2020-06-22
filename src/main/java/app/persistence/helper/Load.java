@@ -28,8 +28,13 @@ public class Load {
         return obj;
     }
     public Object loadFromJBP(String path, Class clazz) {
-        File saveFile = new File(path);
-        Object objClass = JAXB.unmarshal(saveFile, clazz);
+        Object objClass = null;
+        try {
+            File saveFile = new File(path);
+            objClass = JAXB.unmarshal(saveFile, clazz);
+        } catch (Exception e) {
+
+        }
         return objClass;
     }
 }

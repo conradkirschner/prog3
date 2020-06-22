@@ -11,6 +11,24 @@ public class StoragePlace {
     private ArrayList<app.warehouse.entity.Item> items;
     private BigDecimal maxSize;
 
+    public StoragePlace() {
+    }
+
+    public StoragePlace setStorageID(int storageID) {
+        this.storageID = storageID;
+        return this;
+    }
+
+    public StoragePlace setItems(ArrayList<Item> items) {
+        this.items = items;
+        return this;
+    }
+
+    public StoragePlace setMaxSize(BigDecimal maxSize) {
+        this.maxSize = maxSize;
+        return this;
+    }
+
     public StoragePlace(int storageID, BigDecimal maxSize) {
         this.maxSize = maxSize;
         this.storageID = storageID;

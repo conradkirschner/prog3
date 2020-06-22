@@ -85,10 +85,14 @@ public class Persistence {
 
     public void loadFromJBP() {
         String runDir = System.getProperty("user.dir");
-        ArrayList<User> users = (ArrayList<User>) load.loadFromJBP(runDir + savePathUser + ".xml", User.class);
-        ArrayList<String> warehouses = (ArrayList<String>) load.loadFromJBP(runDir + savePathWarehouse+ ".xml",  Warehouse.class);
-        ArrayList<Item> items = (ArrayList<Item>) load.loadFromJBP(runDir + savePathItems+ ".xml",  Item.class);
-        restoreEvents(users, warehouses, items);
+        UserList userList = (UserList) load.loadFromJBP(runDir + savePathUser + ".xml", UserList.class);
+        WarehouseList warehouseList = (WarehouseList) load.loadFromJBP(runDir + savePathWarehouse + ".xml", WarehouseList.class);
+        ItemList itemList = (ItemList) load.loadFromJBP(runDir + savePathItems + ".xml", ItemList.class);
+
+        ArrayList<User> users = (userList== null)? null: (ArrayList<User>) userList.getUserList();
+        ArrayList<Warehouse> warehouses = (warehouseList== null)? null: (ArrayList<Warehouse>) warehouseList.getWarehouseList();
+        ArrayList<Item> items = (itemList== null)? null: (ArrayList<Item>) itemList.getItemList();
+        restoreEventsWithStorageConfig(users, warehouses, items);
     }
 
     public void saveAsJBP() {
@@ -127,6 +131,12 @@ public class Persistence {
         return bytes;
     }
 
+    /**
+     * restore with new storage places
+     * @param users
+     * @param warehouses
+     * @param items
+     */
     private void restoreEvents(ArrayList<User> users, ArrayList<String> warehouses, ArrayList<Item> items) {
         for (User user:users) {
             CreateUserEvent createUser = (CreateUserEvent) this.eventHandler.push(new CreateUserEvent(user.getUsername()));
@@ -134,6 +144,32 @@ public class Persistence {
         for (String warehouseId:warehouses) {
             CreateWarehouseEvent createWarehouse = (CreateWarehouseEvent) this.eventHandler.push(new CreateWarehouseEvent(warehouseId));
         }
+        for (Item item:items) {
+            StoreItemEvent storeItem = (StoreItemEvent) this.eventHandler.push(new StoreItemEvent(item));
+        }
+    }
+
+    /**
+     * restore with specific storage place order
+     * @param users
+     * @param warehouses
+     * @param items
+     */
+    private void restoreEventsWithStorageConfig(ArrayList<User> users,
+                               ArrayList<Warehouse> warehouses,
+                               ArrayList<Item> items) {
+        if (users == null) return;
+        for (User user:users) {
+            CreateUserEvent createUser = (CreateUserEvent) this.eventHandler.push(new CreateUserEvent(user.getUsername()));
+        }
+        if (warehouses == null) return;
+        for (Warehouse warehouse:warehouses) {
+            CreateWarehouseEvent createWarehouse = (CreateWarehouseEvent) this.eventHandler.push(new CreateWarehouseEvent(warehouse.getId()));
+            /**
+             * todo add here storeItem event with specified storage id
+             */
+        }
+        if (items == null) return;
         for (Item item:items) {
             StoreItemEvent storeItem = (StoreItemEvent) this.eventHandler.push(new StoreItemEvent(item));
         }

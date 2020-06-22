@@ -4,33 +4,35 @@ import app.user.entity.User;
 import storageContract.cargo.Cargo;
 import storageContract.cargo.Hazard;
 
-import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import java.math.BigDecimal;
 import java.time.Duration;
-import java.time.ZonedDateTime;
+import java.time.Instant;
 import java.util.Collection;
 import java.util.Date;
 import java.util.UUID;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Item implements Cargo {
-    @XmlElement(name="type")
     public String type = "Item";
-    @XmlElement(name="weight")
     protected BigDecimal weight;
-    @XmlElement(name="user")
     protected User user;
     protected Collection<Hazard> hazards;
-    protected ZonedDateTime expireDate;
-    protected ZonedDateTime storageDate;
+    protected Date expireDate;
+    protected Date storageDate;
     protected Date inspectDate;
     protected String id;
     protected String warehouse;
+
+    public Item() {
+    }
 
     public Item(
             BigDecimal weight,
             User user,
             Collection<Hazard> hazards,
-            ZonedDateTime expireDate,
+            Date expireDate,
             String warehouse
     ) {
         if (user == null ) throw new IllegalArgumentException("Owner darf nicht null sein");
@@ -41,7 +43,7 @@ public class Item implements Cargo {
         this.user = user;
         this.hazards = hazards;
         this.expireDate = expireDate;
-        this.storageDate = ZonedDateTime.now();
+        this.storageDate = new Date();
         this.inspectDate = new Date();
         this.id = uuid.toString();
         this.warehouse = warehouse;
@@ -60,7 +62,9 @@ public class Item implements Cargo {
     }
 
     public Duration getDurationOfStorage() {
-        return Duration.between(ZonedDateTime.now(), expireDate);
+        Instant timestamp = new Date().toInstant();
+        Instant expireTimestamp =expireDate.toInstant();
+        return Duration.between(timestamp, expireTimestamp);
     }
 
     public Collection<Hazard> getHazards() {
@@ -79,11 +83,11 @@ public class Item implements Cargo {
         this.hazards = hazards;
     }
 
-    public void setExpireDate(ZonedDateTime expireDate) {
+    public void setExpireDate(Date expireDate) {
         this.expireDate = expireDate;
     }
 
-    public void setStorageDate(ZonedDateTime storageDate) {
+    public void setStorageDate(Date storageDate) {
         this.storageDate = storageDate;
     }
 
@@ -104,5 +108,39 @@ public class Item implements Cargo {
     }
     public String getWarehouse() {
         return this.warehouse;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public Item setType(String type) {
+        this.type = type;
+        return this;
+    }
+
+    public BigDecimal getWeight() {
+        return weight;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public Item setUser(User user) {
+        this.user = user;
+        return this;
+    }
+
+    public Date getExpireDate() {
+        return expireDate;
+    }
+
+    public Date getStorageDate() {
+        return storageDate;
+    }
+
+    public Date getInspectDate() {
+        return inspectDate;
     }
 }

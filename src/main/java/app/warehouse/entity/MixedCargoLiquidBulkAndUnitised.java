@@ -4,8 +4,8 @@ import app.user.entity.User;
 import storageContract.cargo.Hazard;
 
 import java.math.BigDecimal;
-import java.time.ZonedDateTime;
 import java.util.Collection;
+import java.util.Date;
 
 public class MixedCargoLiquidBulkAndUnitised extends LiquidBulkCargo implements storageContract.cargo.MixedCargoLiquidBulkAndUnitised {
     private Boolean fragile;
@@ -14,7 +14,7 @@ public class MixedCargoLiquidBulkAndUnitised extends LiquidBulkCargo implements 
             BigDecimal weight,
             User owner,
             Collection<Hazard> hazards,
-            ZonedDateTime expireDate,
+            Date expireDate,
             String warehouse,
             Boolean pressurized,
             Boolean fragile

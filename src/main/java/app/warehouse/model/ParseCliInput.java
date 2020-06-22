@@ -4,7 +4,10 @@ package app.warehouse.model;
 import app.cli.events.GetInputEvent;
 import app.user.entity.User;
 import app.user.events.GetUserEvent;
-import app.warehouse.entity.*;
+import app.warehouse.entity.Item;
+import app.warehouse.entity.LiquidBulkCargo;
+import app.warehouse.entity.MixedCargoLiquidBulkAndUnitised;
+import app.warehouse.entity.UnitisedCargo;
 import app.warehouse.events.StoreItemEvent;
 import famework.annotation.AutoloadSubscriber;
 import famework.annotation.Inject;
@@ -13,9 +16,10 @@ import famework.event.*;
 import storageContract.cargo.Hazard;
 
 import java.math.BigDecimal;
-import java.time.ZonedDateTime;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
 
 @Service
 @AutoloadSubscriber
@@ -50,7 +54,7 @@ public class ParseCliInput implements Subscriber {
                 return null; //@todo add error handling
             }
             BigDecimal weight = parseWeight(input[2]);
-            ZonedDateTime storeUntil = parseTime(input[3]);
+            Date storeUntil = parseTime(input[3]);
             Collection<Hazard> hazards = parseHazard(input[4]);
             boolean pressure = parsePressure(input[5]);
             boolean fragile = parseFragile(input[6]);
@@ -140,8 +144,8 @@ public class ParseCliInput implements Subscriber {
         return new BigDecimal(input);
     }
 
-    private ZonedDateTime parseTime(String input) {
-        return ZonedDateTime.now().plusSeconds(Long.parseLong(input));
+    private Date parseTime(String input) {
+        return parseTime(new Date(), Integer.parseInt(input));
     }
 
     private boolean parsePressure(String input) {
@@ -152,5 +156,17 @@ public class ParseCliInput implements Subscriber {
     }
     private boolean parseBlock(String input) {
         return (input.equals("y"));
+    }
+
+    public Date parseTime(Date date, int secounds) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        int countCompleteSecounds = secounds/60;
+        for (int i = 0; i < countCompleteSecounds-1; i++) {
+            calendar.add(Calendar.SECOND, 60);
+
+        }
+        calendar.add(Calendar.SECOND, secounds%60);
+        return calendar.getTime();
     }
 }

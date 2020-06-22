@@ -4,8 +4,8 @@ import app.user.entity.User;
 import storageContract.cargo.Hazard;
 
 import java.math.BigDecimal;
-import java.time.ZonedDateTime;
 import java.util.Collection;
+import java.util.Date;
 
 public class LiquidBulkCargo extends Item implements storageContract.cargo.LiquidBulkCargo {
     private Boolean pressurized;
@@ -14,7 +14,7 @@ public class LiquidBulkCargo extends Item implements storageContract.cargo.Liqui
             BigDecimal weight,
             User user,
             Collection<Hazard> hazards,
-            ZonedDateTime expireDate,
+            Date expireDate,
             String warehouse,
             Boolean pressurized
     ) {

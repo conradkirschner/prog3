@@ -2,7 +2,6 @@ package app.warehouse.entity;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
@@ -10,8 +9,10 @@ import java.util.Date;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Warehouse {
     public String id;
-    @XmlElement(name="StoragePlace")
     public ArrayList<StoragePlace> storagePlaces;
+
+    public Warehouse() {
+    }
 
     public Warehouse(String id) {
         this.id = id;
@@ -19,6 +20,16 @@ public class Warehouse {
         this.storagePlaces.add(new StoragePlace(100, new BigDecimal(100)));
         this.storagePlaces.add(new StoragePlace(101, new BigDecimal(100)));
         this.storagePlaces.add(new StoragePlace(102, new BigDecimal(100)));
+    }
+
+    public Warehouse setId(String id) {
+        this.id = id;
+        return this;
+    }
+
+    public Warehouse setStoragePlaces(ArrayList<StoragePlace> storagePlaces) {
+        this.storagePlaces = storagePlaces;
+        return this;
     }
 
     public String getId() {
