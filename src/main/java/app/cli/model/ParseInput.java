@@ -162,7 +162,7 @@ public class ParseInput implements Subscriber {
                                this.overviewScreen.rows[i][3] = items.get(i).getDurationOfStorage().toString();
                                this.overviewScreen.rows[i][4] = items.get(i).getOwner().getName();
                                this.overviewScreen.rows[i][5] = items.get(i).getLastInspectionDate().toString();
-                               this.overviewScreen.rows[i][6] = items.get(i).type;
+                               this.overviewScreen.rows[i][6] = items.get(i).getType();
                            }
                        }
                        break;

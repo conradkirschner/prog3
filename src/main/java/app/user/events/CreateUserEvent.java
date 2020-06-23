@@ -41,4 +41,12 @@ public class CreateUserEvent implements Event {
         this.username = username;
         return this;
     }
+
+    public void setName(String name) {
+        CreateUserEvent.name = name;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
 }

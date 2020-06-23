@@ -1,9 +1,10 @@
 package app.warehouse.entity;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
-public class StoragePlace {
+public class StoragePlace implements Serializable {
     private int storageID;
     private ArrayList<app.warehouse.entity.Item> items;
     private BigDecimal maxSize;

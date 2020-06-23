@@ -24,6 +24,9 @@ public class WarehouseManager {
     }
 
     public void newWarehouse(Warehouse warehouse) {
+        if (findWarehouseById(warehouse.getId()) != null) {
+            return;
+        }
         this.warehouses.add(warehouse);
     }
 

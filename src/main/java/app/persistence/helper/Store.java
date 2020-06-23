@@ -2,7 +2,6 @@ package app.persistence.helper;
 
 import famework.annotation.Service;
 
-import javax.xml.bind.JAXB;
 import java.beans.PersistenceDelegate;
 import java.beans.XMLEncoder;
 import java.io.*;
@@ -38,18 +37,6 @@ public class Store {
         return false;
     }
 
-    public boolean storeAsJBP1(Object obj,String path) {
-        File saveFile = new File(path);
-        saveFile.delete();
-        try {
-            saveFile.getParentFile().mkdirs();
-            saveFile.createNewFile();
-            JAXB.marshal( obj, saveFile );
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return true;
-    }
     public boolean storeAsJBP(Object obj,String path) {
 
         XMLEncoder encoder = null;

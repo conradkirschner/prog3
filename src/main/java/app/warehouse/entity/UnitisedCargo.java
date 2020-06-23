@@ -4,7 +4,7 @@ import app.user.entity.User;
 import storageContract.cargo.Hazard;
 
 import java.math.BigDecimal;
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class UnitisedCargo extends Item implements storageContract.cargo.UnitisedCargo {
@@ -14,7 +14,7 @@ public class UnitisedCargo extends Item implements storageContract.cargo.Unitise
     public UnitisedCargo(
             BigDecimal weight,
             User owner,
-            Collection<Hazard> hazards,
+            ArrayList<Hazard> hazards,
             Date expireDate,
             String warehouse,
             Boolean fragile
@@ -22,6 +22,17 @@ public class UnitisedCargo extends Item implements storageContract.cargo.Unitise
         super( weight, owner, hazards, expireDate, warehouse);
         this.fragile = fragile;
         this.type = "UnitisedCargo";
+    }
+
+    public UnitisedCargo() {
+    }
+
+    public void setFragile(Boolean fragile) {
+        this.fragile = fragile;
+    }
+
+    public Boolean getFragile() {
+        return fragile;
     }
 
     @Override

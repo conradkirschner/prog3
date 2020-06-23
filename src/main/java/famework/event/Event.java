@@ -1,5 +1,7 @@
 package famework.event;
 
-public interface Event {
+import java.io.Serializable;
+
+public interface Event extends Serializable {
     String getName();
 }

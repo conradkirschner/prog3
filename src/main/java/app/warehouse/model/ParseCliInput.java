@@ -18,7 +18,6 @@ import storageContract.cargo.Hazard;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collection;
 import java.util.Date;
 
 @Service
@@ -55,7 +54,7 @@ public class ParseCliInput implements Subscriber {
             }
             BigDecimal weight = parseWeight(input[2]);
             Date storeUntil = parseTime(input[3]);
-            Collection<Hazard> hazards = parseHazard(input[4]);
+            ArrayList<Hazard> hazards = parseHazard(input[4]);
             boolean pressure = parsePressure(input[5]);
             boolean fragile = parseFragile(input[6]);
             boolean block = parseBlock(input[7]);
@@ -111,8 +110,8 @@ public class ParseCliInput implements Subscriber {
         }
         return null;
     }
-    private Collection<Hazard> parseHazard(String input) {
-        Collection<Hazard> hazards = new ArrayList<Hazard>();
+    private ArrayList<Hazard> parseHazard(String input) {
+        ArrayList<Hazard> hazards = new ArrayList<Hazard>();
         String[] hazardInputs = input.split(",");
         for(String hazzard:hazardInputs) {
             switch (hazzard) {

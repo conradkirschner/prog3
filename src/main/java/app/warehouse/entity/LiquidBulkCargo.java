@@ -3,25 +3,42 @@ package app.warehouse.entity;
 import app.user.entity.User;
 import storageContract.cargo.Hazard;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.Date;
 
-public class LiquidBulkCargo extends Item implements storageContract.cargo.LiquidBulkCargo {
+public class LiquidBulkCargo extends Item implements Serializable, storageContract.cargo.LiquidBulkCargo {
     private Boolean pressurized;
+    protected String type = "LiquidBulkCargo";
 
     public LiquidBulkCargo(
             BigDecimal weight,
             User user,
-            Collection<Hazard> hazards,
+            ArrayList<Hazard> hazards,
             Date expireDate,
             String warehouse,
             Boolean pressurized
     ) {
         super(weight, user, hazards, expireDate, warehouse);
-
-        this.type = "LiquidBulkCargo";
         this.pressurized = pressurized;
+    }
+
+    public LiquidBulkCargo() {
+    }
+
+    @Override
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Boolean getPressurized() {
+        return pressurized;
+    }
+
+    @Override
+    public String getType() {
+        return type;
     }
 
     @Override

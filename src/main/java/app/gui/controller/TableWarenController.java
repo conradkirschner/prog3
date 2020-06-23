@@ -1,8 +1,5 @@
 package app.gui.controller;
 
-import app.gui.controller.NewUserDialog;
-import app.gui.controller.WarenContextMenu;
-import app.gui.controller.WarenPanelController;
 import app.gui.model.Waren;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

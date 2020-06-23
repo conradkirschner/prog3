@@ -8,15 +8,15 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.Instant;
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
 
 public class Item implements Cargo, Serializable {
-    public String type = "Item";
+    protected String type = "Item";
     protected BigDecimal weight;
     protected User user;
-    protected Collection<Hazard> hazards;
+    protected ArrayList<Hazard> hazards;
     protected Date expireDate;
     protected Date storageDate;
     protected Date inspectDate;
@@ -29,7 +29,7 @@ public class Item implements Cargo, Serializable {
     public Item(
             BigDecimal weight,
             User user,
-            Collection<Hazard> hazards,
+            ArrayList<Hazard> hazards,
             Date expireDate,
             String warehouse
     ) {
@@ -65,8 +65,8 @@ public class Item implements Cargo, Serializable {
         return Duration.between(timestamp, expireTimestamp);
     }
 
-    public Collection<Hazard> getHazards() {
-        return this.hazards;
+    public ArrayList<Hazard> getHazards() {
+        return hazards;
     }
 
     public void setWeight(BigDecimal weight) {
@@ -77,7 +77,7 @@ public class Item implements Cargo, Serializable {
         this.user = user;
     }
 
-    public void setHazards(Collection<Hazard> hazards) {
+    public void setHazards(ArrayList<Hazard> hazards) {
         this.hazards = hazards;
     }
 
@@ -112,9 +112,8 @@ public class Item implements Cargo, Serializable {
         return type;
     }
 
-    public Item setType(String type) {
+    public void setType(String type) {
         this.type = type;
-        return this;
     }
 
     public BigDecimal getWeight() {
