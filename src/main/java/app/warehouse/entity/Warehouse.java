@@ -1,12 +1,9 @@
 package app.warehouse.entity;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 
-@XmlAccessorType(XmlAccessType.FIELD)
 public class Warehouse {
     public String id;
     public ArrayList<StoragePlace> storagePlaces;
@@ -25,6 +22,10 @@ public class Warehouse {
     public Warehouse setId(String id) {
         this.id = id;
         return this;
+    }
+
+    public ArrayList<StoragePlace> getStoragePlaces() {
+        return storagePlaces;
     }
 
     public Warehouse setStoragePlaces(ArrayList<StoragePlace> storagePlaces) {

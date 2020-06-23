@@ -2,7 +2,7 @@ package app.persistence.helper;
 
 import famework.annotation.Service;
 
-import javax.xml.bind.JAXB;
+import java.beans.XMLDecoder;
 import java.io.*;
 
 @Service
@@ -29,9 +29,11 @@ public class Load {
     }
     public Object loadFromJBP(String path, Class clazz) {
         Object objClass = null;
+        XMLDecoder dec = null;
+
         try {
-            File saveFile = new File(path);
-            objClass = JAXB.unmarshal(saveFile, clazz);
+            dec = new XMLDecoder( new FileInputStream(path) );
+            objClass = dec.readObject();
         } catch (Exception e) {
 
         }

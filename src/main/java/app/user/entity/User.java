@@ -5,22 +5,27 @@ import storageContract.administration.Customer;
 import java.math.BigDecimal;
 import java.time.Duration;
 
-public class User implements Customer, UsernameImpl{
+public class User implements Customer, UsernameImpl, java.io.Serializable{
 
     private String username;
     private String name;
-    private String maxValue;
-    private String maxDurationOfStorage;
-
+    private BigDecimal maxValue;
+    private Duration maxDurationOfStorage;
+    @Override
+    public String toString() {
+        return String.format("[PersonBean: name='%s']", name);
+    }
     public User() {
     }
+
+
 
     public String getName() {
         return this.getUsername();
     }
 
     public BigDecimal getMaxValue() {
-        return new BigDecimal(10);
+        return this.maxValue;
     }
 
     public Duration getMaxDurationOfStorage() {
@@ -35,23 +40,19 @@ public class User implements Customer, UsernameImpl{
         return username;
     }
 
-    public User setUsername(String username) {
+    public void setUsername(String username) {
         this.username = username;
-        return this;
     }
 
-    public User setName(String name) {
+    public void setName(String name) {
         this.name = name;
-        return this;
     }
 
-    public User setMaxValue(String maxValue) {
+    public void setMaxValue(BigDecimal maxValue) {
         this.maxValue = maxValue;
-        return this;
     }
 
-    public User setMaxDurationOfStorage(String maxDurationOfStorage) {
+    public void setMaxDurationOfStorage(Duration maxDurationOfStorage) {
         this.maxDurationOfStorage = maxDurationOfStorage;
-        return this;
     }
 }

@@ -3,6 +3,7 @@ package app;
 import app.cli.events.CliStartEvent;
 import app.persistence.events.LoadApplicationEvent;
 import app.user.events.GetUserEvent;
+import app.warehouse.events.CreateWarehouseEvent;
 import famework.Kernel;
 import famework.event.EventHandler;
 import javafx.application.Application;
@@ -19,6 +20,7 @@ public class Main  extends Application {
         config.add(System.in);
         EventHandler eventHandler = kernel.run(config);
         eventHandler.push(new LoadApplicationEvent("JBP"));
+        eventHandler.push(new CreateWarehouseEvent("own"));
 
         eventHandler.push(new CliStartEvent());
 //        Platform.runLater(new Runnable(){

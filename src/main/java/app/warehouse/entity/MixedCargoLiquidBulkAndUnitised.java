@@ -29,4 +29,12 @@ public class MixedCargoLiquidBulkAndUnitised extends LiquidBulkCargo implements 
         return this.fragile;
     }
 
+    public MixedCargoLiquidBulkAndUnitised setFragile(Boolean fragile) {
+        this.fragile = fragile;
+        return this;
+    }
+
+    public Boolean getFragile() {
+        return fragile;
+    }
 }

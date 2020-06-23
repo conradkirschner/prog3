@@ -5,9 +5,12 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public class UserList {
+public class UserList implements java.io.Serializable {
     private List<User> userList;
     //
+
+    public UserList() {
+    }
 
     public List<User> getUserList() {
         return userList;

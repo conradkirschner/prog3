@@ -1,11 +1,8 @@
 package app.warehouse.entity;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
-@XmlAccessorType(XmlAccessType.FIELD)
 public class StoragePlace {
     private int storageID;
     private ArrayList<app.warehouse.entity.Item> items;
@@ -14,19 +11,16 @@ public class StoragePlace {
     public StoragePlace() {
     }
 
-    public StoragePlace setStorageID(int storageID) {
+    public void setStorageID(int storageID) {
         this.storageID = storageID;
-        return this;
     }
 
-    public StoragePlace setItems(ArrayList<Item> items) {
+    public void setItems(ArrayList<Item> items) {
         this.items = items;
-        return this;
     }
 
-    public StoragePlace setMaxSize(BigDecimal maxSize) {
+    public void setMaxSize(BigDecimal maxSize) {
         this.maxSize = maxSize;
-        return this;
     }
 
     public StoragePlace(int storageID, BigDecimal maxSize) {

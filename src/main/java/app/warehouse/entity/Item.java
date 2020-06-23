@@ -4,8 +4,7 @@ import app.user.entity.User;
 import storageContract.cargo.Cargo;
 import storageContract.cargo.Hazard;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.Instant;
@@ -13,8 +12,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.UUID;
 
-@XmlAccessorType(XmlAccessType.FIELD)
-public class Item implements Cargo {
+public class Item implements Cargo, Serializable {
     public String type = "Item";
     protected BigDecimal weight;
     protected User user;
