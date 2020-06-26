@@ -4,6 +4,7 @@ package app.network.model;
 import app.network.NetworkManager;
 import app.network.events.NetworkRequestEvent;
 import app.network.events.NetworkResponseEvent;
+import app.network.events.ServerStartEvent;
 import famework.annotation.AutoloadListener;
 import famework.annotation.Inject;
 import famework.annotation.Service;
@@ -28,7 +29,12 @@ public class Sender implements famework.event.Listener {
     public Event update(Event event) {
 
         this.out.println(event.getName());
-       if(event instanceof NetworkRequestEvent || event instanceof NetworkResponseEvent) return null;
+        // don't publish internal events
+       if(
+               event instanceof NetworkRequestEvent ||
+               event instanceof NetworkResponseEvent ||
+               event instanceof ServerStartEvent
+       ) return null;
         networkManager.push(new NetworkRequestEvent(event));
 
         return null;

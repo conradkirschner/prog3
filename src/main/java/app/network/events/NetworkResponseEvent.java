@@ -8,7 +8,7 @@ public class NetworkResponseEvent implements Event {
 
     private Event response;
 
-    public NetworkResponseEvent(NetworkRequestEvent event) {
+    public NetworkResponseEvent(Event event) {
         response=event;
     }
 

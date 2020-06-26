@@ -1,10 +1,10 @@
 package app.network;
 
+import app.network.events.NetworkRequestEvent;
 import app.network.helper.Tcp;
 import famework.annotation.Inject;
 import famework.annotation.Service;
 import famework.configReader.ConfigBag;
-import famework.event.Event;
 import famework.event.EventHandler;
 
 import java.io.IOException;
@@ -25,6 +25,8 @@ public class NetworkManager {
     @Inject
     private Tcp tcp;
 
+    private boolean isConnected;
+
     public void runServer(){
         try {
             server.run();
@@ -32,8 +34,18 @@ public class NetworkManager {
             e.printStackTrace();
         }
     }
-    public boolean push (Event event) {
-        this.tcp.push(event);
+    public boolean push (NetworkRequestEvent event) {
+        if(!isConnected) {
+
+            new Thread(() -> {
+                this.tcp.connect();
+                this.tcp.push(event);
+
+            }).start();
+            isConnected = true;
+        } else {
+            this.tcp.push(event);
+        }
         return true;
     }
 }

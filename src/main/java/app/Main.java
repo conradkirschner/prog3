@@ -23,7 +23,6 @@ public class Main  extends Application {
 
         eventHandler.push(new LoadApplicationEvent("JBP"));
         eventHandler.push(new CreateWarehouseEvent("own"));
-
         eventHandler.push(new CliStartEvent());
 
 //       Platform.runLater(new Runnable(){

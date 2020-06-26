@@ -90,7 +90,7 @@ public class Server {
                                     ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
 
                                     System.out.println("Sending messages to the ServerSocket" + finalSocket );
-                                    objectOutputStream.writeObject(new NetworkResponseEvent(event));
+                                    objectOutputStream.writeObject(new NetworkResponseEvent(event.getEvent()));
                                 }
                             }
                             // Keep socket open until client exits
