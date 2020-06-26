@@ -33,8 +33,8 @@ public class EventRegistry {
     public ArrayList<Listener> getListeners(){
         return this.listeners;
     }
-    public Event push(Event event){
-
+    public Event push(Event event) throws Exception {
+        if (event == null) throw new Exception("Null Event");
         Event eventResponse = event;
 
         try {

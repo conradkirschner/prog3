@@ -19,16 +19,13 @@ public class Main  extends Application {
         config.add(System.out);
         config.add(System.in);
         EventHandler eventHandler = kernel.run(config);
+//        eventHandler.push(new ServerStartEvent());
+
         eventHandler.push(new LoadApplicationEvent("JBP"));
         eventHandler.push(new CreateWarehouseEvent("own"));
 
         eventHandler.push(new CliStartEvent());
-//        Platform.runLater(new Runnable(){
-//            @Override
-//            public void run() {
-//                eventHandler.push(new GUIStartEvent());
-//            }
-//        });
+
 //       Platform.runLater(new Runnable(){
 //            @Override
 //            public void run() {

@@ -29,7 +29,12 @@ public class EventHandler {
 
     public Event push(Event event) {
         history.add(event);
-        return this.registry.push(event);
+        try {
+            return this.registry.push(event);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public EventRegistry getRegistry() {
