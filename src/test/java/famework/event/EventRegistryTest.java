@@ -39,7 +39,7 @@ class EventRegistryTest {
     }
 
     @Test
-    void testPush() {
+    void testPush() throws Exception {
         Event event = mock(Event.class);
         Listener mockListener = mock(Listener.class);
         eventRegistryUnderTest.addListener(mockListener);

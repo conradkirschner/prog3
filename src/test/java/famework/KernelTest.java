@@ -36,7 +36,7 @@ class KernelTest {
         final EventHandler result = kernelUnderTest.run(imports);
 
         // checks that every module could be loaded, increment when you add new subscriber
-        verify(kernelUnderTest.eventHandler, times(19)).registerSubscriber(any(Subscriber.class));
-        verify(kernelUnderTest.eventHandler, times(1)).registerListener(any(Listener.class));
+        verify(kernelUnderTest.eventHandler, times(21)).registerSubscriber(any(Subscriber.class));
+        verify(kernelUnderTest.eventHandler, times(2)).registerListener(any(Listener.class));
     }
 }
