@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="12.0.1" class="java.beans.XMLDecoder">
+ <object class="app.user.entity.UserList">
+  <void property="userList">
+   <object class="java.util.ArrayList">
+    <void method="add">
+     <object class="app.user.entity.User">
+      <void property="name">
+       <string>Beispielkunde</string>
+      </void>
+      <void property="username">
+       <string>Beispielkunde</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="app.user.entity.User">
+      <void property="name">
+       <string>test</string>
+      </void>
+      <void property="username">
+       <string>test</string>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>

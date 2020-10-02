@@ -1,0 +1,1281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:master" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="17bf8ec5-afd9-4151-99b5-e83129488906" name="Default Changelist" comment="delete item">
+      <change afterPath="$PROJECT_DIR$/lib/junit-4.13.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/apiguardian-api-1.0.0-sources.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/junit-jupiter-5.4.2-sources.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/junit-jupiter-api-5.4.2-sources.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/junit-jupiter-engine-5.4.2-sources.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/junit-jupiter-params-5.4.2-sources.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/junit-platform-commons-1.4.2-sources.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/junit-platform-engine-1.4.2-sources.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/opentest4j-1.1.1-sources.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/famework/KernelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/famework/KernelTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/famework/event/EventRegistryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/famework/event/EventRegistryTest.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="ExportToHTMLSettings">
+    <option name="OPEN_IN_BROWSER" value="true" />
+    <option name="OUTPUT_DIRECTORY" value="C:\Users\conrad\Desktop\uni\prog3\coverage" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="prog3" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="prog3" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="prog3" type="f1a62948:ProjectNode" />
+                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit5 Test Class" />
+        <option value="Kotlin File" />
+        <option value="JavaFXApplication" />
+        <option value="FxmlFile" />
+        <option value="AnnotationType" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="v2" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1a57Uo5zy4c3iqODg1BT7ycMptq" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="true" />
+    <property name="GO_FMT" value="true" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="true" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="extract.method.default.visibility" value="private" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/junit-4.13.jar!/" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="app" />
+      <recent name="cli" />
+      <recent name="app.events" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\conrad\Desktop\uni\prog3\lib" />
+      <recent name="C:\Users\conrad\Desktop\uni\prog3" />
+      <recent name="C:\Users\conrad\Desktop\uni\prog3\src\main\java" />
+      <recent name="C:\Users\conrad\Desktop\uni\prog3\src\main\resources" />
+      <recent name="C:\Users\conrad\Desktop\uni\prog3\src\app\gui" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+      <recent name="app" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="app.network.model" />
+      <recent name="app.network.events" />
+      <recent name="app.warehouse.entity" />
+      <recent name="main.java" />
+      <recent name="app.persistence.model" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\conrad\Desktop\uni\prog3\src\main\java\app\network" />
+      <recent name="C:\Users\conrad\Desktop\uni\prog3\src\main\resources" />
+      <recent name="C:\Users\conrad\Desktop\uni\prog3\src\main\java" />
+      <recent name="C:\Users\conrad\Desktop\uni\prog3\src" />
+      <recent name="C:\Users\conrad\Desktop\uni\prog3\src\app\warehouse" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="gradle run" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
+      <option name="MAIN_CLASS_NAME" value="app.Main" />
+      <module name="prog3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="app.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <extension name="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" />
+        </ENTRIES>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainClient" type="Application" factoryName="Application" singleton="false">
+      <option name="MAIN_CLASS_NAME" value="main.java.app.Main" />
+      <module name="prog3" />
+      <extension name="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" />
+        </ENTRIES>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Window" type="Application" factoryName="Application" singleton="false" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Window" />
+      <module name="prog3_beleg" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value=".*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <extension name="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" />
+        </ENTRIES>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Window" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.java.app.app.gui.Window" />
+      <module name="prog3_beleg" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="main.java.app.app.gui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Tests in 'uni.prog3.test'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests *" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="prog3" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <extension name="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" />
+        </ENTRIES>
+      </extension>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="All in prog3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="prog3" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in uni.prog3.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="uni.prog3.test" />
+      <useClassPathOnly />
+      <extension name="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" />
+        </ENTRIES>
+      </extension>
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="famework.config-reader in prog3_beleg" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="prog3_beleg" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="famework.config-reader.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="famework.config-reader" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="test in prog3.test" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+      <module name="prog3" />
+      <shortenClasspath name="CLASSPATH_FILE" />
+      <useClassPathOnly />
+      <extension name="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" />
+        </ENTRIES>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="adopt-openjdk-1.8" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="directory" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="$USER_HOME$/.jdks/adopt-openjdk-1.8.0_252" />
+      <dir value="$PROJECT_DIR$/src/test" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Window" />
+      <item itemvalue="Application.MainClient" />
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Gradle.prog3" />
+      <item itemvalue="Gradle.Tests in 'uni.prog3.test'" />
+      <item itemvalue="JUnit.test in prog3.test" />
+      <item itemvalue="JUnit.famework.config-reader in prog3_beleg" />
+      <item itemvalue="JUnit.All in uni.prog3.test" />
+      <item itemvalue="JUnit.All in prog3" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.All in prog3" />
+        <item itemvalue="JUnit.All in uni.prog3.test" />
+        <item itemvalue="Gradle.Tests in 'uni.prog3.test'" />
+        <item itemvalue="JUnit.famework.config-reader in prog3_beleg" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="17bf8ec5-afd9-4151-99b5-e83129488906" name="Default Changelist" comment="" />
+      <created>1586013618338</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1586013618338</updated>
+      <workItem from="1586013620291" duration="276000" />
+      <workItem from="1586014005497" duration="58190000" />
+      <workItem from="1586368227336" duration="14239000" />
+      <workItem from="1586434924935" duration="5349000" />
+      <workItem from="1586457956466" duration="14457000" />
+      <workItem from="1586521798637" duration="34738000" />
+      <workItem from="1586633049010" duration="41888000" />
+      <workItem from="1587034342531" duration="491000" />
+      <workItem from="1587034845534" duration="40787000" />
+      <workItem from="1588210564722" duration="4483000" />
+      <workItem from="1588856259654" duration="1420000" />
+      <workItem from="1589730944245" duration="333000" />
+      <workItem from="1590662391152" duration="22161000" />
+      <workItem from="1591304633287" duration="2649000" />
+      <workItem from="1591389215512" duration="28846000" />
+      <workItem from="1591784866171" duration="6152000" />
+      <workItem from="1591794986969" duration="8803000" />
+      <workItem from="1591832980576" duration="12015000" />
+      <workItem from="1592242514069" duration="41258000" />
+      <workItem from="1592406000991" duration="22840000" />
+      <workItem from="1592442005056" duration="1034000" />
+      <workItem from="1592443052848" duration="9164000" />
+      <workItem from="1592501630634" duration="6332000" />
+      <workItem from="1592511449942" duration="8163000" />
+      <workItem from="1592575605732" duration="5716000" />
+      <workItem from="1592581643716" duration="7776000" />
+      <workItem from="1592655089549" duration="1332000" />
+      <workItem from="1592777609253" duration="10104000" />
+      <workItem from="1592849080394" duration="1342000" />
+      <workItem from="1590173270641" duration="39569000" />
+      <workItem from="1593176554809" duration="31135000" />
+      <workItem from="1593719569658" duration="2427000" />
+      <workItem from="1601126918527" duration="12026000" />
+      <workItem from="1601204297821" duration="797000" />
+      <workItem from="1601205207327" duration="399000" />
+      <workItem from="1601205621617" duration="1804000" />
+      <workItem from="1601208793926" duration="2506000" />
+      <workItem from="1601679273407" duration="62000" />
+    </task>
+    <task id="LOCAL-00011" summary="save">
+      <created>1590662486667</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1590662486667</updated>
+    </task>
+    <task id="LOCAL-00012" summary="enabled multi lager">
+      <created>1590672889541</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1590672889541</updated>
+    </task>
+    <task id="LOCAL-00013" summary="enabled multi lager">
+      <created>1590677845778</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1590677845778</updated>
+    </task>
+    <task id="LOCAL-00014" summary="used threads for simulation">
+      <created>1590685365558</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1590685365558</updated>
+    </task>
+    <task id="LOCAL-00015" summary="added gui">
+      <created>1591627619148</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1591627619148</updated>
+    </task>
+    <task id="LOCAL-00016" summary="added gui">
+      <created>1591640377339</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1591640377339</updated>
+    </task>
+    <task id="LOCAL-00017" summary="gui save">
+      <created>1591799036407</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1591799036407</updated>
+    </task>
+    <task id="LOCAL-00018" summary="gui save">
+      <created>1591801420290</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1591801420290</updated>
+    </task>
+    <task id="LOCAL-00019" summary="allow empty hazzard">
+      <created>1591804647241</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1591804647241</updated>
+    </task>
+    <task id="LOCAL-00020" summary="delete item enabled">
+      <created>1591805031993</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1591805031993</updated>
+    </task>
+    <task id="LOCAL-00021" summary="added own framework">
+      <created>1592265839656</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1592265839656</updated>
+    </task>
+    <task id="LOCAL-00022" summary="added own framework">
+      <created>1592265856247</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1592265856247</updated>
+    </task>
+    <task id="LOCAL-00023" summary="save">
+      <created>1592266547785</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1592266547785</updated>
+    </task>
+    <task id="LOCAL-00024" summary="save">
+      <created>1592269894781</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1592269894781</updated>
+    </task>
+    <task id="LOCAL-00025" summary="save">
+      <created>1592270106036</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1592270106036</updated>
+    </task>
+    <task id="LOCAL-00026" summary="save">
+      <created>1592270700296</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1592270700296</updated>
+    </task>
+    <task id="LOCAL-00027" summary="save">
+      <created>1592337579451</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1592337579451</updated>
+    </task>
+    <task id="LOCAL-00028" summary="save">
+      <created>1592337590356</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1592337590356</updated>
+    </task>
+    <task id="LOCAL-00029" summary="save">
+      <created>1592337596093</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1592337596093</updated>
+    </task>
+    <task id="LOCAL-00030" summary="save">
+      <created>1592340175004</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1592340175004</updated>
+    </task>
+    <task id="LOCAL-00031" summary="save">
+      <created>1592340181456</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1592340181456</updated>
+    </task>
+    <task id="LOCAL-00032" summary="save">
+      <created>1592343732354</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1592343732354</updated>
+    </task>
+    <task id="LOCAL-00033" summary="save">
+      <created>1592343738304</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1592343738304</updated>
+    </task>
+    <task id="LOCAL-00034" summary="save">
+      <created>1592347044975</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1592347044975</updated>
+    </task>
+    <task id="LOCAL-00035" summary="save">
+      <created>1592347883113</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1592347883113</updated>
+    </task>
+    <task id="LOCAL-00036" summary="save">
+      <created>1592348083102</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1592348083102</updated>
+    </task>
+    <task id="LOCAL-00037" summary="save">
+      <created>1592350996126</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1592350996126</updated>
+    </task>
+    <task id="LOCAL-00038" summary="save">
+      <created>1592354211906</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1592354211906</updated>
+    </task>
+    <task id="LOCAL-00039" summary="save">
+      <created>1592354217033</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1592354217033</updated>
+    </task>
+    <task id="LOCAL-00040" summary="added empty constructors for dispatching events">
+      <created>1592419963476</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1592419963476</updated>
+    </task>
+    <task id="LOCAL-00041" summary="added overview screen functionallity">
+      <created>1592431514734</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1592431514734</updated>
+    </task>
+    <task id="LOCAL-00042" summary="added gui">
+      <created>1592432330685</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1592432330685</updated>
+    </task>
+    <task id="LOCAL-00043" summary="delete item">
+      <created>1592439968499</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1592439968499</updated>
+    </task>
+    <task id="LOCAL-00044" summary="delete item">
+      <created>1592439979474</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1592439979475</updated>
+    </task>
+    <task id="LOCAL-00045" summary="delete item">
+      <created>1592440018912</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1592440018912</updated>
+    </task>
+    <task id="LOCAL-00046" summary="update">
+      <created>1592511565942</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1592511565942</updated>
+    </task>
+    <task id="LOCAL-00047" summary="added gradle to project">
+      <created>1592579579010</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1592579579010</updated>
+    </task>
+    <task id="LOCAL-00048" summary="save">
+      <created>1592585712060</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1592585712060</updated>
+    </task>
+    <task id="LOCAL-00049" summary="cleanup">
+      <created>1592751509039</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1592751509039</updated>
+    </task>
+    <task id="LOCAL-00050" summary="added xml save (missing part storage places)">
+      <created>1592781960206</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1592781960206</updated>
+    </task>
+    <task id="LOCAL-00051" summary="added StoragePlace xml">
+      <created>1592783218446</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1592783218446</updated>
+    </task>
+    <task id="LOCAL-00052" summary="added StoragePlace xml">
+      <created>1592787329647</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1592787329647</updated>
+    </task>
+    <task id="LOCAL-00053" summary="s">
+      <created>1592852021781</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1592852021781</updated>
+    </task>
+    <task id="LOCAL-00054" summary="start with tests">
+      <created>1592859469577</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1592859469577</updated>
+    </task>
+    <task id="LOCAL-00055" summary="start with tests">
+      <created>1592867640090</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1592867640090</updated>
+    </task>
+    <task id="LOCAL-00056" summary="removed java beans and used normal xml serializer">
+      <created>1592947782456</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1592947782456</updated>
+    </task>
+    <task id="LOCAL-00057" summary="updated to make it serializable">
+      <created>1592952744573</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1592952744573</updated>
+    </task>
+    <task id="LOCAL-00058" summary="cleaning up server architekture">
+      <created>1593180187639</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1593180187640</updated>
+    </task>
+    <task id="LOCAL-00059" summary="trying to find out how to setup stream">
+      <created>1593209244939</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1593209244939</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="1">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="false" />
+                </map>
+              </option>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="v2" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="v2" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="added git" />
+    <MESSAGE value="added validators to cli" />
+    <MESSAGE value="enabled multi lager" />
+    <MESSAGE value="used threads for simulation" />
+    <MESSAGE value="gui save" />
+    <MESSAGE value="allow empty hazzard" />
+    <MESSAGE value="delete item enabled" />
+    <MESSAGE value="added own framework" />
+    <MESSAGE value="added empty constructors for dispatching events" />
+    <MESSAGE value="added overview screen functionallity" />
+    <MESSAGE value="added gui" />
+    <MESSAGE value="delete item" />
+    <MESSAGE value="update" />
+    <MESSAGE value="added gradle to project" />
+    <MESSAGE value="save" />
+    <MESSAGE value="cleanup" />
+    <MESSAGE value="added xml save (missing part storage places)" />
+    <MESSAGE value="added StoragePlace xml" />
+    <MESSAGE value="s" />
+    <MESSAGE value="start with tests" />
+    <MESSAGE value="removed java beans and used normal xml serializer" />
+    <MESSAGE value="updated to make it serializable" />
+    <MESSAGE value="cleaning up server architekture" />
+    <MESSAGE value="trying to find out how to setup stream" />
+    <option name="LAST_COMMIT_MESSAGE" value="trying to find out how to setup stream" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="771" y="123" key="#Main" timestamp="1601209301497">
+      <screen x="0" y="0" width="3840" height="1050" />
+    </state>
+    <state x="771" y="123" key="#Main/0.0.3840.1050/3840.0.1920.1050@0.0.3840.1050" timestamp="1601209301497" />
+    <state x="664" y="144" key="#MainClient" timestamp="1601153465600">
+      <screen x="0" y="0" width="3840" height="1050" />
+    </state>
+    <state x="664" y="144" key="#MainClient/0.0.3840.1050/3840.0.1920.1050@0.0.3840.1050" timestamp="1601153465600" />
+    <state x="1400" y="99" key="#Project_Structure" timestamp="1601209245413">
+      <screen x="0" y="0" width="3840" height="1050" />
+    </state>
+    <state x="1400" y="99" key="#Project_Structure/0.0.3840.1050/3840.0.1920.1050@0.0.3840.1050" timestamp="1601209245413" />
+    <state x="570" y="144" key="#Unnamed" timestamp="1601153341578">
+      <screen x="0" y="0" width="3840" height="1050" />
+    </state>
+    <state x="570" y="144" key="#Unnamed/0.0.3840.1050/3840.0.1920.1050@0.0.3840.1050" timestamp="1601153341578" />
+    <state x="921" y="183" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1601210895649">
+      <screen x="0" y="0" width="3840" height="1050" />
+    </state>
+    <state x="921" y="183" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.3840.1050/3840.0.1920.1050@0.0.3840.1050" timestamp="1601210895649" />
+    <state x="1247" y="233" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1601208131391">
+      <screen x="0" y="0" width="3840" height="1050" />
+    </state>
+    <state x="1247" y="233" key="#com.intellij.ide.macro.MacrosDialog/0.0.3840.1050/3840.0.1920.1050@0.0.3840.1050" timestamp="1601208131391" />
+    <state x="1272" y="237" key="#com.intellij.ide.util.MemberChooser" timestamp="1593224233509">
+      <screen x="0" y="0" width="3840" height="1050" />
+    </state>
+    <state x="1272" y="237" key="#com.intellij.ide.util.MemberChooser/0.0.3840.1050@0.0.3840.1050" timestamp="1593224233509" />
+    <state x="1196" y="318" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1601211807319">
+      <screen x="0" y="0" width="3840" height="1050" />
+    </state>
+    <state x="1196" y="318" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.3840.1050/3840.0.1920.1050@0.0.3840.1050" timestamp="1601211807319" />
+    <state x="1650" y="272" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1593223841101">
+      <screen x="0" y="0" width="3840" height="1050" />
+    </state>
+    <state x="1650" y="272" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.3840.1050@0.0.3840.1050" timestamp="1593223841101" />
+    <state x="1523" y="144" key="#test" timestamp="1601208094422">
+      <screen x="0" y="0" width="3840" height="1050" />
+    </state>
+    <state x="1523" y="144" key="#test/0.0.3840.1050/3840.0.1920.1050@0.0.3840.1050" timestamp="1601208094422" />
+    <state x="750" y="169" key="#test_in_prog3.test" timestamp="1601211771929">
+      <screen x="0" y="0" width="3840" height="1050" />
+    </state>
+    <state x="750" y="169" key="#test_in_prog3.test/0.0.3840.1050/3840.0.1920.1050@0.0.3840.1050" timestamp="1601211771929" />
+    <state x="2523" y="197" width="878" height="694" key="#xdebugger.evaluate" timestamp="1593269614512">
+      <screen x="0" y="0" width="3840" height="1050" />
+    </state>
+    <state x="2523" y="197" width="878" height="694" key="#xdebugger.evaluate/0.0.3840.1050@0.0.3840.1050" timestamp="1593269614512" />
+    <state x="1247" y="284" key="FileChooserDialogImpl" timestamp="1601212111512">
+      <screen x="0" y="0" width="3840" height="1050" />
+    </state>
+    <state x="1247" y="284" key="FileChooserDialogImpl/0.0.3840.1050/3840.0.1920.1050@0.0.3840.1050" timestamp="1601212111512" />
+    <state width="1874" height="449" key="GridCell.Tab.0.bottom" timestamp="1601212369240">
+      <screen x="0" y="0" width="3840" height="1050" />
+    </state>
+    <state width="1874" height="449" key="GridCell.Tab.0.bottom/0.0.3840.1050/3840.0.1920.1050@0.0.3840.1050" timestamp="1601212369240" />
+    <state width="2498" height="351" key="GridCell.Tab.0.bottom/0.0.3840.1050@0.0.3840.1050" timestamp="1593288164894" />
+    <state width="1874" height="449" key="GridCell.Tab.0.center" timestamp="1601212369240">
+      <screen x="0" y="0" width="3840" height="1050" />
+    </state>
+    <state width="1874" height="449" key="GridCell.Tab.0.center/0.0.3840.1050/3840.0.1920.1050@0.0.3840.1050" timestamp="1601212369240" />
+    <state width="2498" height="351" key="GridCell.Tab.0.center/0.0.3840.1050@0.0.3840.1050" timestamp="1593288164894" />
+    <state width="1874" height="449" key="GridCell.Tab.0.left" timestamp="1601212369240">
+      <screen x="0" y="0" width="3840" height="1050" />
+    </state>
+    <state width="1874" height="449" key="GridCell.Tab.0.left/0.0.3840.1050/3840.0.1920.1050@0.0.3840.1050" timestamp="1601212369240" />
+    <state width="2498" height="351" key="GridCell.Tab.0.left/0.0.3840.1050@0.0.3840.1050" timestamp="1593288164894" />
+    <state width="1874" height="449" key="GridCell.Tab.0.right" timestamp="1601212369240">
+      <screen x="0" y="0" width="3840" height="1050" />
+    </state>
+    <state width="1874" height="449" key="GridCell.Tab.0.right/0.0.3840.1050/3840.0.1920.1050@0.0.3840.1050" timestamp="1601212369240" />
+    <state width="2498" height="351" key="GridCell.Tab.0.right/0.0.3840.1050@0.0.3840.1050" timestamp="1593288164894" />
+    <state width="1874" height="449" key="GridCell.Tab.1.bottom" timestamp="1601212369240">
+      <screen x="0" y="0" width="3840" height="1050" />
+    </state>
+    <state width="1874" height="449" key="GridCell.Tab.1.bottom/0.0.3840.1050/3840.0.1920.1050@0.0.3840.1050" timestamp="1601212369240" />
+    <state width="2209" height="260" key="GridCell.Tab.1.bottom/0.0.3840.1050@0.0.3840.1050" timestamp="1593288115762" />
+    <state width="1874" height="449" key="GridCell.Tab.1.center" timestamp="1601212369240">
+      <screen x="0" y="0" width="3840" height="1050" />
+    </state>
+    <state width="1874" height="449" key="GridCell.Tab.1.center/0.0.3840.1050/3840.0.1920.1050@0.0.3840.1050" timestamp="1601212369240" />
+    <state width="2209" height="260" key="GridCell.Tab.1.center/0.0.3840.1050@0.0.3840.1050" timestamp="1593288115762" />
+    <state width="1874" height="449" key="GridCell.Tab.1.left" timestamp="1601212369240">
+      <screen x="0" y="0" width="3840" height="1050" />
+    </state>
+    <state width="1874" height="449" key="GridCell.Tab.1.left/0.0.3840.1050/3840.0.1920.1050@0.0.3840.1050" timestamp="1601212369240" />
+    <state width="2209" height="260" key="GridCell.Tab.1.left/0.0.3840.1050@0.0.3840.1050" timestamp="1593288115762" />
+    <state width="1874" height="449" key="GridCell.Tab.1.right" timestamp="1601212369240">
+      <screen x="0" y="0" width="3840" height="1050" />
+    </state>
+    <state width="1874" height="449" key="GridCell.Tab.1.right/0.0.3840.1050/3840.0.1920.1050@0.0.3840.1050" timestamp="1601212369240" />
+    <state width="2209" height="260" key="GridCell.Tab.1.right/0.0.3840.1050@0.0.3840.1050" timestamp="1593288115762" />
+    <state x="968" y="171" key="SettingsEditor" timestamp="1601212336802">
+      <screen x="0" y="0" width="3840" height="1050" />
+    </state>
+    <state x="968" y="171" key="SettingsEditor/0.0.3840.1050/3840.0.1920.1050@0.0.3840.1050" timestamp="1601212336802" />
+    <state x="968" y="171" key="SettingsEditor/0.0.3840.1050@0.0.3840.1050" timestamp="1593212007626" />
+    <state x="675" y="248" key="Vcs.Push.Dialog.v2" timestamp="1593209246710">
+      <screen x="0" y="0" width="3840" height="1050" />
+    </state>
+    <state x="675" y="248" key="Vcs.Push.Dialog.v2/0.0.3840.1050@0.0.3840.1050" timestamp="1593209246710" />
+    <state x="153" y="115" width="2363" height="840" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1593222975649">
+      <screen x="0" y="0" width="3840" height="1050" />
+    </state>
+    <state x="153" y="115" width="2363" height="840" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.3840.1050@0.0.3840.1050" timestamp="1593222975649" />
+    <state x="1172" y="421" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1601212178848">
+      <screen x="0" y="0" width="3840" height="1050" />
+    </state>
+    <state x="1172" y="421" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.3840.1050/3840.0.1920.1050@0.0.3840.1050" timestamp="1601212178848" />
+    <state x="1018" y="461" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1593222160179">
+      <screen x="0" y="0" width="3840" height="1050" />
+    </state>
+    <state x="1018" y="461" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.3840.1050@0.0.3840.1050" timestamp="1593222160179" />
+    <state x="889" y="264" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1593215374937">
+      <screen x="0" y="0" width="3840" height="1050" />
+    </state>
+    <state x="889" y="264" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.3840.1050@0.0.3840.1050" timestamp="1593215374937" />
+    <state x="1365" y="280" width="1133" height="592" key="find.popup" timestamp="1593213693200">
+      <screen x="0" y="0" width="3840" height="1050" />
+    </state>
+    <state x="1365" y="280" width="1133" height="592" key="find.popup/0.0.3840.1050@0.0.3840.1050" timestamp="1593213693200" />
+    <state x="745" y="238" key="git4idea.branch.GitSmartOperationDialog" timestamp="1601204755818">
+      <screen x="0" y="0" width="3840" height="1050" />
+    </state>
+    <state x="745" y="238" key="git4idea.branch.GitSmartOperationDialog/0.0.3840.1050/3840.0.1920.1050@0.0.3840.1050" timestamp="1601204755818" />
+    <state x="2169" y="423" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1593209253742">
+      <screen x="0" y="0" width="3840" height="1050" />
+    </state>
+    <state x="2169" y="423" key="git4idea.remote.GitConfigureRemotesDialog/0.0.3840.1050@0.0.3840.1050" timestamp="1593209253742" />
+    <state x="757" y="149" key="new project wizard" timestamp="1601679333767">
+      <screen x="0" y="0" width="3840" height="1050" />
+    </state>
+    <state x="757" y="149" key="new project wizard/0.0.3840.1050/3840.0.1920.1050@0.0.3840.1050" timestamp="1601679333767" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Application/user/events/ModuleEvent.java</url>
+          <line>60</line>
+          <option name="timeStamp" value="162" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/src/warehouse/events/ModuleEvent.java</url>
+          <line>90</line>
+          <option name="timeStamp" value="169" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/src/cli/validators/NewItemInput.java</url>
+          <line>103</line>
+          <option name="timeStamp" value="175" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Application/gui/controller/WarenPanelController.java</url>
+          <line>118</line>
+          <option name="timeStamp" value="177" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/src/cli/validators/NewCargoInput.java</url>
+          <line>53</line>
+          <option name="timeStamp" value="178" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/src/warehouse/model/Warehouse.java</url>
+          <line>64</line>
+          <option name="timeStamp" value="180" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Application/example/Listener.java</url>
+          <line>18</line>
+          <option name="timeStamp" value="200" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Application/cli/validators/NewCargoInput.java</url>
+          <line>50</line>
+          <option name="timeStamp" value="308" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Application/cli/model/ParseInput.java</url>
+          <line>139</line>
+          <option name="timeStamp" value="317" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Application/cli/model/ParseInput.java</url>
+          <line>180</line>
+          <option name="timeStamp" value="332" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Application/warehouse/model/UpdateItem.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="338" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Application/warehouse/entity/Warehouse.java</url>
+          <line>23</line>
+          <option name="timeStamp" value="339" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Application/persistence/Persistence.java</url>
+          <line>57</line>
+          <option name="timeStamp" value="343" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Application/persistence/Persistence.java</url>
+          <line>47</line>
+          <option name="timeStamp" value="345" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Application/warehouse/entity/Warehouse.java</url>
+          <line>59</line>
+          <option name="timeStamp" value="349" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Application/persistence/Persistence.java</url>
+          <line>87</line>
+          <option name="timeStamp" value="359" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Application/persistence/helper/Store.java</url>
+          <line>25</line>
+          <option name="timeStamp" value="361" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/app/persistence/Persistence.java</url>
+          <line>60</line>
+          <option name="timeStamp" value="362" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/famework/di/Registry.java</url>
+          <line>75</line>
+          <option name="timeStamp" value="384" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/test/java/famework/KernelTest.java</url>
+          <line>15</line>
+          <option name="timeStamp" value="392" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/test/java/famework/event/EventHandlerTest.java</url>
+          <line>39</line>
+          <option name="timeStamp" value="400" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/test/java/famework/event/EventHandlerTest.java</url>
+          <line>36</line>
+          <option name="timeStamp" value="402" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/test/java/famework/event/EventRegistryTest.java</url>
+          <line>48</line>
+          <option name="timeStamp" value="403" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/app/persistence/Persistence.java</url>
+          <line>119</line>
+          <option name="timeStamp" value="412" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/app/persistence/Persistence.java</url>
+          <line>147</line>
+          <option name="timeStamp" value="416" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/app/warehouse/model/GetItem.java</url>
+          <line>50</line>
+          <option name="timeStamp" value="419" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/app/network/Server.java</url>
+          <line>51</line>
+          <option name="timeStamp" value="421" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/app/network/Server.java</url>
+          <line>53</line>
+          <option name="timeStamp" value="422" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/app/network/helper/Tcp.java</url>
+          <line>140</line>
+          <option name="timeStamp" value="439" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/app/network/Server.java</url>
+          <line>84</line>
+          <option name="timeStamp" value="441" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/app/network/helper/Tcp.java</url>
+          <line>111</line>
+          <option name="timeStamp" value="468" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/app/network/helper/Tcp.java</url>
+          <line>107</line>
+          <option name="timeStamp" value="473" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/app/network/helper/Tcp.java</url>
+          <line>53</line>
+          <option name="timeStamp" value="481" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/app/network/model/Sender.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="487" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/app/network/Server.java</url>
+          <line>81</line>
+          <option name="timeStamp" value="489" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/app/network/helper/Tcp.java</url>
+          <line>62</line>
+          <option name="timeStamp" value="491" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/app/network/Server.java</url>
+          <line>63</line>
+          <option name="timeStamp" value="492" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/app/network/Server.java</url>
+          <line>73</line>
+          <option name="timeStamp" value="493" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/app/network/helper/Tcp.java</url>
+          <line>89</line>
+          <option name="timeStamp" value="495" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/app/network/Server.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="496" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/app/network/helper/Tcp.java</url>
+          <line>137</line>
+          <option name="timeStamp" value="497" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/app/network/Server.java</url>
+          <line>69</line>
+          <option name="timeStamp" value="498" />
+        </line-breakpoint>
+      </breakpoints>
+      <breakpoints-defaults>
+        <breakpoint suspend="THREAD" type="java-line" />
+      </breakpoints-defaults>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo typeName="warehouse.events.GetCargoData" fieldName="item" />
+        <PinnedItemInfo typeName="warehouse.model.Warehouse" fieldName="storagePlaces" />
+        <PinnedItemInfo typeName="java.lang.Class" fieldName="annotationData" />
+      </pinned-members>
+    </pin-to-top-manager>
+    <watches-manager>
+      <configuration name="JUnit">
+        <watch expression="((MockMethodInterceptor)this.mockitoInterceptor).handler" custom="app.events.Module,org.mockito.internal.creation.bytebuddy.MockMethodInterceptor" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/prog3$MainTest_main.ic" NAME="MainTest.main Coverage Results" MODIFIED="1586632933199" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>cli.helper.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/prog3$KernelTest.ic" NAME="KernelTest Coverage Results" MODIFIED="1592855067174" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/prog3$All_in_prog3_beleg.ic" NAME="All in prog3_beleg Coverage Results" MODIFIED="1586648540813" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/prog3$AppTest.ic" NAME="AppTest Coverage Results" MODIFIED="1586772066336" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>app.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/prog3$EventHandlerTest.ic" NAME="EventHandlerTest Coverage Results" MODIFIED="1592857389229" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/prog3$Tests_in__prog3_test_.ic" NAME="Tests in 'prog3.test' Coverage Results" MODIFIED="1592864293957" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/prog3$famework_config_reader_in_prog3_beleg.ic" NAME="famework.config-reader in prog3_beleg Coverage Results" MODIFIED="1592258904797" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>famework.config-reader.*</FILTER>
+    </SUITE>
+  </component>
+</project>
