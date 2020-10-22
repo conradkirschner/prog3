@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.*?>
+<VBox  xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.gui.Window" GridPane.vgrow="ALWAYS">
+   <ToolBar>
+     <items>
+       <Button fx:id="showItemButton" mnemonicParsing="false" text="Ware anzeigen"  />
+         <Button fx:id="showUserButton" mnemonicParsing="false" text="User anzeigen" />
+         <Button fx:id="newUserButton" mnemonicParsing="false" text="Neuer User" />
+         <Button fx:id="newItemButton" mnemonicParsing="false" text="Neues Item" />
+         <Button fx:id="updateItemButton" mnemonicParsing="false" text="Item Updaten" />
+         <Button fx:id="deleteUserButton" mnemonicParsing="false" text="User Löschen" />
+         <Button fx:id="deleteItemButton" mnemonicParsing="false" text="Ware Löschen" />
+         <Button fx:id="showWarehousesButton" mnemonicParsing="false" text="Warenlager verwalten" />
+     </items>
+   </ToolBar>
+
+    <VBox fx:id="userTableBox">
+        <TableView fx:id="userTable"   GridPane.columnIndex="0" GridPane.columnSpan="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.vgrow="ALWAYS">
+            <placeholder>
+                <Label text="" />
+            </placeholder>
+        </TableView>
+    </VBox>
+    <VBox fx:id="warenTableBox">
+        <TableView fx:id="warenTable" GridPane.columnIndex="0" GridPane.columnSpan="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.vgrow="ALWAYS">
+            <placeholder>
+                <Label text="" />
+            </placeholder>
+            <columns>
+                <TableColumn prefWidth="75.0" text="Id">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="id" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="75.0" text="Besitzer">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="owner" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="75.0" text="Typ">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="type" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="104.0" text="Gewicht">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="wagge" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="104.0" text="Gefahrengut">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="hazzard" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="104.0" text="Zerbrechlich">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="fragile" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn minWidth="0.0" prefWidth="102.0" text="Druck">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="pressure" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn minWidth="0.0" prefWidth="102.0" text="Eingelagert bis">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="storeUntil" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn minWidth="0.0" prefWidth="102.0" text="Lager">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="warehouse" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn minWidth="0.0" prefWidth="102.0" text="Lagerplatz">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="storagePlace" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn minWidth="0.0" prefWidth="102.0" text="Letzte Inspektion">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="inspectionDate" />
+                    </cellValueFactory>
+                </TableColumn>
+            </columns>
+        </TableView>
+    </VBox>
+</VBox>

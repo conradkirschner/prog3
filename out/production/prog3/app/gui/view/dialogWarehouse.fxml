@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="180.0" prefWidth="282.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextField fx:id="warehouses"  layoutX="7.0" layoutY="81.0" prefHeight="26.0" prefWidth="268.0" />
+      <Label layoutX="14.0" layoutY="14.0" text="Activate and create Warehouses" />
+      <Label layoutX="14.0" layoutY="30.0" text="Beispiel: &quot;1 2 3 4&quot; " />
+      <Label layoutX="14.0" layoutY="46.0" text="startet warenhaus 1 2 3 4" />
+      <Button fx:id="submit" layoutX="54.0" layoutY="122.0" mnemonicParsing="false" text="Aktivieren und erstellen" />
+      <Label fx:id="error" layoutX="54.0" layoutY="152.0" text="" />
+
+   </children>
+</Pane>
